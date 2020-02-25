@@ -1,10 +1,10 @@
 # Témalabor doukmentáció
 
 ## Téma
-játék fórum oldal, verseny kiírásra és diskurzusra
+Játék fórum oldal, verseny kiírásra és diskurzusra
 
 ## Leírás
-az oldal a játék felhasználói számára létrehozott közösségi portál, amin tájékozódhatnak az aktuális versenyekről, illetve bármilyen, a játékkal kapcsolatos bejegyzéseket írhatnak, olvashatnak. Az oldal a játékot magát nem valósítja meg, csak lehetőséget ad a játékosok weben történő kapcsolattartására.
+Az oldal a játék felhasználói számára létrehozott közösségi portál, amin tájékozódhatnak az aktuális versenyekről, illetve bármilyen, a játékkal kapcsolatos bejegyzéseket írhatnak, olvashatnak. Az oldal a játékot magát nem valósítja meg, csak lehetőséget ad a játékosok weben történő kapcsolattartására.
 
 ## Felépítés
 Oldal tetején menüszalagként funkcionáló fejléc. Ennek elemei balról jobbra:
