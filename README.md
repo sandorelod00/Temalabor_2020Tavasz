@@ -12,9 +12,9 @@ Oldal tetején menüszalagként funkcionáló fejléc. Ennek elemei balról jobb
     Alapvetően csak kozmetikai részlet, illetve rákattintva átirányít a kezdő oldalra.
   - **Forum** (kezdőlap)
     Forum kér különböző médiaformátumot tárol:
-    o	Verseny kiírás: Adminisztrátoroknak van lehetősége a játékban versenyeket kiírni. 
+    - Verseny kiírás: Adminisztrátoroknak van lehetősége a játékban versenyeket kiírni. 
       Verseny kiírás formája: Esemény kép, esemény cím, versenyt kiíró felhasználó, rövid leírás stb. Funkcionális elemek: versenyre jelentkezés gomb, amire, ha rányomunk, automatikusan leiratkozás gombra vált, állapotát tárolni kell, illetve lehetséges az eseményhez    kommentelni
-    o	Poszt: Bármely felhasználó írhat ki posztot, ezek a játékkal kapcsolatos fórumbejegyzések.
+    - Poszt: Bármely felhasználó írhat ki posztot, ezek a játékkal kapcsolatos fórumbejegyzések.
       Poszt formája: cím, bejegyzés szöveg, kiíró felhasználó, dátum, illetve ez alá is lehet kommentelni. Forumon lefelé görgetve akarjuk betölteni a korábbi posztokat. Akár poszt, akár verseny címére kattintva átirányítunk egy olyan nézetre, ahol csak az adott bejegyzés tekinthető meg, ekkor bővebb tartalom érhető el, illetve ilyenkor láthatjuk a kommenteket. 
  - **My profile**
   Saját profilban a saját adatokat lehet módosítani (alias, leírás, profil kép, ha van rank, stb)
