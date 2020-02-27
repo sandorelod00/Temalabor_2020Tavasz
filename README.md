@@ -3,8 +3,13 @@
 ## Téma
 Játék fórum oldal, verseny kiírásra és diskurzusra
 
+Játék neve: Magic The Gathering Arena
+
 ## Leírás
 Az oldal a játék felhasználói számára létrehozott közösségi portál, amin tájékozódhatnak az aktuális versenyekről, illetve bármilyen, a játékkal kapcsolatos bejegyzéseket írhatnak, olvashatnak. Az oldal a játékot magát nem valósítja meg, csak lehetőséget ad a játékosok weben történő kapcsolattartására.
+
+A játékosok a különböző versenyekre tudnak regisztrálni. 
+A versenyeket az adminok tudják kiírni.
 
 ## Felépítés
 Oldal tetején menüszalagként funkcionáló fejléc. Ennek elemei balról jobbra:
