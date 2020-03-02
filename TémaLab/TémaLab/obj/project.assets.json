@@ -8550,11 +8550,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juris\\source\\repos\\TémaLab\\TémaLab\\TémaLab.csproj",
+      "projectUniqueName": "C:\\Users\\juris\\Documents\\GitHub\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
       "projectName": "TémaLab",
-      "projectPath": "C:\\Users\\juris\\source\\repos\\TémaLab\\TémaLab\\TémaLab.csproj",
+      "projectPath": "C:\\Users\\juris\\Documents\\GitHub\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
       "packagesPath": "C:\\Users\\juris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juris\\source\\repos\\TémaLab\\TémaLab\\obj\\",
+      "outputPath": "C:\\Users\\juris\\Documents\\GitHub\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
