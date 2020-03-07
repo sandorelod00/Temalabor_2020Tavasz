@@ -15,7 +15,7 @@
     <style>
         #post {
             background-color: lightblue;
-            border-radius: 25px;
+            border-radius: 10px;
             border: 2px solid grey;
             padding: 10px;
             margin-bottom: 10px;
@@ -25,23 +25,24 @@
 <body style="background-color: lightgray;">
     <div class="container">
         <div class="row">
-            <div class="col-2" style="align-self: center;">
-                <img src="profipic.png" height="100"></br>
-                <h3>Your Name</h3>
-            </div>
-            <div class="col-10">
-                <img src="bg_image.png" height="200" width="920" style="border:solid grey;">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-action"><a href="#">Posts</a></li>
-                    <li class="list-group-item list-group-item-action"><a href="#">Friends</a></li>
-                    <li class="list-group-item list-group-item-action"><a href="#">Introduction</a></li>
+            <div class="col Left-User-menu">
+                <ul class="list-gourp Left-User-menu">
+                    <li class="list-group-item">
+                        <img class="img-fluid" src="~/Images/profipic.png" height="100"><br>
+                        <a asp-area="" asp-page="/MyProfile"><h2>Your Name</h2></a>
+                    </li>
+                    <li class="list-group-item">
+                        <button type="button" class="list-group-item list-group-item-action">Introduction</button>
+                        <button type="button" class="list-group-item list-group-item-action">Friends</button>
+                        <button type="button" class="list-group-item list-group-item-action">Upcoming Events</button>
+                        <button type="button" class="list-group-item list-group-item-action">Upcoming Competetions</button>
+                        <button type="button" class="list-group-item list-group-item-action">Leader Board</button>
+                    </li>
                 </ul>
             </div>
-            <div class="col-10">
+            <div class="col-9">
+                <img src="~/Images/MTGA_Logo.png" width="803" style="border:solid grey;">
+
                 <div class="input-group">
                     <textarea class="form-control" aria-label="With textarea"></textarea>
                     <div class="input-group-prepend">
@@ -59,61 +60,65 @@
                         </span>
                     </div>
                 </div>
-                <hr>
-
-                <div class="container" id="post">
-                    <div>
-                        <img src="profipic.png" height="50" width="50">
-                        Your Name
-                    </div>
-                    <hr>
-                    <p>
-                        This is what a post will look like. </br>
-                        Simple text for sharing your thoughts with your friends.
-                    </p>
-                    <hr>
-                    <div>
-                        <div>
-                            <a href="#" style="margin-right: 20px;">Like</a>
-                            <a href="#">Comment</a>
+                <ul class="list-gorup col" style="padding: 0px; background-color:none">
+                    <li class="list-group-item post" style="background-color: lightgray;">
+                        <div class="container" id="post">
+                            <div>
+                                <img src="~/Images/profipic.png" height="50" width="50">
+                                Your Name
+                            </div>
+                            <hr>
+                            <p>
+                                This is what a post will look like. </br>
+                                Simple text for sharing your thoughts with your friends.
+                            </p>
+                            <hr>
+                            <div>
+                                <div>
+                                    <a href="#" style="margin-right: 20px;">Like</a>
+                                    <a href="#">Comment</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="card" id="post">
-                    <img src="contest_image.png" height="150" class="card-img-top" style="border:solid grey; border-radius: 25px">
-                    <div class="card-body">
-                        <h3 class="card-title"><b>Contest name</b></h3>
-                        <span style="float:right">
-                            Creator name
-                        </span>
-                        <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                        <div>
-                            <a href="#" class="btn btn-primary">Join Contest</a>
-                            <span style="float:right">
-                                Number of palyers: 6/10
-                            </span>
+                    </li>
+                    <li class="list-group-item post" style="background-color: lightgray;">
+                        <div class="card" id="post">
+                            <img src="~/Images/contest_image.png" height="150" class="card-img-top" style="border:solid grey; border-radius: 10px">
+                            <div class="card-body">
+                                <h3 class="card-title"><b>Contest name</b></h3>
+                                <span style="float:right">
+                                    Creator name
+                                </span>
+                                <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
+                                <div>
+                                    <a href="#" class="btn btn-primary">Join Contest</a>
+                                    <span style="float:right">
+                                        Number of palyers: 6/10
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="container" id="post">
-                    <div>
-                        <img src="profipic.png" height="50" width="50">
-                        Your Name
-                    </div>
-                    <hr>
-                    <p>
-                        This is another example for a post, so that the page looks more convincing.
-                    </p>
-                    <hr>
-                    <div>
-                        <div>
-                            <a href="#" style="margin-right: 20px;">Like</a>
-                            <a href="#">Comment</a>
+                    </li>
+                    <li class="list-group-item post" style="background-color: lightgray;">
+                        <div class="container" id="post">
+                            <div>
+                                <img src="~/Images/profipic.png" height="50" width="50">
+                                Your Name
+                            </div>
+                            <hr>
+                            <p>
+                                This is another example for a post, so that the page looks more convincing.
+                            </p>
+                            <hr>
+                            <div>
+                                <div>
+                                    <a href="#" style="margin-right: 20px;">Like</a>
+                                    <a href="#">Comment</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

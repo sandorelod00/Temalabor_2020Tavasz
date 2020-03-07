@@ -295,10 +295,8 @@ C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\TémaLab.RazorCoreGenerate.cache
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
-C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\Forum.cshtml.g.cs
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\MyProfile.cshtml.g.cs
-C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
