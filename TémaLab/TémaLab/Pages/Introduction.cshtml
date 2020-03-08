@@ -1,7 +1,7 @@
 ﻿@page
-@model TémaLab.OtherProfileModel
+@model TémaLab.IntroductionModel
 @{
-    ViewData["Title"] = "OtherProfile";
+    ViewData["Title"] = "Introduction";
 }
 
 <!DOCTYPE html>
@@ -14,6 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ; integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/Base.css">
     <link rel="stylesheet" type="text/css" href="/css/site.css">
+
 </head>
 <body>
     <div class="container">
@@ -26,8 +27,7 @@
                     <ul class="list-gourp">
                         <li class="list-group-item Left-User-menu-item">
                             <img class="img-fluid" src="~/Images/profipic.png"><br>
-                            <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h3>User Name</h3></a>
-                            <button type="button" class="btn btn-primary">Add Friend</button>
+                            <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
                         </li>
                         <li class="list-group-item Left-User-menu-item">
                             <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Introduction</button>
@@ -35,66 +35,31 @@
                             <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Events</button>
                             <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Competetions</button>
                             <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Leader Board</button>
+                            <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Edit profile</button>
                         </li>
                     </ul>
                 </div>
                 <div class="col-9">
                     <ul class="list-gorup col">
                         <li class="list-group-item post">
-                            <div class="container post">
-                                <div>
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile">User Name</a>
-                                </div>
-                                <hr>
-                                <p>
-                                    This is what a post will look like. </br>
-                                    Simple text for sharing your thoughts with your friends.
-                                </p>
-                                <hr>
-                                <div>
-                                    <div>
-                                        <a href="#" style="margin-right: 20px;">Like</a>
-                                        <a href="#">Comment</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item post">
-                            <div class="card post">
-                                <img src="~/Images/contest_image.png" height="150" class="card-img-top">
-                                <div class="card-body">
-                                    <h3 class="card-title"><b>Contest name</b></h3>
-                                    <span style="float:right">
-                                        <a class="nicelink" asp-area="" asp-page="/OtherProfile">Creator name</a>
-                                    </span>
-                                    <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                                    <div>
-                                        <a href="#" class="btn btn-primary">Join Contest</a>
-                                        <span style="float:right">
-                                            Number of palyers: 6/10
-                                        </span>
-                                    </div>
-                                </div>
+                            <div>
+                                <h2>Introduction</h2>
                             </div>
                         </li>
                         <li class="list-group-item post">
                             <div class="container post">
                                 <div>
                                     <img src="~/Images/profipic.png" height="50" width="50">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile">User Name</a>
+                                    Poster's Name
                                 </div>
                                 <hr>
                                 <p>
-                                    This is another example for a post, so that the page looks more convincing.
+                                    Hi My name is Test Profile and I'm pretty boring. <br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra rhoncus dapibus. Sed eu sem volutpat, bibendum sem quis, tincidunt quam. Morbi nibh quam, rhoncus ac pulvinar eu, faucibus at ligula. Mauris mauris tortor, tempor porta condimentum congue, faucibus id nulla. Suspendisse imperdiet velit et massa volutpat, at molestie ligula fermentum. Fusce hendrerit pellentesque consequat. Aenean non tincidunt mauris. Integer eu orci ut elit pretium dapibus. Mauris vestibulum nulla aliquet, fermentum orci a, sollicitudin elit. Etiam cursus viverra sem, at feugiat metus congue in.
+
+                                    Donec vel condimentum neque, eget scelerisque urna. Suspendisse ex odio, pulvinar ac egestas non, tincidunt in ipsum. Quisque sagittis ut sem id luctus. Maecenas id mauris porttitor, maximus tellus at, congue lorem. Aenean aliquam ante eget felis eleifend aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed quis vehicula urna. Quisque at mauris augue. Cras sit amet semper ipsum. Pellentesque et lectus dolor. Mauris nunc velit, luctus sed lorem non, lobortis auctor diam. Morbi rutrum interdum erat vel sodales. Morbi posuere eros vel magna porta semper. Donec vitae massa et dui ultricies faucibus non in nulla. Praesent suscipit mattis arcu a pulvinar.
                                 </p>
                                 <hr>
-                                <div>
-                                    <div>
-                                        <a href="#" style="margin-right: 20px;">Like</a>
-                                        <a href="#">Comment</a>
-                                    </div>
-                                </div>
                             </div>
                         </li>
                     </ul>
@@ -103,4 +68,8 @@
         </div>
 </body>
 </html>
+
+
+
+
 

@@ -48,3 +48,19 @@
    height: auto;
    opacity: 1;
 }
+
+.friends {
+    border-bottom: solid;
+    border-color: lightgray;
+    border-bottom-width: thin;
+    margin-bottom: 10px;
+}
+
+.nicelink {
+    color: white;
+}
+
+.nicelink:hover {
+    color: darkslategray;
+    text-decoration:none;
+}
