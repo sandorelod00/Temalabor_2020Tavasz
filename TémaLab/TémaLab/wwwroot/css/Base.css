@@ -5,6 +5,7 @@
     background-size: contain;
     background-color: black;
     background-attachment: fixed;
+    color: white;
 }
 
     body::-webkit-scrollbar {
@@ -36,6 +37,7 @@
 }
 
 .post {
+    padding-bottom: 0.5%;
     margin-bottom: 5%;
     background-color: black;
     opacity: 0.90;
@@ -47,4 +49,18 @@
    width: 10%;
    height: auto;
    opacity: 1;
+}
+
+.PostInputBox{
+    padding: 0px;
+    opacity: 90;
+    margin-bottom: 5%;
+}
+
+.PostInputBox-TextInput {
+    opacity: 90;
+    color: white;
+    border: solid;
+    border-color: whitesmoke;
+    border-width: thin;
 }
