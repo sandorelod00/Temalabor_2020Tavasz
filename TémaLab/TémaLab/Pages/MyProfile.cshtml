@@ -38,28 +38,34 @@
                 </div>
 
                 <div class="col-9">
-                    <img src="~/Images/MTGA_Logo.png" width="803" style="border:solid grey;">
+                    
 
-                    <div class="input-group">
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon1">Post</button>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Post type
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Post</a>
-                                        <a class="dropdown-item" href="#">Contest</a>
-                                    </div>
+
+                    
+                    <ul class="list-gorup col" >
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Post</button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Post type
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Post</a>
+                                                <a class="dropdown-item" href="#">Contest</a>
+                                            </div>
+                                        </div>
+                                    </span>
                                 </div>
-                            </span>
-                        </div>
-                    </div>
-                    <ul class="list-gorup col" style="padding: 0px; background-color:none">
-                        <li class="list-group-item post" style="background-color: lightgray;">
-                            <div class="container" id="post">
+                            </div>
+                        </li>
+
+
+                        <li class="list-group-item post" >
+                            <div class="container post">
                                 <div>
                                     <img src="~/Images/profipic.png" height="50" width="50">
                                     Your Name
@@ -78,9 +84,9 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item post" style="background-color: lightgray;">
-                            <div class="card" id="post">
-                                <img src="~/Images/contest_image.png" height="150" class="card-img-top" style="border:solid grey; border-radius: 10px">
+                        <li class="list-group-item post" >
+                            <div class="card post">
+                                <img src="~/Images/contest_image.png" height="150" class="card-img-top">
                                 <div class="card-body">
                                     <h3 class="card-title"><b>Contest name</b></h3>
                                     <span style="float:right">
@@ -96,8 +102,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item post" style="background-color: lightgray;">
-                            <div class="container" id="post">
+                        <li class="list-group-item post">
+                            <div class="container post">
                                 <div>
                                     <img src="~/Images/profipic.png" height="50" width="50">
                                     Your Name
