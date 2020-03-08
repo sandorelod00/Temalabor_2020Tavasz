@@ -308,3 +308,4 @@ C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\TémaLab.csproj.CopyComplete
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\TémaLab.dll
 C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\TémaLab.pdb
+C:\Users\juris\Documents\GitHub\Temalabor_2020Tavasz\TémaLab\TémaLab\obj\Debug\netcoreapp3.1\Razor\Pages\OtherProfile.cshtml.g.cs
