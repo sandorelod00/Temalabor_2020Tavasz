@@ -12,116 +12,119 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ; integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ; integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ; integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <style>
-        #post {
-            background-color: lightblue;
-            border-radius: 10px;
-            border: 2px solid grey;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/Base.css">
+    <link rel="stylesheet" type="text/css" href="/css/site.css">
+    
 </head>
-<body style="background-color: lightgray;">
+<body>
     <div class="container">
-        <div class="row">
-            <div class="col Left-User-menu">
-                <ul class="list-gourp Left-User-menu">
-                    <li class="list-group-item">
-                        <img class="img-fluid" src="~/Images/profipic.png" height="100"><br>
-                        <a asp-area="" asp-page="/MyProfile"><h2>Your Name</h2></a>
-                    </li>
-                    <li class="list-group-item">
-                        <button type="button" class="list-group-item list-group-item-action">Introduction</button>
-                        <button type="button" class="list-group-item list-group-item-action">Friends</button>
-                        <button type="button" class="list-group-item list-group-item-action">Upcoming Events</button>
-                        <button type="button" class="list-group-item list-group-item-action">Upcoming Competetions</button>
-                        <button type="button" class="list-group-item list-group-item-action">Leader Board</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-9">
-                <img src="~/Images/MTGA_Logo.png" width="803" style="border:solid grey;">
-
-                <div class="input-group">
-                    <textarea class="form-control" aria-label="With textarea"></textarea>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1">Post</button>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Post type
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Post</a>
-                                    <a class="dropdown-item" href="#">Contest</a>
-                                </div>
-                            </div>
-                        </span>
-                    </div>
+        <!--  Conteainer for contetnt. Ez a grid rendszer amibe bele rakunk több elemet. Külső Container-->
+        <div class="container" id="contect">
+            <!-- Container első sora. Ebben a sorban van a Left-user-Menu és a Header szöveg.-->
+            <div class="row" id="FirstRow">
+                <!--Col. Ebben az oszlopban van a Left-User-Menu-->
+                <div class="col Left-User-menu">
+                    <ul class="list-gourp">
+                        <li class="list-group-item Left-User-menu-item">
+                            <img class="img-fluid" src="~/Images/profipic.png"><br>
+                            <a asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
+                        </li>
+                        <li class="list-group-item Left-User-menu-item">
+                            <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Events</button>
+                            <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Competetions</button>
+                            <button type="button" class="list-group-item list-group-item-action Left-User-menu-item">Leader Board</button>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="list-gorup col" style="padding: 0px; background-color:none">
-                    <li class="list-group-item post" style="background-color: lightgray;">
-                        <div class="container" id="post">
-                            <div>
-                                <img src="~/Images/profipic.png" height="50" width="50">
-                                Your Name
-                            </div>
-                            <hr>
-                            <p>
-                                This is what a post will look like. </br>
-                                Simple text for sharing your thoughts with your friends.
-                            </p>
-                            <hr>
-                            <div>
-                                <div>
-                                    <a href="#" style="margin-right: 20px;">Like</a>
-                                    <a href="#">Comment</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item post" style="background-color: lightgray;">
-                        <div class="card" id="post">
-                            <img src="~/Images/contest_image.png" height="150" class="card-img-top" style="border:solid grey; border-radius: 10px">
-                            <div class="card-body">
-                                <h3 class="card-title"><b>Contest name</b></h3>
-                                <span style="float:right">
-                                    Creator name
-                                </span>
-                                <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                                <div>
-                                    <a href="#" class="btn btn-primary">Join Contest</a>
-                                    <span style="float:right">
-                                        Number of palyers: 6/10
+
+                <div class="col-9">
+                    
+
+
+                    
+                    <ul class="list-gorup col" >
+                        <li class="list-group-item">
+                            <div class="input-group">
+                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Post</button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Post type
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Post</a>
+                                                <a class="dropdown-item" href="#">Contest</a>
+                                            </div>
+                                        </div>
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item post" style="background-color: lightgray;">
-                        <div class="container" id="post">
-                            <div>
-                                <img src="~/Images/profipic.png" height="50" width="50">
-                                Your Name
-                            </div>
-                            <hr>
-                            <p>
-                                This is another example for a post, so that the page looks more convincing.
-                            </p>
-                            <hr>
-                            <div>
+                        </li>
+
+
+                        <li class="list-group-item post" >
+                            <div class="container post">
                                 <div>
-                                    <a href="#" style="margin-right: 20px;">Like</a>
-                                    <a href="#">Comment</a>
+                                    <img src="~/Images/profipic.png" height="50" width="50">
+                                    Your Name
+                                </div>
+                                <hr>
+                                <p>
+                                    This is what a post will look like. </br>
+                                    Simple text for sharing your thoughts with your friends.
+                                </p>
+                                <hr>
+                                <div>
+                                    <div>
+                                        <a href="#" style="margin-right: 20px;">Like</a>
+                                        <a href="#">Comment</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                        <li class="list-group-item post" >
+                            <div class="card post">
+                                <img src="~/Images/contest_image.png" height="150" class="card-img-top">
+                                <div class="card-body">
+                                    <h3 class="card-title"><b>Contest name</b></h3>
+                                    <span style="float:right">
+                                        Creator name
+                                    </span>
+                                    <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
+                                    <div>
+                                        <a href="#" class="btn btn-primary">Join Contest</a>
+                                        <span style="float:right">
+                                            Number of palyers: 6/10
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item post">
+                            <div class="container post">
+                                <div>
+                                    <img src="~/Images/profipic.png" height="50" width="50">
+                                    Your Name
+                                </div>
+                                <hr>
+                                <p>
+                                    This is another example for a post, so that the page looks more convincing.
+                                </p>
+                                <hr>
+                                <div>
+                                    <div>
+                                        <a href="#" style="margin-right: 20px;">Like</a>
+                                        <a href="#">Comment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
 

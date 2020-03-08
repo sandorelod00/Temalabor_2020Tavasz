@@ -1,0 +1,50 @@
+﻿body {
+    background-image: url('../Images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+    background-color: black;
+    background-attachment: fixed;
+}
+
+    body::-webkit-scrollbar {
+        width: 0.75rem;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background: #6649b8;
+    }
+
+    body::-webkit-scrollbar-track {
+        background: #1e1e24;
+    }
+
+
+.Left-User-menu{
+}
+
+.Left-User-menu-Profile-Picture{
+    width: 50%;
+    height: auto;
+    opacity 1;
+}
+
+.Left-User-menu-item{
+    opacity: 0.90;
+    color: white;
+    background-color: black;
+}
+
+.post {
+    margin-bottom: 5%;
+    background-color: black;
+    opacity: 0.90;
+    color: white;
+    border: none;
+}
+
+.postProfilePicture{
+   width: 10%;
+   height: auto;
+   opacity: 1;
+}
