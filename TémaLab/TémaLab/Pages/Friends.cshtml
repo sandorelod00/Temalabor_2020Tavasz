@@ -23,7 +23,7 @@
             <!-- Container első sora. Ebben a sorban van a Left-user-Menu és a Header szöveg.-->
             <div class="row" id="FirstRow">
                 <!--Col. Ebben az oszlopban van a Left-User-Menu-->
-                <div class="col Left-User-menu">
+                <div class="col-lg-3 Left-User-menu">
                     <ul class="list-gourp">
                         <li class="list-group-item Left-User-menu-item">
                             <img class="img-fluid" src="~/Images/profipic.png"><br>
@@ -40,78 +40,50 @@
                     </ul>
                 </div>
 
-                <div class="col-9">
-                    <ul class="list-gorup col">
+                <div class="col-lg-9">
+                    <ul class="list-gorup list-group-horizontal">
                         <li class="list-group-item post">
                             <div>
                                 <h2>Friends</h2>
                             </div>
-                        </li>
+
+                        <!--Friends placed here-->
                         <li class="list-group-item post">
-                            <div class="row friends">
-                                <div class="col-1">
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                </div>
-                                <div class="col">
+                            <span class="post col-3">
+                                    <img src="~/Images/profipic.png" class="friendProfilePicture">
+                                <div>
                                     <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
                                     Some basic game-related info
                                 </div>
-                            </div>
-                            <div class="row friends">
-                                <div class="col-1">
-                                    <img src="~/Images/profipic.png" height="50" width="50">
+                            </span>
+                        </li>
+
+                        <li class="list-group-item post">
+                            <div class="post col-3">
+                                <div class="friend">
+                                    <img src="~/Images/profipic.png" class="friendProfilePicture">
                                 </div>
-                                <div class="col">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
-                                    Some basic game-related info
-                                </div>
-                            </div>
-                            <div class="row friends">
-                                <div class="col-1">
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                </div>
-                                <div class="col">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
-                                    Some basic game-related info
-                                </div>
-                            </div>
-                            <div class="row friends">
-                                <div class="col-1">
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                </div>
-                                <div class="col">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
-                                    Some basic game-related info
-                                </div>
-                            </div>
-                            <div class="row friends">
-                                <div class="col-1">
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                </div>
-                                <div class="col">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
-                                    Some basic game-related info
-                                </div>
-                            </div>
-                            <div class="row friends">
-                                <div class="col-1">
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                </div>
-                                <div class="col">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
-                                    Some basic game-related info
-                                </div>
-                            </div>
-                            <div class="row friends">
-                                <div class="col-1">
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                </div>
-                                <div class="col">
+                                <div>
                                     <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
                                     Some basic game-related info
                                 </div>
                             </div>
                         </li>
+
+                        <li class="list-group-item post col-lg-3">
+                            <div class="post">
+                                <div class="friend">
+                                    <img src="~/Images/profipic.png" class="friendProfilePicture">
+                                </div>
+                                <div>
+                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><b>User Name</b></a><br>
+                                    Some basic game-related info
+                                </div>
+                            </div>
+                        </li>
+
+
+
                     </ul>
                 </div>
             </div>
