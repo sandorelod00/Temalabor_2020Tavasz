@@ -53,8 +53,12 @@
    opacity: 1;
 }
 
-
-.friends {
+.friendProfilePicture{
+    width: 25%;
+    height: auto;
+    opacity: 1;
+}
+.friend {
     border-bottom: solid;
     border-color: lightgray;
     border-bottom-width: thin;
