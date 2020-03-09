@@ -27,7 +27,7 @@
 .Left-User-menu-Profile-Picture{
     width: 50%;
     height: auto;
-    opacity 1;
+    opacity: 1;
 }
 
 .Left-User-menu-item{
@@ -53,6 +53,23 @@
    opacity: 1;
 }
 
+
+.friends {
+    border-bottom: solid;
+    border-color: lightgray;
+    border-bottom-width: thin;
+    margin-bottom: 10px;
+}
+
+.nicelink {
+    color: white;
+}
+
+.nicelink:hover {
+    color: darkslategray;
+    text-decoration:none;
+}
+
 .PostInputBox{
     padding: 0px;
     opacity: 90;
@@ -66,3 +83,4 @@
     border-color: whitesmoke;
     border-width: thin;
 }
+
