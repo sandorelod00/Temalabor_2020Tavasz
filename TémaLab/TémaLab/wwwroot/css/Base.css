@@ -5,6 +5,7 @@
     background-size: contain;
     background-color: black;
     background-attachment: fixed;
+    color: white;
 }
 
     body::-webkit-scrollbar {
@@ -26,7 +27,7 @@
 .Left-User-menu-Profile-Picture{
     width: 50%;
     height: auto;
-    opacity 1;
+    opacity: 1;
 }
 
 .Left-User-menu-item{
@@ -36,11 +37,14 @@
 }
 
 .post {
+    padding-bottom: 0.5%;
     margin-bottom: 5%;
     background-color: black;
     opacity: 0.90;
     color: white;
     border: none;
+    width: 100%;
+    height: auto;
 }
 
 .postProfilePicture{
@@ -48,6 +52,7 @@
    height: auto;
    opacity: 1;
 }
+
 
 .friends {
     border-bottom: solid;
@@ -64,3 +69,18 @@
     color: darkslategray;
     text-decoration:none;
 }
+
+.PostInputBox{
+    padding: 0px;
+    opacity: 90;
+    margin-bottom: 5%;
+}
+
+.PostInputBox-TextInput {
+    opacity: 90;
+    color: white;
+    border: solid;
+    border-color: whitesmoke;
+    border-width: thin;
+}
+
