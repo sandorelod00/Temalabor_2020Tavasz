@@ -11,7 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ; integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/Base.css" />
     <link rel="stylesheet" type="text/css" href="~/css/site.css"/>
-    
+    <link rel="stylesheet" type="text/css" href="~/css/sidepanel.css" />
     
     <style>
           #xlink{
@@ -75,6 +75,19 @@
                 </div>
             </nav>
         </header>
+        
+        <div id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+            <img class="img Left-User-menu-Profile-Picture" src="~/Images/profipic.png"><br>
+            <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
+            <a asp-area="" asp-page="/UpcomingEvents" class="Left-User-menu-item">Upcoming Events</a>
+            <a asp-area="" asp-page="/UpcomingCompetitions" class="Left-User-menu-item">Upcoming Competetions</a>
+            <a asp-area="" asp-page="/LeaderBoard" class="Left-User-menu-item">Leader Board</a>
+           
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
+
 
         <div class="container">
             <main role="main" class="pb-3">
@@ -91,6 +104,18 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <script>
+            /* Set the width of the sidebar to 250px (show it) */
+            function openNav() {
+                document.getElementById("mySidepanel").style.width = "250px";
+            }
+
+            /* Set the width of the sidebar to 0 (hide it) */
+            function closeNav() {
+                document.getElementById("mySidepanel").style.width = "0";
+            }
+        </script>
 
         @RenderSection("Scripts", required: false)
 

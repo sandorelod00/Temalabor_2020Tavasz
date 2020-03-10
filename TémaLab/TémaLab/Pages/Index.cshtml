@@ -13,27 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <!--  Conteainer for contetnt. Ez a grid rendszer amibe bele rakunk több elemet. Külső Container-->
-        <div class="container" id="contect">
-            <!-- Container első sora. Ebben a sorban van a Left-user-Menu és a Header szöveg.-->
-            <div class="row" id="FirstRow">
-                <!--Col. Ebben az oszlopban van a Left-User-Menu-->
-                <div class="col-lg-3 Left-User-menu">
-                    <ul class="col list-gourp">
-                        <li class="list-group-item Left-User-menu-item">
-                            <img class="img-fluid" src="~/Images/profipic.png" ><br>
-                            <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
-                        </li>
-                        <li class="list-group-item Left-User-menu-item">
-                            <a asp-area="" asp-page="/UpcomingEvents" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Events</a>
-                            <a asp-area="" asp-page="/UpcomingCompetitions" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Competetions</a>
-                            <a asp-area="" asp-page="/LeaderBoard" class="list-group-item list-group-item-action Left-User-menu-item">Leader Board</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Ide jön a Postok/Eventek Megjelenítése. Az-az Cardok kihelyezése.-->
-
-                <div class="col-lg-9" id="Posts">
+                <div class="col" id="Posts">
                     <ul class="list-gorup col">
                         <li class="list-group-item post">
                             <div class="container" id="post">
