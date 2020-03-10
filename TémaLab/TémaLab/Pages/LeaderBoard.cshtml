@@ -4,5 +4,83 @@
     ViewData["Title"] = "LeaderBoard";
 }
 
-<h1>LeaderBoard</h1>
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <Title>Gyak</Title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" ; integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ; integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ; integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ; integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/Base.css">
+    <link rel="stylesheet" type="text/css" href="/css/site.css">
+    <link rel="stylesheet" type="text/css" href="~/css/LeaderBoard.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="LeaderBoardTitle">LeaderBoard</h1>
+        </div>
+
+        <div class="row">
+            <table class="table table-dark table-striped table-hover table-responsive-md LeaderBoardTabel">
+                <thead>
+                    <tr>
+                        <th scope="col">Place</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Score</th>
+                        <th scope="col">Last Competition</th>
+                        <th scope="col">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
+                        <td>19872 points</td>
+                        <td>WorldChampionship</td>
+                        <td>Plat</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
+                        <td>12872 points</td>
+                        <td>WorldChampionship</td>
+                        <td>Diamond</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
+                        <td>9872 points</td>
+                        <td>WorldChampionship</td>
+                        <td>Diamond</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
+                        <td>7478 points</td>
+                        <td>WorldChampionship</td>
+                        <td>Gold</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    
+
+
+
+</body>
+
+
+
+
+
+</html>

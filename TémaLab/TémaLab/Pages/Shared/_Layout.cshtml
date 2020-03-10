@@ -4,11 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TémaLab</title>
-    <link rel="stylesheet" type="text/css" href="/css/Base.css">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" ; integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ; integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ; integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ; integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/Base.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/site.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/sidepanel.css" />
+    
     <style>
           #xlink{
               background-color:dodgerblue; 
@@ -71,6 +75,19 @@
                 </div>
             </nav>
         </header>
+        
+        <div id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+            <img class="img Left-User-menu-Profile-Picture" src="~/Images/profipic.png"><br>
+            <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
+            <a asp-area="" asp-page="/UpcomingEvents" class="Left-User-menu-item">Upcoming Events</a>
+            <a asp-area="" asp-page="/UpcomingCompetitions" class="Left-User-menu-item">Upcoming Competetions</a>
+            <a asp-area="" asp-page="/LeaderBoard" class="Left-User-menu-item">Leader Board</a>
+           
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
+
 
         <div class="container">
             <main role="main" class="pb-3">
@@ -87,6 +104,18 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <script>
+            /* Set the width of the sidebar to 250px (show it) */
+            function openNav() {
+                document.getElementById("mySidepanel").style.width = "250px";
+            }
+
+            /* Set the width of the sidebar to 0 (hide it) */
+            function closeNav() {
+                document.getElementById("mySidepanel").style.width = "0";
+            }
+        </script>
 
         @RenderSection("Scripts", required: false)
 

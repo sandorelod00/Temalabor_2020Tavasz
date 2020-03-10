@@ -1,0 +1,19 @@
+﻿
+
+.LeaderBoardTitle {
+    border-radius: 0px;
+    background-color: black;
+    width: 100%;
+    text-align: left;
+    opacity: 0.90;
+    margin: 0px;
+    padding: 0px;
+}
+
+.TableLink{
+    color: white;
+}
+
+.TableLink:hover{
+    color: blue;
+}
