@@ -1,11 +1,29 @@
-﻿body {
-    background-image: url('../Images/background.jpg');
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: contain;
-    background-color: black;
-    background-attachment: fixed;
-    color: white;
+﻿@media (max-width: 768px) {
+    body{
+        background-image: none;
+        background-color: gray;
+        background-size: auto;
+        background-repeat: no-repeat;
+    }
+
+    [class*="col-"] {
+        width: 100%;
+    }
+
+
+}
+
+@media(min-width: 768px) {
+    body {
+        background-image: url("../Images/background.jpg");
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+        background-color: black;
+        background-attachment: fixed;
+        color: white;
+    }
+    
 }
 
     body::-webkit-scrollbar {
@@ -19,8 +37,6 @@
     body::-webkit-scrollbar-track {
         background: #1e1e24;
     }
-.Left-User-menu{
-}
 
 .Left-User-menu-Profile-Picture{
     width: 50%;
@@ -40,7 +56,8 @@
     background-color: black;
     opacity: 0.90;
     color: white;
-    border: none;
+    border: hidden;
+    border-radius: 10px;
     width: 100%;
     height: auto;
 }
