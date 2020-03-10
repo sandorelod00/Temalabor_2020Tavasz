@@ -1,0 +1,30 @@
+﻿
+.UpComingTitles {
+    padding-bottom: 0.5%;
+    margin-bottom: 5%;
+    background-color: none;
+    border: none;
+    width: 100%;
+    height: auto;
+}
+
+.Title{
+    border-radius: 25px;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    opacity: 0.90;
+}
+
+.Event{
+    background-color: black;
+    opacity: 0.95;
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    margin: 0.5%
+}
+
+.CompetitionFotterText{
+    padding-left: 0.5%;
+}
