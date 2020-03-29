@@ -17,113 +17,150 @@
 <body>
     <div class="container">
         <!--  Conteainer for contetnt. Ez a grid rendszer amibe bele rakunk több elemet. Külső Container-->
-        <div class="container" id="contect">
-            <!-- Container első sora. Ebben a sorban van a Left-user-Menu és a Header szöveg.-->
-            <div class="row" id="FirstRow">
-                <!--Col. Ebben az oszlopban van a Left-User-Menu-->
-                <div class="col-lg-3 Left-User-menu">
-                    <ul class="list-gourp">
-                        <li class="list-group-item Left-User-menu-item">
-                            <img class="img-fluid" src="~/Images/profipic.png"><br>
-                            <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
-                        </li>
-                        <li class="list-group-item Left-User-menu-item">
+        <div class="col" id="Posts">
+            <ul class="list-gorup col">
+                <li class="list-group-item post">
+                    <div class="container" id="post">
+                        <div>
+                            <img src="~/Images/profipic.png" class="postProfilePicture">
 
-                            <a asp-area="" asp-page="/Introduction" class="list-group-item list-group-item-action Left-User-menu-item">Introduction</a>
-                            <a asp-area="" asp-page="/Friends" class="list-group-item list-group-item-action Left-User-menu-item">Friends</a>
-                            <a asp-area="" asp-page="/UpcomingEvents" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Events</a>
-                            <a asp-area="" asp-page="/UpcomingCompetitions" class="list-group-item list-group-item-action Left-User-menu-item">Upcoming Competetions</a>
-                            <a asp-area="" asp-page="/LeaderBoard" class="list-group-item list-group-item-action Left-User-menu-item">Leader Board</a>
-                            <a asp-area="" asp-page="/EditProfile" class="list-group-item list-group-item-action Left-User-menu-item">Edit profile</a>
-
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-9">
-                    <ul class="list-gorup col" >
-                        <li class="list-group-item PostInputBox">
-                            <div class="input-group">
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text ">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Post</button>
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Post type
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item " href="#">Post</a>
-                                                <a class="dropdown-item" href="#">Contest</a>
-                                            </div>
-                                        </div>
-                                    </span>
-                                </div>
+                            <a class="nicelink" asp-area="" asp-page="/OtherProfile">Poster's Name</a>
+                        </div>
+                        <hr>
+                        <p>
+                            This is what a post will look like. <br>
+                            Simple text for sharing your thoughts with your friends.
+                        </p>
+                        <hr>
+                        <div>
+                            <div>
+                                <a href="#" style="margin-right: 20px;">Like</a>
+                                <a href="#">Comment</a>
                             </div>
-                        </li>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item post">
+                    <div class="card post">
+                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Contest name</b></h3>
+                            <span style="float:right">
+                                <a class="nicelink" asp-area="" asp-page="/OtherProfile">Creator name</a>
+                            </span>
+                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
+                            <div>
+                                <a href="#" class="btn btn-primary">Join Contest</a>
+                                <span style="float:right">
+                                    Number of palyers: 6/10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item post">
+                    <div class="card post">
+                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Contest name</b></h3>
+                            <span style="float:right">
+                                <a class="nicelink" asp-area="" asp-page="/OtherProfile">Creator name</a>
+                            </span>
+                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
+                            <div>
+                                <a href="#" class="btn btn-primary">Join Contest</a>
+                                <span style="float:right">
+                                    Number of palyers: 6/10
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item post">
+                    <div class="container post">
+                        <div>
+                            <img src="~/Images/profipic.png" height="50" width="50">
+                            <a class="nicelink" asp-area="" asp-page="/OtherProfile">Poster's Name</a>
 
+                            Poster's Name
 
-                        <li class="list-group-item post" >
-                            <div class="container post">
-                                <div>
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile">Your Name</a>
-                                </div>
-                                <hr>
-                                <p>
-                                    This is what a post will look like. </br>
-                                    Simple text for sharing your thoughts with your friends.
-                                </p>
-                                <hr>
-                                <div>
-                                    <div>
-                                        <a href="#" style="margin-right: 20px;">Like</a>
-                                        <a href="#">Comment</a>
-                                    </div>
-                                </div>
+                        </div>
+                        <hr>
+                        <p>
+                            This is what a post will look like.
+                            Simple text for sharing your thoughts with your friends.
+                        </p>
+                        <hr>
+                        <div>
+                            <div>
+                                <a href="#" style="margin-right: 20px;">Like</a>
+                                <a href="#">Comment</a>
                             </div>
-                        </li>
-                        <li class="list-group-item post" >
-                            <div class="card post">
-                                <img src="~/Images/contest_image.png" height="150" class="card-img-top">
-                                <div class="card-body">
-                                    <h3 class="card-title"><b>Contest name</b></h3>
-                                    <span style="float:right">
-                                        Creator name
-                                    </span>
-                                    <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                                    <div>
-                                        <a href="#" class="btn btn-primary">Join Contest</a>
-                                        <span style="float:right">
-                                            Number of palyers: 6/10
-                                        </span>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+
+                <li class="list-group-item post">
+                    <div class="card post">
+                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Contest name</b></h3>
+                            <span style="float:right">
+                                Creator name
+                            </span>
+                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
+                            <div>
+                                <a href="#" class="btn btn-primary">Join Contest</a>
+                                <span style="float:right">
+                                    Number of palyers: 6/10
+                                </span>
                             </div>
-                        </li>
-                        <li class="list-group-item post">
-                            <div class="container post">
-                                <div>
-                                    <img src="~/Images/profipic.png" height="50" width="50">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile">Your Name</a>
-                                </div>
-                                <hr>
-                                <p>
-                                    This is another example for a post, so that the page looks more convincing.
-                                </p>
-                                <hr>
-                                <div>
-                                    <div>
-                                        <a href="#" style="margin-right: 20px;">Like</a>
-                                        <a href="#">Comment</a>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item post">
+
+                    <div class="card post">
+                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title"><b>Contest name</b></h3>
+                            <span style="float:right">
+                                <a class="nicelink" asp-area="" asp-page="/OtherProfile">Creator name</a>
+                            </span>
+                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
+                            <div>
+                                <a href="#" class="btn btn-primary">Join Contest</a>
+                                <span style="float:right">
+                                    Number of palyers: 6/10
+                                </span>
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item post">
+                    <div class="container post">
+                        <div>
+                            <img src="~/Images/profipic.png" height="50" width="50">
+                            <a class="nicelink" asp-area="" asp-page="/OtherProfile">Poster's Name</a>
+
+                        </div>
+                        <hr>
+                        <p>
+                            This is another example for a post, so that the page looks more convincing.
+                        </p>
+                        <hr>
+                        <div>
+                            <div>
+                                <a href="#" style="margin-right: 20px;">Like</a>
+                                <a href="#">Comment</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+            </ul>
         </div>
+    </div>
     </div>
 </body>
 </html>
