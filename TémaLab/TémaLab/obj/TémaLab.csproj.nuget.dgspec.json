@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\selod\\Source\\Repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj": {}
+    "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj": {}
   },
   "projects": {
-    "C:\\Users\\selod\\Source\\Repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj": {
+    "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\selod\\Source\\Repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
+        "projectUniqueName": "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
         "projectName": "TémaLab",
-        "projectPath": "C:\\Users\\selod\\Source\\Repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
+        "projectPath": "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
         "packagesPath": "C:\\Users\\selod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\selod\\Source\\Repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\obj\\",
+        "outputPath": "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

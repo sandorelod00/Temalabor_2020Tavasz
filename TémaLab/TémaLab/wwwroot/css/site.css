@@ -1,6 +1,46 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+/*Body Magic....*/
+@media (max-width: 768px) {
+    body {
+        background-image: none;
+        background-color: gray;
+        background-size: auto;
+        background-repeat: no-repeat;
+        background: fixed;
+    }
+
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+@media(min-width: 768px) {
+    body {
+        background-image: url("../Images/background.jpg");
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+        background-color: black;
+        background-attachment: fixed;
+        color: white;
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 0.75rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;

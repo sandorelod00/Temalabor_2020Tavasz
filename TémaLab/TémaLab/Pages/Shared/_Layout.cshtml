@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ; integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ; integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ; integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/css/Base.css" />
     <link rel="stylesheet" type="text/css" href="~/css/site.css"/>
     <link rel="stylesheet" type="text/css" href="~/css/sidepanel.css" />
     
@@ -28,65 +27,72 @@
     </style>
 </head>
 <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 0.5%;">
-                <div class="container">
-                    <a class="navbar-brand col-4" asp-area="" asp-page="/Index" style="padding: 0px; margin: 0px;" >
-                        <img src="~/Images/MTGA_Logo.png" class="navbar-brand img-fluid" alt="MTGA logo" style="width: 50%; height: auto;" />
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 0.5%;">
+            <div class="container">
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--Ez itt a bal oldali lenyíló mneüjlé-->
+                <button class="openbtn" onclick="openNav()">&#9776; </button>
+                <div id="mySidepanel" class="sidepanel">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <img class="img Left-User-menu-Profile-Picture" src="~/Images/profipic.png"><br>
+                    <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
+                    <a asp-area="" asp-page="/UpcomingEvents" class="Left-User-menu-item">Upcoming Events</a>
+                    <a asp-area="" asp-page="/UpcomingCompetitions" class="Left-User-menu-item">Upcoming Competetions</a>
+                    <a asp-area="" asp-page="/LeaderBoard" class="Left-User-menu-item">Leader Board</a>
+                </div>
 
-                        <div class="p-2 bd-highlight">
-                            <ul class="navbar-nav ">
-                                <li class="nav-item active">
-                                    <a class="nav-link" asp-area="" asp-page="/MyProfile">My Profile<span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Forum
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">All</a>
-                                        <a class="dropdown-item" href="#">Competitions</a>
-                                        <a class="dropdown-item" href="#">Posts</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                <!--Innen indul a felső navbár-->
+                <a class="navbar-brand col" asp-area="" asp-page="/Index" style="padding: 0px; margin: 0px;">
+                    <img src="~/Images/MTGA_Logo.png" class="navbar-brand img-fluid" alt="MTGA logo" style="width: 50%; height: auto;" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                        <div class="p-2 flex-grow-1 bd-highlight">
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                                <button type="button" class="btn btn-light" id="search_btn">Search</button>
-                            </form>
-                        </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="p-2 bd-highlight">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-area="" asp-page="/MyProfile">My Profile<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Forum
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">All</a>
+                                    <a class="dropdown-item" href="#">Competitions</a>
+                                    <a class="dropdown-item" href="#">Posts</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <div class="p-2 bd-highlight">
-                            <form class="form-inline my-2 my-lg-0">
-                                <a id="xlink" class="nav-link" href="/Identity/Account/Login">Login<span class="sr-only">(current)</span></a>
-                                <a id="xlink" class="nav-link" href="/Identity/Account/Register">Register<span class="sr-only">(current)</span></a>
-                            </form>
-                        </div>
+                    <div class="p-2 flex-grow-1 bd-highlight">
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                            <button type="button" class="btn btn-light" id="search_btn">Search</button>
+                        </form>
+                    </div>
+
+                    <div class="p-2 bd-highlight">
+                        <form class="form-inline my-2 my-lg-0">
+                            <a id="xlink" class="nav-link" href="/Identity/Account/Login">Login<span class="sr-only">(current)</span></a>
+                            <a id="xlink" class="nav-link" href="/Identity/Account/Register">Register<span class="sr-only">(current)</span></a>
+                        </form>
                     </div>
                 </div>
-            </nav>
-        </header>
-        
-        <div id="mySidepanel" class="sidepanel">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            </div>
+        </nav>
 
-            <img class="img Left-User-menu-Profile-Picture" src="~/Images/profipic.png"><br>
-            <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
-            <a asp-area="" asp-page="/UpcomingEvents" class="Left-User-menu-item">Upcoming Events</a>
-            <a asp-area="" asp-page="/UpcomingCompetitions" class="Left-User-menu-item">Upcoming Competetions</a>
-            <a asp-area="" asp-page="/LeaderBoard" class="Left-User-menu-item">Leader Board</a>
-           
-        </div>
-        <button class="openbtn" onclick="openNav()">&#9776; Toggle Sidepanel</button>
+        
+        
+
+
+    </header>
+        
+        
 
 
         <div class="container">
