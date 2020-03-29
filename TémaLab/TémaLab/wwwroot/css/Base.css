@@ -1,55 +1,5 @@
-﻿@media (max-width: 768px) {
-    body{
-        background-image: none;
-        background-color: gray;
-        background-size: auto;
-        background-repeat: no-repeat;
-    }
-
-    [class*="col-"] {
-        width: 100%;
-    }
-
-
-}
-
-@media(min-width: 768px) {
-    body {
-        background-image: url("../Images/background.jpg");
-        background-repeat: no-repeat;
-        background-position: top center;
-        background-size: cover;
-        background-color: black;
-        background-attachment: fixed;
-        color: white;
-    }
-    
-}
-
-    body::-webkit-scrollbar {
-        width: 0.75rem;
-    }
-
-    body::-webkit-scrollbar-thumb {
-        background: #6649b8;
-    }
-
-    body::-webkit-scrollbar-track {
-        background: #1e1e24;
-    }
-
-.Left-User-menu-Profile-Picture{
-    width: 50%;
-    height: auto;
-    opacity: 1;
-}
-
-.Left-User-menu-item{
-    opacity: 0.90;
-    color: white;
-    background-color: black;
-}
-
+﻿
+/*Post Css szabályok*/
 .post {
     padding-bottom: 0.5%;
     margin-bottom: 5%;
@@ -68,6 +18,22 @@
    opacity: 1;
 }
 
+.PostInputBox {
+    padding: 0px;
+    opacity: 90;
+    margin-bottom: 5%;
+}
+
+.PostInputBox-TextInput {
+    opacity: 90;
+    color: white;
+    border: solid;
+    border-color: whitesmoke;
+    border-width: thin;
+}
+
+/*Friend-hez kapcsolodó szabályok*/
+
 .friendProfilePicture{
     width: 25%;
     height: auto;
@@ -80,6 +46,8 @@
     margin-bottom: 10px;
 }
 
+/*Link szabályok*/
+
 .nicelink {
     color: white;
 }
@@ -87,19 +55,5 @@
 .nicelink:hover {
     color: darkslategray;
     text-decoration:none;
-}
-
-.PostInputBox{
-    padding: 0px;
-    opacity: 90;
-    margin-bottom: 5%;
-}
-
-.PostInputBox-TextInput {
-    opacity: 90;
-    color: white;
-    border: solid;
-    border-color: whitesmoke;
-    border-width: thin;
 }
 
