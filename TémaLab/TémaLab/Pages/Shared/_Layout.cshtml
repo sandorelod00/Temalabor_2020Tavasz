@@ -36,10 +36,19 @@
                 <div id="mySidepanel" class="sidepanel">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <img class="img Left-User-menu-Profile-Picture" src="~/Images/profipic.png"><br>
-                    <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
-                    <a asp-area="" asp-page="/UpcomingEvents" class="Left-User-menu-item">Upcoming Events</a>
-                    <a asp-area="" asp-page="/UpcomingCompetitions" class="Left-User-menu-item">Upcoming Competetions</a>
-                    <a asp-area="" asp-page="/LeaderBoard" class="Left-User-menu-item">Leader Board</a>
+                    <a class="nicelink" asp-area="" asp-page="/MyProfile" ><h3>Your Name</h3></a>
+
+                    <!--TODO: A megeflelő mezők megjelenítsée a megfelelő oldalon JS kóddal. -->
+
+                    <a asp-area="" asp-page="/UpcomingEvents" id="UpcomingEventsLink" >Upcoming Events</a>
+                    <a asp-area="" asp-page="/UpcomingCompetitions"  id=" UpcomingCompetitonsLink" >Upcoming Competetions</a>
+                    <a asp-area="" asp-page="/LeaderBoard" id="LeaderBoardLink" >Leader Board</a>
+
+
+                    <a asp-area="" asp-page="/Introduction" id="IntroductionLink"> Introduction</a>
+                    <a asp-area="" asp-page="/Friends" id="FriendsLink"> Friends</a>
+                    <a asp-area="" asp-page="/EditProfile" id="EditProfileLink" >Edit profile</a>
+
                 </div>
 
                 <!--Innen indul a felső navbár-->
@@ -112,15 +121,11 @@
         <script src="~/js/site.js" asp-append-version="true"></script>
 
         <script>
-            /* Set the width of the sidebar to 250px (show it) */
-            function openNav() {
-                document.getElementById("mySidepanel").style.width = "250px";
-            }
+ 
 
-            /* Set the width of the sidebar to 0 (hide it) */
-            function closeNav() {
-                document.getElementById("mySidepanel").style.width = "0";
-            }
+
+
+
         </script>
 
         @RenderSection("Scripts", required: false)
