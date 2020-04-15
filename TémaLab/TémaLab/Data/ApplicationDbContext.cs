@@ -23,18 +23,20 @@ namespace TémaLab.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            
             modelBuilder.Entity<Friendship>().HasKey(f => new { f.User1Id, f.User2Id });
+
+            
             modelBuilder.Entity<Friendship>()
               .HasOne(f => f.User1)
               .WithMany()
-              .HasForeignKey(f => f.User1Id);
+              .HasForeignKey(f => f.User1Id).Metadata.DeleteBehavior = DeleteBehavior.Restrict;
 
             modelBuilder.Entity<Friendship>()
                 .HasOne(f => f.User2)
                 .WithMany()
-                .HasForeignKey(f => f.User2Id)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(f => f.User2Id).Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+
         }
     }
 }
