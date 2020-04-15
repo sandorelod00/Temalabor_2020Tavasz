@@ -16,7 +16,10 @@ namespace TémaLab.Data.Entities
 
         public string MTGACode { get; set; }
 
+        public bool Admin { get; set;}
+
         public ICollection<Post> Posts{ get; set; }
+        public ICollection<Friendship> Friendships { get; set; }
         public ICollection<Competition> Competitions{ get; set; }
     }
 }
