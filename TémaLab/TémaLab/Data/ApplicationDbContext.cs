@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+//using System.Data.Entity;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -26,17 +27,18 @@ namespace TémaLab.Data
             
             modelBuilder.Entity<Friendship>().HasKey(f => new { f.User1Id, f.User2Id });
 
-            
             modelBuilder.Entity<Friendship>()
               .HasOne(f => f.User1)
-              .WithMany()
-              .HasForeignKey(f => f.User1Id).Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+              .WithMany(u => u.Friendships1)
+              .HasForeignKey(f => f.User1Id)
+              .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
 
             modelBuilder.Entity<Friendship>()
                 .HasOne(f => f.User2)
-                .WithMany()
-                .HasForeignKey(f => f.User2Id).Metadata.DeleteBehavior = DeleteBehavior.Restrict;
-
+                .WithMany(u => u.Friendships2)
+                .HasForeignKey(f => f.User2Id)
+                .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+            
         }
     }
 }
