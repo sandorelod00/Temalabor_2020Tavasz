@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-TémaLab-F4B7F843-DBC1-4226-A269-DC5B57EB9CDF</UserSecretsId>
+    <AssemblyName>TemaLab</AssemblyName>
+    <RootNamespace>TemaLab</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

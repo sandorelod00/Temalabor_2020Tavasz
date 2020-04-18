@@ -9001,25 +9001,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\juris\\.nuget\\packages\\": {},
+    "C:\\Users\\selod\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juris\\Documents\\GitHub\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
-      "projectName": "TémaLab",
-      "projectPath": "C:\\Users\\juris\\Documents\\GitHub\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TémaLab.csproj",
-      "packagesPath": "C:\\Users\\juris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juris\\Documents\\GitHub\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\obj\\",
+      "projectUniqueName": "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TemaLab.csproj",
+      "projectName": "TemaLab",
+      "projectPath": "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\TemaLab.csproj",
+      "packagesPath": "C:\\Users\\selod\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\selod\\source\\repos\\Temalabor_2020Tavasz\\TémaLab\\TémaLab\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\juris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\selod\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
