@@ -17,8 +17,6 @@ namespace TémaLab.Data.Entities
 
         public Post Post { get; set; }
 
-        public Boolean IsLiked { get; set; }
-
         public DateTime date { get; set; }
     }
 }
