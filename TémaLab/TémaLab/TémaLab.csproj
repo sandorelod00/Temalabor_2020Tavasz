@@ -12,6 +12,21 @@
     <None Remove="Images\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200415132225_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200415132225_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200421111824_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200421111824_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200421123805_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200421123805_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200421124744_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200421124744_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200421130221_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200421130221_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200421130858_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200421130858_InitialDBSchema.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.0" />

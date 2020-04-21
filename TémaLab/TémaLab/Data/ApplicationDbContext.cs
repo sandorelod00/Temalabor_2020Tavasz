@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Data.Entity;
+using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TémaLab.Data.Entities;
+using TémaLab.Data.EntityConfiguration;
+using TémaLab.Data.SeedService;
 
 namespace TémaLab.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        private readonly ISeedService _seedService;
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ISeedService seedService) : base(options) => _seedService = seedService;
 
         public override DbSet<IdentityUser> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -20,10 +24,18 @@ namespace TémaLab.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Participation> Participations { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventParticipation> EventParticipations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
             
             modelBuilder.Entity<Friendship>().HasKey(f => new { f.User1Id, f.User2Id });
 
@@ -38,7 +50,8 @@ namespace TémaLab.Data
                 .WithMany(u => u.Friendships2)
                 .HasForeignKey(f => f.User2Id)
                 .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
-            
+
+            modelBuilder.ApplyConfiguration(new UserEntityConfiguration(_seedService));
         }
     }
 }

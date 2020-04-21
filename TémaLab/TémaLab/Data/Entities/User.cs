@@ -19,5 +19,6 @@ namespace TémaLab.Data.Entities
         public ICollection<Friendship> Friendships1 { get; set; }
         public ICollection<Friendship> Friendships2 { get; set; }
         public ICollection<Competition> Competitions{ get; set; }
+        public ICollection<Participation> Participations { get; set; }
     }
 }
