@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 //using System.Data.Entity;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
@@ -24,6 +25,12 @@ namespace TémaLab.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.NoAction;
+            }
             
             modelBuilder.Entity<Friendship>().HasKey(f => new { f.User1Id, f.User2Id });
 
@@ -31,13 +38,13 @@ namespace TémaLab.Data
               .HasOne(f => f.User1)
               .WithMany(u => u.Friendships1)
               .HasForeignKey(f => f.User1Id)
-              .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+              .Metadata.DeleteBehavior = DeleteBehavior.NoAction;
 
             modelBuilder.Entity<Friendship>()
                 .HasOne(f => f.User2)
                 .WithMany(u => u.Friendships2)
                 .HasForeignKey(f => f.User2Id)
-                .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+                .Metadata.DeleteBehavior = DeleteBehavior.NoAction;
             
         }
     }
