@@ -21,6 +21,8 @@ namespace TémaLab.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Participation> Participations { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventParticipation> EventParticipations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,7 +31,7 @@ namespace TémaLab.Data
             foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
                 .SelectMany(e => e.GetForeignKeys()))
             {
-                foreignKey.DeleteBehavior = DeleteBehavior.NoAction;
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
             
             modelBuilder.Entity<Friendship>().HasKey(f => new { f.User1Id, f.User2Id });
@@ -38,13 +40,13 @@ namespace TémaLab.Data
               .HasOne(f => f.User1)
               .WithMany(u => u.Friendships1)
               .HasForeignKey(f => f.User1Id)
-              .Metadata.DeleteBehavior = DeleteBehavior.NoAction;
+              .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
 
             modelBuilder.Entity<Friendship>()
                 .HasOne(f => f.User2)
                 .WithMany(u => u.Friendships2)
                 .HasForeignKey(f => f.User2Id)
-                .Metadata.DeleteBehavior = DeleteBehavior.NoAction;
+                .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
             
         }
     }
