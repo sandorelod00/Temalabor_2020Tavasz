@@ -431,6 +431,143 @@ namespace TémaLab.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 15,
+                            Admin = true,
+                            Email = "peti@mail.hu",
+                            Introduction = "Én vagyok a Peti",
+                            MTGACode = "kód",
+                            UserName = "Kovács Péter"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Admin = true,
+                            Email = "justo.sit.amet@Pellentesquetincidunttempus.ca",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et",
+                            MTGACode = "B7S 4R4",
+                            UserName = "Melodie"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Admin = true,
+                            Email = "est.vitae.sodales@tortor.com",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec",
+                            MTGACode = "P3N 8J9",
+                            UserName = "Nathaniel"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Admin = true,
+                            Email = "et.magnis@estmollisnon.net",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
+                            MTGACode = "O8R 4J2",
+                            UserName = "Maggy"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Admin = false,
+                            Email = "Duis.cursus.diam@IncondimentumDonec.org",
+                            Introduction = "Lorem ipsum dolor sit amet,",
+                            MTGACode = "J0T 9E2",
+                            UserName = "Reagan"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Admin = true,
+                            Email = "id.erat@eros.com",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                            MTGACode = "X4B 4E1",
+                            UserName = "Gil"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Admin = true,
+                            Email = "turpis@montesnasceturridiculus.edu",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing",
+                            MTGACode = "V8B 7U0",
+                            UserName = "Armand"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Admin = true,
+                            Email = "sem.eget@sollicitudinamalesuada.org",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
+                            MTGACode = "V3J 1V4",
+                            UserName = "Bruno"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Admin = true,
+                            Email = "nec.quam.Curabitur@dictum.org",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur",
+                            MTGACode = "I7C 3T4",
+                            UserName = "Patrick"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Admin = false,
+                            Email = "eget@sociosqu.co.uk",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
+                            MTGACode = "M7S 7Z3",
+                            UserName = "Sasha"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Admin = true,
+                            Email = "posuere.at@telluseuaugue.edu",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut",
+                            MTGACode = "Y9K 8I0",
+                            UserName = "Nerea"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Admin = false,
+                            Email = "arcu.ac.orci@Nuncac.ca",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer",
+                            MTGACode = "I1Q 2P3",
+                            UserName = "Destiny"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Admin = false,
+                            Email = "Sed.diam@enimcommodo.org",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
+                            MTGACode = "N7S 9B7",
+                            UserName = "Megan"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Admin = true,
+                            Email = "nec.tempus.mauris@estac.ca",
+                            Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
+                            MTGACode = "Y1Z 8D5",
+                            UserName = "Dorian"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Admin = false,
+                            Email = "lobortis.ultrices.Vivamus@feugiat.net",
+                            Introduction = "Lorem ipsum",
+                            MTGACode = "I6G 4F6",
+                            UserName = "Preston"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

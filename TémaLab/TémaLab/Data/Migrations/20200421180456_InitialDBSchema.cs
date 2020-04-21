@@ -244,6 +244,28 @@ namespace TémaLab.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "Id", "Admin", "Email", "Introduction", "MTGACode", "UserName" },
+                values: new object[,]
+                {
+                    { 15, true, "peti@mail.hu", "Én vagyok a Peti", "kód", "Kovács Péter" },
+                    { 1, true, "justo.sit.amet@Pellentesquetincidunttempus.ca", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et", "B7S 4R4", "Melodie" },
+                    { 2, true, "est.vitae.sodales@tortor.com", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec", "P3N 8J9", "Nathaniel" },
+                    { 3, true, "et.magnis@estmollisnon.net", "Lorem ipsum dolor sit amet, consectetuer adipiscing", "O8R 4J2", "Maggy" },
+                    { 4, false, "Duis.cursus.diam@IncondimentumDonec.org", "Lorem ipsum dolor sit amet,", "J0T 9E2", "Reagan" },
+                    { 5, true, "id.erat@eros.com", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", "X4B 4E1", "Gil" },
+                    { 6, true, "turpis@montesnasceturridiculus.edu", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing", "V8B 7U0", "Armand" },
+                    { 7, true, "sem.eget@sollicitudinamalesuada.org", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", "V3J 1V4", "Bruno" },
+                    { 8, true, "nec.quam.Curabitur@dictum.org", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur", "I7C 3T4", "Patrick" },
+                    { 9, false, "eget@sociosqu.co.uk", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", "M7S 7Z3", "Sasha" },
+                    { 10, true, "posuere.at@telluseuaugue.edu", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut", "Y9K 8I0", "Nerea" },
+                    { 11, false, "arcu.ac.orci@Nuncac.ca", "Lorem ipsum dolor sit amet, consectetuer", "I1Q 2P3", "Destiny" },
+                    { 12, false, "Sed.diam@enimcommodo.org", "Lorem ipsum dolor sit amet, consectetuer adipiscing", "N7S 9B7", "Megan" },
+                    { 13, true, "nec.tempus.mauris@estac.ca", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", "Y1Z 8D5", "Dorian" },
+                    { 14, false, "lobortis.ultrices.Vivamus@feugiat.net", "Lorem ipsum", "I6G 4F6", "Preston" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
                 table: "Comments",
