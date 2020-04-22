@@ -37,13 +37,18 @@ namespace TémaLab.Data.SeedService
 
         public IDictionary<string, Competition> Competitions { get; } = new[]
         {
-            new Competition {Id = 1, Title = "First Competition", Content ="This is our first competition gonna be at", UserId =1 }
+            new Competition {Id = 1, Title = "First Competition", Content ="This is our first competition gonna be at", UserId =1 },
+            new Competition {Id = 2, Title = "Seccond Competition", Content="This is our seccond competition. created by", UserId=15 }
         }.ToDictionary(c => c.Title);
         public IDictionary<string, Comment> Comments { get; }
 
         public IDictionary<string, Event> Events { get; }
 
-        public IDictionary<string, Post> Posts { get; }
+        public IDictionary<string, Post> Posts { get; } = new[]
+        {
+            new Post{Id = 1, UserId=2,Content="Helló helló szasztok új vagyok még a weboldalon tudnátok segíteni ? Köszi."},
+            new Post{Id = 2, UserId=3, Content="Sziasztok a legjobb Mono Red decket keresem tudnátok segíteni ? köszii..."}
+        }.ToDictionary(p => p.Content);
 
         public IDictionary<string, Like> Likes { get; }
 
