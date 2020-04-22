@@ -40,7 +40,12 @@ namespace TémaLab.Data.SeedService
             new Competition {Id = 1, Title = "First Competition", Content ="This is our first competition gonna be at", UserId =1 },
             new Competition {Id = 2, Title = "Seccond Competition", Content="This is our seccond competition. created by", UserId=15 }
         }.ToDictionary(c => c.Title);
-        public IDictionary<string, Comment> Comments { get; } 
+        public IDictionary<string, Comment> Comments { get; } = new[]
+        {
+            new Comment{Id = 1, Content="Szia igen minden kérdésedben nagyon szívesen segítek", UserId=13, PostId=1 },
+            new Comment{Id = 2, Content="uhhh.... Az lenne az első kérédésem hogyan kell jétszani ? ", UserId = 2, PostId=1},
+            new Comment{Id = 3, Content="ohhh haver én a mono blura esküszök sokkal élvezetesebb azzal a játék....", UserId =11, PostId=2}
+        }.ToDictionary(c => c.Content);
 
         public IDictionary<string, Event> Events { get; } = new[]
         {
