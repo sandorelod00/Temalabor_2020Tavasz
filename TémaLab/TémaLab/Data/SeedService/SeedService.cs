@@ -35,8 +35,10 @@ namespace TémaLab.Data.SeedService
             new User{ Id = 14, UserName = "Preston", Introduction = "Lorem ipsum", Email = "lobortis.ultrices.Vivamus@feugiat.net", MTGACode = "I6G 4F6", Admin = false },
         }.ToDictionary(a => a.UserName);
 
-        public IDictionary<string, Competition> Competitions { get; }
-
+        public IDictionary<string, Competition> Competitions { get; } = new[]
+        {
+            new Competition {Id = 1, Title = "First Competition", Content ="This is our first competition gonna be at", UserId =1 }
+        }.ToDictionary(c => c.Title);
         public IDictionary<string, Comment> Comments { get; }
 
         public IDictionary<string, Event> Events { get; }
