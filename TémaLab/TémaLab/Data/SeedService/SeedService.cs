@@ -42,7 +42,10 @@ namespace TémaLab.Data.SeedService
         }.ToDictionary(c => c.Title);
         public IDictionary<string, Comment> Comments { get; }
 
-        public IDictionary<string, Event> Events { get; }
+        public IDictionary<string, Event> Events { get; } = new []
+        {
+
+        }
 
         public IDictionary<string, Post> Posts { get; } = new[]
         {
