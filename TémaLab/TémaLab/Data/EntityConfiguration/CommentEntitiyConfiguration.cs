@@ -12,7 +12,7 @@ namespace TémaLab.Data.EntityConfiguration
     public class CommentEntitiyConfiguration : IEntityTypeConfiguration<Comment>
     {
         private readonly ISeedService _seedService;
-        public CommentEntityConfiguration(ISeedService seedService) => _seedService = seedService;
+        public CommentEntitiyConfiguration(ISeedService seedService) => _seedService = seedService;
 
         public void Configure(EntityTypeBuilder<Comment> builder) => builder.HasData(_seedService.Comments.Values);
     }
