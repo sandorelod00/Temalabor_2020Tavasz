@@ -54,6 +54,7 @@ namespace TémaLab.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     date = table.Column<DateTime>(nullable: false),
                     Content = table.Column<string>(nullable: true)
@@ -265,6 +266,11 @@ namespace TémaLab.Data.Migrations
                     { 13, true, "nec.tempus.mauris@estac.ca", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", "Y1Z 8D5", "Dorian" },
                     { 14, false, "lobortis.ultrices.Vivamus@feugiat.net", "Lorem ipsum", "I6G 4F6", "Preston" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Competitions",
+                columns: new[] { "Id", "Content", "Title", "UserId", "date" },
+                values: new object[] { 1, "This is our first competition gonna be at", "First Competition", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",

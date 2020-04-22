@@ -52,6 +52,7 @@ namespace TémaLab.Data
                 .Metadata.DeleteBehavior = DeleteBehavior.Restrict;
 
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration(_seedService));
+            modelBuilder.ApplyConfiguration(new CompetitionEntityConfiguration(_seedService));
         }
     }
 }

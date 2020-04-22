@@ -257,6 +257,9 @@ namespace TémaLab.Data.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -268,6 +271,16 @@ namespace TémaLab.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Competitions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "This is our first competition gonna be at",
+                            Title = "First Competition",
+                            UserId = 1,
+                            date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("TémaLab.Data.Entities.Event", b =>

@@ -27,6 +27,12 @@
     <Compile Remove="Data\Migrations\20200421130858_InitialDBSchema.Designer.cs" />
     <Compile Remove="Data\Migrations\20200421130955_InitialDBSchema.cs" />
     <Compile Remove="Data\Migrations\20200421130955_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200421180456_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200421180456_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200422160313_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200422160313_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200422160706_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200422160706_InitialDBSchema.Designer.cs" />
   </ItemGroup>
 
 
