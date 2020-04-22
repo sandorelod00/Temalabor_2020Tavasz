@@ -53,6 +53,7 @@ namespace TémaLab.Data
 
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration(_seedService));
             modelBuilder.ApplyConfiguration(new CompetitionEntityConfiguration(_seedService));
+            modelBuilder.ApplyConfiguration(new PostEntityConfiguration(_seedService));
         }
     }
 }

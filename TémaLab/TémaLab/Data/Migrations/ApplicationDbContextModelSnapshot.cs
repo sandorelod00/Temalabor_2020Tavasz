@@ -280,6 +280,14 @@ namespace TémaLab.Data.Migrations
                             Title = "First Competition",
                             UserId = 1,
                             date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "This is our seccond competition. created by",
+                            Title = "Seccond Competition",
+                            UserId = 15,
+                            date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -417,6 +425,22 @@ namespace TémaLab.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "Helló helló szasztok új vagyok még a weboldalon tudnátok segíteni ? Köszi.",
+                            UserId = 2,
+                            date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "Sziasztok a legjobb Mono Red decket keresem tudnátok segíteni ? köszii...",
+                            UserId = 3,
+                            date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("TémaLab.Data.Entities.User", b =>

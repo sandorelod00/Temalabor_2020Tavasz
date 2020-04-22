@@ -270,7 +270,20 @@ namespace TémaLab.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Competitions",
                 columns: new[] { "Id", "Content", "Title", "UserId", "date" },
-                values: new object[] { 1, "This is our first competition gonna be at", "First Competition", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[,]
+                {
+                    { 2, "This is our seccond competition. created by", "Seccond Competition", 15, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 1, "This is our first competition gonna be at", "First Competition", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "Id", "Content", "UserId", "date" },
+                values: new object[,]
+                {
+                    { 1, "Helló helló szasztok új vagyok még a weboldalon tudnátok segíteni ? Köszi.", 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, "Sziasztok a legjobb Mono Red decket keresem tudnátok segíteni ? köszii...", 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
