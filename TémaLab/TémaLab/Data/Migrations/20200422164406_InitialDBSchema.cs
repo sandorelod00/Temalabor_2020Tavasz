@@ -76,6 +76,7 @@ namespace TémaLab.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     date = table.Column<DateTime>(nullable: false),
                     Content = table.Column<string>(nullable: true)
@@ -277,6 +278,11 @@ namespace TémaLab.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Events",
+                columns: new[] { "Id", "Content", "Title", "UserId", "date" },
+                values: new object[] { 1, "Sziasztok ugy gondolom itt az ideje hogy sörözünk egyett közösen!!!", "Sörözünk !", 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "Content", "UserId", "date" },
                 values: new object[,]
@@ -284,6 +290,21 @@ namespace TémaLab.Data.Migrations
                     { 1, "Helló helló szasztok új vagyok még a weboldalon tudnátok segíteni ? Köszi.", 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
                     { 2, "Sziasztok a legjobb Mono Red decket keresem tudnátok segíteni ? köszii...", 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Content", "PostId", "UserId", "date" },
+                values: new object[] { 1, "Szia igen minden kérdésedben nagyon szívesen segítek", 1, 13, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Content", "PostId", "UserId", "date" },
+                values: new object[] { 2, "uhhh.... Az lenne az első kérédésem hogyan kell jétszani ? ", 1, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Content", "PostId", "UserId", "date" },
+                values: new object[] { 3, "ohhh haver én a mono blura esküszök sokkal élvezetesebb azzal a játék....", 2, 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
