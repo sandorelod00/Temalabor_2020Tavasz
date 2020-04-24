@@ -33,7 +33,15 @@ namespace TémaLab
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString(nameof(ApplicationDbContext))))
-                .AddScoped<UserService>();
+                .AddScoped<UserService>()
+                .AddScoped<CommentService>()
+                .AddScoped<CompetitionService>()
+                .AddScoped<EventParticipationService>()
+                .AddScoped<EventService>()
+                .AddScoped<FriendshipService>()
+                .AddScoped<LikeService>()
+                .AddScoped<ParticipationService>()
+                .AddScoped<PostService>();
             services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //.AddEntityFrameworkStores<ApplicationDbContext>();
