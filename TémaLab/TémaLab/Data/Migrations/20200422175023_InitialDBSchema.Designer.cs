@@ -10,7 +10,7 @@ using TémaLab.Data;
 namespace TémaLab.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200422164406_InitialDBSchema")]
+    [Migration("20200422175023_InitialDBSchema")]
     partial class InitialDBSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

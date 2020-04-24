@@ -37,6 +37,8 @@
     <Compile Remove="Data\Migrations\20200422161054_InitialDBSchema.Designer.cs" />
     <Compile Remove="Data\Migrations\20200422162426_InitialDBSchema.cs" />
     <Compile Remove="Data\Migrations\20200422162426_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200422174446_InitialDBSchema.cs" />
+    <Compile Remove="Data\Migrations\20200422174446_InitialDBSchema.Designer.cs" />
   </ItemGroup>
 
 
