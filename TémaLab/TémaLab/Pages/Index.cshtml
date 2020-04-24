@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home page"; 
 }
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
                                 <div>
                                     <img src="~/Images/profipic.png" class="postProfilePicture">
 
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile">Poster's Name</a>
+                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile">@Model.Message</a>
                                 </div>
                                 <hr>
                                 <p>

@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TémaLab.Data.SeedService;
 using TémaLab.Data.Entities;
+using TémaLab.Data.Services;
 
 namespace TémaLab
 {
@@ -31,7 +32,8 @@ namespace TémaLab
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString(nameof(ApplicationDbContext))));
+                    Configuration.GetConnectionString(nameof(ApplicationDbContext))))
+                .AddScoped<UserService>();
             services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //.AddEntityFrameworkStores<ApplicationDbContext>();
@@ -56,7 +58,7 @@ namespace TémaLab
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
             app.UseRouting();
 
             app.UseAuthentication();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,16 @@ namespace TémaLab.Data.Services
         }
         public ApplicationDbContext DbContext { get; }
 
-        public IEnumerable<UserDto> GetBooks()
-        {
-            return DbContext.Users.Select(u => new UserDto
+        public IEnumerable<UserDto> GetUsers() => DbContext.Users
+            .Include(b => b.Events)
+            .Include(b => b.Friendships1)
+            .Include(b => b.Friendships2)
+            .Include(b => b.Events)
+            .Include(b => b.Competitions)
+            .Include(b => b.Participations)
+            .Include(b => b.EventParticipations)
+            .Include(b => b.Posts).ToList()
+                .Select(u => new UserDto
             {
                 Id = u.Id,
                 UserName = u.UserName,
@@ -32,6 +40,5 @@ namespace TémaLab.Data.Services
                 EventParticipations = u.EventParticipations,
                 Events = u.Events
             });
-        }
     }
 }
