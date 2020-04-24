@@ -11,13 +11,13 @@ using TémaLab.Data.SeedService;
 
 namespace TémaLab.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         private readonly ISeedService _seedService;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ISeedService seedService) : base(options) => _seedService = seedService;
 
-        public override DbSet<IdentityUser> Users { get; set; }
+        //public override DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Friendship> Friendship { get; set; }
@@ -30,6 +30,8 @@ namespace TémaLab.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>().ToTable("Users");
 
             foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
                 .SelectMany(e => e.GetForeignKeys()))

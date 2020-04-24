@@ -1,51 +1,160 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TémaLab.Data.Migrations
+namespace TémaLab.Migrations
 {
     public partial class InitialDBSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                table: "AspNetRoleClaims");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                table: "AspNetUserClaims");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                table: "AspNetUserLogins");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                table: "AspNetUserRoles");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                table: "AspNetUserRoles");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                table: "AspNetUserTokens");
-
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "AspNetRoles",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false),
                     Introduction = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
                     MTGACode = table.Column<string>(nullable: true),
                     Admin = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<int>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserClaims_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
+                    ProviderDisplayName = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserLogins_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false),
+                    RoleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserTokens",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Value = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserTokens_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,9 +172,9 @@ namespace TémaLab.Data.Migrations
                 {
                     table.PrimaryKey("PK_Competitions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Competitions_User_UserId",
+                        name: "FK_Competitions_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -85,9 +194,9 @@ namespace TémaLab.Data.Migrations
                 {
                     table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Events_User_UserId",
+                        name: "FK_Events_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -103,15 +212,15 @@ namespace TémaLab.Data.Migrations
                 {
                     table.PrimaryKey("PK_Friendship", x => new { x.User1Id, x.User2Id });
                     table.ForeignKey(
-                        name: "FK_Friendship_User_User1Id",
+                        name: "FK_Friendship_Users_User1Id",
                         column: x => x.User1Id,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Friendship_User_User2Id",
+                        name: "FK_Friendship_Users_User2Id",
                         column: x => x.User2Id,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -130,9 +239,9 @@ namespace TémaLab.Data.Migrations
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Posts_User_UserId",
+                        name: "FK_Posts_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -157,9 +266,9 @@ namespace TémaLab.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Participations_User_UserId",
+                        name: "FK_Participations_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -184,9 +293,9 @@ namespace TémaLab.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EventParticipations_User_UserId",
+                        name: "FK_EventParticipations_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -212,9 +321,9 @@ namespace TémaLab.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comments_User_UserId",
+                        name: "FK_Comments_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -239,33 +348,33 @@ namespace TémaLab.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Likes_User_UserId",
+                        name: "FK_Likes_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
-                table: "User",
-                columns: new[] { "Id", "Admin", "Email", "Introduction", "MTGACode", "UserName" },
+                table: "Users",
+                columns: new[] { "Id", "AccessFailedCount", "Admin", "ConcurrencyStamp", "Email", "EmailConfirmed", "Introduction", "LockoutEnabled", "LockoutEnd", "MTGACode", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 15, true, "peti@mail.hu", "Én vagyok a Peti", "kód", "Kovács Péter" },
-                    { 1, true, "justo.sit.amet@Pellentesquetincidunttempus.ca", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et", "B7S 4R4", "Melodie" },
-                    { 2, true, "est.vitae.sodales@tortor.com", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec", "P3N 8J9", "Nathaniel" },
-                    { 3, true, "et.magnis@estmollisnon.net", "Lorem ipsum dolor sit amet, consectetuer adipiscing", "O8R 4J2", "Maggy" },
-                    { 4, false, "Duis.cursus.diam@IncondimentumDonec.org", "Lorem ipsum dolor sit amet,", "J0T 9E2", "Reagan" },
-                    { 5, true, "id.erat@eros.com", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", "X4B 4E1", "Gil" },
-                    { 6, true, "turpis@montesnasceturridiculus.edu", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing", "V8B 7U0", "Armand" },
-                    { 7, true, "sem.eget@sollicitudinamalesuada.org", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", "V3J 1V4", "Bruno" },
-                    { 8, true, "nec.quam.Curabitur@dictum.org", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur", "I7C 3T4", "Patrick" },
-                    { 9, false, "eget@sociosqu.co.uk", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", "M7S 7Z3", "Sasha" },
-                    { 10, true, "posuere.at@telluseuaugue.edu", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut", "Y9K 8I0", "Nerea" },
-                    { 11, false, "arcu.ac.orci@Nuncac.ca", "Lorem ipsum dolor sit amet, consectetuer", "I1Q 2P3", "Destiny" },
-                    { 12, false, "Sed.diam@enimcommodo.org", "Lorem ipsum dolor sit amet, consectetuer adipiscing", "N7S 9B7", "Megan" },
-                    { 13, true, "nec.tempus.mauris@estac.ca", "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", "Y1Z 8D5", "Dorian" },
-                    { 14, false, "lobortis.ultrices.Vivamus@feugiat.net", "Lorem ipsum", "I6G 4F6", "Preston" }
+                    { 15, 0, true, "966b9c13-d534-48d1-a6fb-4427e55794aa", "peti@mail.hu", false, "Én vagyok a Peti", false, null, "kód", null, null, null, null, false, null, false, "Kovács Péter" },
+                    { 1, 0, true, "27d7c9a4-e65e-477c-a098-3962eb799595", "justo.sit.amet@Pellentesquetincidunttempus.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et", false, null, "B7S 4R4", null, null, null, null, false, null, false, "Melodie" },
+                    { 2, 0, true, "bfbe94af-eee6-4e43-adf3-55d05738010d", "est.vitae.sodales@tortor.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec", false, null, "P3N 8J9", null, null, null, null, false, null, false, "Nathaniel" },
+                    { 3, 0, true, "4551b64b-694c-40db-9292-beff3bb0f64d", "et.magnis@estmollisnon.net", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "O8R 4J2", null, null, null, null, false, null, false, "Maggy" },
+                    { 4, 0, false, "769a9650-6cf1-4ae1-989e-772ca64f4d9e", "Duis.cursus.diam@IncondimentumDonec.org", false, "Lorem ipsum dolor sit amet,", false, null, "J0T 9E2", null, null, null, null, false, null, false, "Reagan" },
+                    { 5, 0, true, "b8577332-a8dd-416e-bad7-985e5f4ad802", "id.erat@eros.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", false, null, "X4B 4E1", null, null, null, null, false, null, false, "Gil" },
+                    { 6, 0, true, "b69aeaca-5a15-4d5f-be8f-fe5fae80878b", "turpis@montesnasceturridiculus.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing", false, null, "V8B 7U0", null, null, null, null, false, null, false, "Armand" },
+                    { 7, 0, true, "f0583b34-a811-4fa0-b38d-9f5a7727e72f", "sem.eget@sollicitudinamalesuada.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "V3J 1V4", null, null, null, null, false, null, false, "Bruno" },
+                    { 8, 0, true, "2264ae79-401c-4aa5-ac4d-0a97ed67a248", "nec.quam.Curabitur@dictum.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur", false, null, "I7C 3T4", null, null, null, null, false, null, false, "Patrick" },
+                    { 9, 0, false, "a2a2f94c-876d-4dde-8dd8-e53073b739b5", "eget@sociosqu.co.uk", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "M7S 7Z3", null, null, null, null, false, null, false, "Sasha" },
+                    { 10, 0, true, "8c22d416-0e2c-4f81-bf0d-9cab76abffe8", "posuere.at@telluseuaugue.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut", false, null, "Y9K 8I0", null, null, null, null, false, null, false, "Nerea" },
+                    { 11, 0, false, "dacfc82c-8545-4065-b2e9-f22550c2211f", "arcu.ac.orci@Nuncac.ca", false, "Lorem ipsum dolor sit amet, consectetuer", false, null, "I1Q 2P3", null, null, null, null, false, null, false, "Destiny" },
+                    { 12, 0, false, "2d8b3a22-2484-473b-bc77-9cc8fd664d74", "Sed.diam@enimcommodo.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "N7S 9B7", null, null, null, null, false, null, false, "Megan" },
+                    { 13, 0, true, "5236b75d-5398-4130-ad02-5adc1ba66831", "nec.tempus.mauris@estac.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "Y1Z 8D5", null, null, null, null, false, null, false, "Dorian" },
+                    { 14, 0, false, "6781d923-d292-4434-90cf-76cfdd9f8658", "lobortis.ultrices.Vivamus@feugiat.net", false, "Lorem ipsum", false, null, "I6G 4F6", null, null, null, null, false, null, false, "Preston" }
                 });
 
             migrationBuilder.InsertData(
@@ -305,6 +414,33 @@ namespace TémaLab.Data.Migrations
                 table: "Comments",
                 columns: new[] { "Id", "Content", "PostId", "UserId", "date" },
                 values: new object[] { 3, "ohhh haver én a mono blura esküszök sokkal élvezetesebb azzal a játék....", 2, 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoleClaims_RoleId",
+                table: "AspNetRoleClaims",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "RoleNameIndex",
+                table: "AspNetRoles",
+                column: "NormalizedName",
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_UserId",
+                table: "AspNetUserClaims",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_RoleId",
+                table: "AspNetUserRoles",
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
@@ -366,80 +502,35 @@ namespace TémaLab.Data.Migrations
                 table: "Posts",
                 column: "UserId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId",
-                principalTable: "AspNetRoles",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "Users",
+                column: "NormalizedEmail");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                table: "AspNetUserClaims",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                table: "AspNetUserLogins",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                table: "AspNetUserRoles",
-                column: "RoleId",
-                principalTable: "AspNetRoles",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                table: "AspNetUserRoles",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                table: "AspNetUserTokens",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "Users",
+                column: "NormalizedUserName",
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                table: "AspNetRoleClaims");
+            migrationBuilder.DropTable(
+                name: "AspNetRoleClaims");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                table: "AspNetUserClaims");
+            migrationBuilder.DropTable(
+                name: "AspNetUserClaims");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                table: "AspNetUserLogins");
+            migrationBuilder.DropTable(
+                name: "AspNetUserLogins");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                table: "AspNetUserRoles");
+            migrationBuilder.DropTable(
+                name: "AspNetUserRoles");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                table: "AspNetUserRoles");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                table: "AspNetUserTokens");
+            migrationBuilder.DropTable(
+                name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
                 name: "Comments");
@@ -457,6 +548,9 @@ namespace TémaLab.Data.Migrations
                 name: "Participations");
 
             migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
                 name: "Events");
 
             migrationBuilder.DropTable(
@@ -466,55 +560,7 @@ namespace TémaLab.Data.Migrations
                 name: "Competitions");
 
             migrationBuilder.DropTable(
-                name: "User");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId",
-                principalTable: "AspNetRoles",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                table: "AspNetUserClaims",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                table: "AspNetUserLogins",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                table: "AspNetUserRoles",
-                column: "RoleId",
-                principalTable: "AspNetRoles",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                table: "AspNetUserRoles",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                table: "AspNetUserTokens",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                name: "Users");
         }
     }
 }

@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TémaLab.Data;
 
-namespace TémaLab.Data.Migrations
+namespace TémaLab.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200422175023_InitialDBSchema")]
+    [Migration("20200424094044_InitialDBSchema")]
     partial class InitialDBSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,10 +21,12 @@ namespace TémaLab.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -48,7 +50,7 @@ namespace TémaLab.Data.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -61,9 +63,8 @@ namespace TémaLab.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -72,72 +73,7 @@ namespace TémaLab.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,9 +86,8 @@ namespace TémaLab.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -161,22 +96,19 @@ namespace TémaLab.Data.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -185,13 +117,13 @@ namespace TémaLab.Data.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -200,18 +132,16 @@ namespace TémaLab.Data.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -491,208 +421,347 @@ namespace TémaLab.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Admin")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Introduction")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("MTGACode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
+                        .HasMaxLength(256);
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 15,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "966b9c13-d534-48d1-a6fb-4427e55794aa",
                             Email = "peti@mail.hu",
+                            EmailConfirmed = false,
                             Introduction = "Én vagyok a Peti",
+                            LockoutEnabled = false,
                             MTGACode = "kód",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Kovács Péter"
                         },
                         new
                         {
                             Id = 1,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "27d7c9a4-e65e-477c-a098-3962eb799595",
                             Email = "justo.sit.amet@Pellentesquetincidunttempus.ca",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et",
+                            LockoutEnabled = false,
                             MTGACode = "B7S 4R4",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Melodie"
                         },
                         new
                         {
                             Id = 2,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "bfbe94af-eee6-4e43-adf3-55d05738010d",
                             Email = "est.vitae.sodales@tortor.com",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec",
+                            LockoutEnabled = false,
                             MTGACode = "P3N 8J9",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Nathaniel"
                         },
                         new
                         {
                             Id = 3,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "4551b64b-694c-40db-9292-beff3bb0f64d",
                             Email = "et.magnis@estmollisnon.net",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
+                            LockoutEnabled = false,
                             MTGACode = "O8R 4J2",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Maggy"
                         },
                         new
                         {
                             Id = 4,
+                            AccessFailedCount = 0,
                             Admin = false,
+                            ConcurrencyStamp = "769a9650-6cf1-4ae1-989e-772ca64f4d9e",
                             Email = "Duis.cursus.diam@IncondimentumDonec.org",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet,",
+                            LockoutEnabled = false,
                             MTGACode = "J0T 9E2",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Reagan"
                         },
                         new
                         {
                             Id = 5,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "b8577332-a8dd-416e-bad7-985e5f4ad802",
                             Email = "id.erat@eros.com",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                            LockoutEnabled = false,
                             MTGACode = "X4B 4E1",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Gil"
                         },
                         new
                         {
                             Id = 6,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "b69aeaca-5a15-4d5f-be8f-fe5fae80878b",
                             Email = "turpis@montesnasceturridiculus.edu",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing",
+                            LockoutEnabled = false,
                             MTGACode = "V8B 7U0",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Armand"
                         },
                         new
                         {
                             Id = 7,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "f0583b34-a811-4fa0-b38d-9f5a7727e72f",
                             Email = "sem.eget@sollicitudinamalesuada.org",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
+                            LockoutEnabled = false,
                             MTGACode = "V3J 1V4",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Bruno"
                         },
                         new
                         {
                             Id = 8,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "2264ae79-401c-4aa5-ac4d-0a97ed67a248",
                             Email = "nec.quam.Curabitur@dictum.org",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur",
+                            LockoutEnabled = false,
                             MTGACode = "I7C 3T4",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Patrick"
                         },
                         new
                         {
                             Id = 9,
+                            AccessFailedCount = 0,
                             Admin = false,
+                            ConcurrencyStamp = "a2a2f94c-876d-4dde-8dd8-e53073b739b5",
                             Email = "eget@sociosqu.co.uk",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
+                            LockoutEnabled = false,
                             MTGACode = "M7S 7Z3",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Sasha"
                         },
                         new
                         {
                             Id = 10,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "8c22d416-0e2c-4f81-bf0d-9cab76abffe8",
                             Email = "posuere.at@telluseuaugue.edu",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut",
+                            LockoutEnabled = false,
                             MTGACode = "Y9K 8I0",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Nerea"
                         },
                         new
                         {
                             Id = 11,
+                            AccessFailedCount = 0,
                             Admin = false,
+                            ConcurrencyStamp = "dacfc82c-8545-4065-b2e9-f22550c2211f",
                             Email = "arcu.ac.orci@Nuncac.ca",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer",
+                            LockoutEnabled = false,
                             MTGACode = "I1Q 2P3",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Destiny"
                         },
                         new
                         {
                             Id = 12,
+                            AccessFailedCount = 0,
                             Admin = false,
+                            ConcurrencyStamp = "2d8b3a22-2484-473b-bc77-9cc8fd664d74",
                             Email = "Sed.diam@enimcommodo.org",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
+                            LockoutEnabled = false,
                             MTGACode = "N7S 9B7",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Megan"
                         },
                         new
                         {
                             Id = 13,
+                            AccessFailedCount = 0,
                             Admin = true,
+                            ConcurrencyStamp = "5236b75d-5398-4130-ad02-5adc1ba66831",
                             Email = "nec.tempus.mauris@estac.ca",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
+                            LockoutEnabled = false,
                             MTGACode = "Y1Z 8D5",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Dorian"
                         },
                         new
                         {
                             Id = 14,
+                            AccessFailedCount = 0,
                             Admin = false,
+                            ConcurrencyStamp = "6781d923-d292-4434-90cf-76cfdd9f8658",
                             Email = "lobortis.ultrices.Vivamus@feugiat.net",
+                            EmailConfirmed = false,
                             Introduction = "Lorem ipsum",
+                            LockoutEnabled = false,
                             MTGACode = "I6G 4F6",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
                             UserName = "Preston"
                         });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TémaLab.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TémaLab.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TémaLab.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("TémaLab.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -726,7 +795,7 @@ namespace TémaLab.Data.Migrations
             modelBuilder.Entity("TémaLab.Data.Entities.Event", b =>
                 {
                     b.HasOne("TémaLab.Data.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Events")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -741,7 +810,7 @@ namespace TémaLab.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("TémaLab.Data.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("EventParticipations")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();

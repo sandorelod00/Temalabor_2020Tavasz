@@ -19,5 +19,7 @@ namespace TémaLab.Data.DTOs
         public ICollection<Friendship> Friendships2 { get; set; }
         public ICollection<Competition> Competitions { get; set; }
         public ICollection<Participation> Participations { get; set; }
+        public ICollection<EventParticipation> EventParticipations { get; set; }
+        public ICollection<Event> Events{ get; set; }
     }
 }
