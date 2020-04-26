@@ -14,7 +14,7 @@ namespace TémaLab.Data.Services
             DbContext = dbContext;
         }
         public ApplicationDbContext DbContext { get; }
-        public IEnumerable<LikeDto> GetUsers() => DbContext.Likes
+        public IEnumerable<LikeDto> GetLikes() => DbContext.Likes
             .Include(l => l.User)
             .Include(l => l.Post)
                 .Select(l => new LikeDto

@@ -14,7 +14,7 @@ namespace TémaLab.Data.Services
             DbContext = dbContext;
         }
         public ApplicationDbContext DbContext { get; }
-        public IEnumerable<CommentDto> GetUsers() => DbContext.Comments
+        public IEnumerable<CommentDto> GetComments() => DbContext.Comments
             .Include(c => c.User)
             .Include(c => c.Post)
                 .Select(c => new CommentDto

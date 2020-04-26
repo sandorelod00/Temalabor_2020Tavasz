@@ -14,8 +14,9 @@ namespace TémaLab.Data.Services
             DbContext = dbContext;
         }
         public ApplicationDbContext DbContext { get; }
-        public IEnumerable<FriendshipDto> GetUsers() => DbContext.Friendship
-            .Include(f => f.User)
+        public IEnumerable<FriendshipDto> GetFriendships() => DbContext.Friendship
+            .Include(f => f.User1)
+            .Include(f => f.User2)
                 .Select(f => new FriendshipDto
                 { 
                     User1 = f.User1,

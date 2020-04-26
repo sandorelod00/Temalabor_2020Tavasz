@@ -14,17 +14,21 @@ namespace TémaLab.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         public IEnumerable<UserDto> Users { get; private set; }
+        public IEnumerable<CompetitionDto> Competitions{ get; private set; }
         public string Message { get; private set; }
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet([FromServices]UserService userService)
+        public void OnGet([FromServices]UserService userService, [FromServices]CompetitionService competitionService)
         {
             this.Users = userService.GetUsers();
             var users = Users.ToList();
+            this.Competitions = competitionService.GetCompetitions();
+            var competitions = Competitions.ToList();
             Message = users.ElementAt(0).UserName;
+
 
         }
     }

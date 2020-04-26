@@ -14,7 +14,7 @@ namespace TémaLab.Data.Services
             DbContext = dbContext;
         }
         public ApplicationDbContext DbContext { get; }
-        public IEnumerable<CompetitionDto> GetUsers() => DbContext.Competitions
+        public IEnumerable<CompetitionDto> GetCompetitions() => DbContext.Competitions
             .Include(c => c.User)
             .Include(c => c.Participations)
                 .Select(c => new CompetitionDto
