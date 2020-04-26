@@ -23,11 +23,11 @@ namespace TémaLab.Pages
 
         public void OnGet([FromServices]UserService userService, [FromServices]CompetitionService competitionService)
         {
-            this.Users = userService.GetUsers();
-            var users = Users.ToList();
-            this.Competitions = competitionService.GetCompetitions();
-            var competitions = Competitions.ToList();
-            Message = users.ElementAt(0).UserName;
+            //this.Users = userService.GetUsers();
+            //var users = Users.ToList();
+            //this.Competitions = competitionService.GetCompetitions();
+            //var competitions = Competitions.ToList();
+            //Message = users.ElementAt(0).UserName;
 
 
         }
