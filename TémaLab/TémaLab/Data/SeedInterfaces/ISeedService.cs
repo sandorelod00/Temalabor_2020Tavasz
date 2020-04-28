@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TémaLab.Data.Entities;
 
-namespace TémaLab.Data.SeedService
+namespace TémaLab.Data.SeedInterfaces.SeedService
 {
     public interface ISeedService
     {

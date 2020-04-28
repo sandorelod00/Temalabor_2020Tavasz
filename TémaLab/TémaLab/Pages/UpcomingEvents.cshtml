@@ -21,6 +21,17 @@
         <div class="row">
             <h1 class="Title">UpcomingEvents</h1>
         </div>
+
+       @foreach (var ev in Model.Events ){
+    <div class="card Event">
+        <div class="card-body">
+            <h2 class="card-title">@ev.Title</h2>
+            <p class="card-text">@ev.Content</p>
+        </div>
+        <div class="card-footer">@ev.date</div>
+    </div>
+       }
+
         <!--Ez alá szépen jönnek be az események-->
         <div class="row" id="EventContainer">
             <div class="card Event">
