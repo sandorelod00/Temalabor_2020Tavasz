@@ -2,24 +2,41 @@
 @model TémaLab.UpcomingEventsModel
 @{
     ViewData["Title"] = "UpcomingEvents";
-}
 
-
-
-    <div class="container">
-        <div class="row">
-            <h1 class="Title">UpcomingEvents</h1>
-        </div>
-
-       @foreach (var ev in Model.Events ){
+    void RenderEventCard(Data.DTOs.EventDto ev)
+    {
         <div class="card Event">
             <div class="card-body">
                 <h2 class="card-title">@ev.Title</h2>
                 <p class="card-text">@ev.Content</p>
+                @*<a class="nicelink" asp-page="./Details" asp-route-id="@ev.Id">Take me to Competition</a>*@
+                <button>register me</button>
+                @*<a asp-page="./Edit" asp-route-id="@ev.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@ev.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@ev.Id">Delete</a>*@
             </div>
-            <div class="card-footer">@ev.date</div>
+            <div class="card-footer">
+                <p class="card-text text-muted float-left CompetitionFotterText">Registerd Competitors: </p>
+                <a class="nicelink"><p class="float-right CompetitionFotterText">@ev.User.UserName</p></a>
+                <p class="card-text text-muted float-right CompetitionFotterText">
+                    Created by:
+                </p>
+            </div>
         </div>
-        }
+    }
+}
 
-       
+
+
+<div class="container">
+    <div class="row">
+        <h1 class="Title">UpcomingEvents</h1>
     </div>
+
+    @foreach (var eve in Model.Events)
+    {
+        RenderEventCard(eve);
+    }
+
+
+</div>
