@@ -8,9 +8,32 @@ namespace TémaLab.Data.SeedService
 {
     public class SeedService : ISeedService
     {
-        public IDictionary<string, User> Users { get; } = new []
+        public IList<User> Users { get; }
+        public IList<Competition> Competitions { get; }
+        public IList<Comment> Comments { get; }
+        public IList<Event> Events { get; }
+        public IList<Post> Posts { get; } 
+        public IList<Like> Likes { get; }
+
+
+        public SeedService()
         {
-            new User()
+            Competitions = new List<Competition>()
+            {
+            new Competition {Id = 1, Title = "First Competition", Content ="This is our first competition gonna be at", UserId=1 },
+            new Competition {Id = 2, Title = "Seccond Competition", Content="This is our seccond competition. created by", UserId=15}
+            };
+
+            Comments = new List<Comment>()
+            {
+                   new Comment{Id = 1, Content="Szia igen minden kérdésedben nagyon szívesen segítek", UserId=13, PostId=1 },
+                   new Comment{Id = 2, Content="uhhh.... Az lenne az első kérédésem hogyan kell jétszani ? ", UserId = 2, PostId=1},
+                   new Comment{Id = 3, Content="ohhh haver én a mono blura esküszök sokkal élvezetesebb azzal a játék....", UserId =11, PostId=2}
+            };
+
+            Users = new List<User>()
+            {
+                new User()
             {
                 Id = 15,
                 UserName = "Kovács Péter",
@@ -32,33 +55,24 @@ namespace TémaLab.Data.SeedService
             new User{ Id = 11, UserName = "Destiny", Introduction = "Lorem ipsum dolor sit amet, consectetuer", Email = "arcu.ac.orci@Nuncac.ca", MTGACode = "I1Q 2P3", Admin = false },
             new User{ Id = 12, UserName = "Megan", Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing", Email = "Sed.diam@enimcommodo.org", MTGACode = "N7S 9B7", Admin = false },
             new User{ Id = 13, UserName = "Dorian", Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", Email = "nec.tempus.mauris@estac.ca", MTGACode = "Y1Z 8D5", Admin = true },
-            new User{ Id = 14, UserName = "Preston", Introduction = "Lorem ipsum", Email = "lobortis.ultrices.Vivamus@feugiat.net", MTGACode = "I6G 4F6", Admin = false },
-        }.ToDictionary(a => a.UserName);
+            new User{ Id = 14, UserName = "Preston", Introduction = "Lorem ipsum", Email = "lobortis.ultrices.Vivamus@feugiat.net", MTGACode = "I6G 4F6", Admin = false }
+            };
 
-        public IDictionary<string, Competition> Competitions { get; } = new[]
-        {
-            new Competition {Id = 1, Title = "First Competition", Content ="This is our first competition gonna be at", UserId =1 },
-            new Competition {Id = 2, Title = "Seccond Competition", Content="This is our seccond competition. created by", UserId=15 }
-        }.ToDictionary(c => c.Title);
-        public IDictionary<string, Comment> Comments { get; } = new[]
-        {
-            new Comment{Id = 1, Content="Szia igen minden kérdésedben nagyon szívesen segítek", UserId=13, PostId=1 },
-            new Comment{Id = 2, Content="uhhh.... Az lenne az első kérédésem hogyan kell jétszani ? ", UserId = 2, PostId=1},
-            new Comment{Id = 3, Content="ohhh haver én a mono blura esküszök sokkal élvezetesebb azzal a játék....", UserId =11, PostId=2}
-        }.ToDictionary(c => c.Content);
-
-        public IDictionary<string, Event> Events { get; } = new[]
-        {
-            new Event {Id = 1, UserId  = 7, Title="Sörözünk !", Content="Sziasztok ugy gondolom itt az ideje hogy sörözünk egyett közösen!!!"}
-        }.ToDictionary(e => e.Title);
-
-        public IDictionary<string, Post> Posts { get; } = new[]
-        {
+            Events = new List<Event>()
+            {
+                new Event {Id = 1, UserId  = 7, Title="Sörözünk !", Content="Sziasztok ugy gondolom itt az ideje hogy sörözünk egyett közösen!!!"}
+            };
+            Posts = new List<Post>()
+            { 
             new Post{Id = 1, UserId=2,Content="Helló helló szasztok új vagyok még a weboldalon tudnátok segíteni ? Köszi."},
             new Post{Id = 2, UserId=3, Content="Sziasztok a legjobb Mono Red decket keresem tudnátok segíteni ? köszii..."}
-        }.ToDictionary(p => p.Content);
+            };
 
-        public IDictionary<string, Like> Likes { get; }
+            Likes = new List<Like>()
+            {
+                new Like{ Id= 1, PostId=1, UserId=3}
+            };
 
+        }
     }
 }

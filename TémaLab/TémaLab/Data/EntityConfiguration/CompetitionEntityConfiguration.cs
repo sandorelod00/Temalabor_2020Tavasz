@@ -14,6 +14,6 @@ namespace TémaLab.Data.EntityConfiguration
     private readonly ISeedService _seedService;
     public CompetitionEntityConfiguration(ISeedService seedService) => _seedService = seedService;
 
-    public void Configure(EntityTypeBuilder<Competition> builder) => builder.HasData(_seedService.Competitions.Values);
+    public void Configure(EntityTypeBuilder<Competition> builder) => builder.HasData(_seedService.Competitions);
     }
 }

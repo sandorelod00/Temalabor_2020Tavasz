@@ -14,6 +14,6 @@ namespace TémaLab.Data.EntityConfiguration
         private readonly ISeedService _seedService;
         public CommentEntitiyConfiguration(ISeedService seedService) => _seedService = seedService;
 
-        public void Configure(EntityTypeBuilder<Comment> builder) => builder.HasData(_seedService.Comments.Values);
+        public void Configure(EntityTypeBuilder<Comment> builder) => builder.HasData(_seedService.Comments);
     }
 }

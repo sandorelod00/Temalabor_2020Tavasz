@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TémaLab.Migrations
 {
-    public partial class InitialDBSchema : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -360,21 +360,21 @@ namespace TémaLab.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Admin", "ConcurrencyStamp", "Email", "EmailConfirmed", "Introduction", "LockoutEnabled", "LockoutEnd", "MTGACode", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 15, 0, true, "966b9c13-d534-48d1-a6fb-4427e55794aa", "peti@mail.hu", false, "Én vagyok a Peti", false, null, "kód", null, null, null, null, false, null, false, "Kovács Péter" },
-                    { 1, 0, true, "27d7c9a4-e65e-477c-a098-3962eb799595", "justo.sit.amet@Pellentesquetincidunttempus.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et", false, null, "B7S 4R4", null, null, null, null, false, null, false, "Melodie" },
-                    { 2, 0, true, "bfbe94af-eee6-4e43-adf3-55d05738010d", "est.vitae.sodales@tortor.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec", false, null, "P3N 8J9", null, null, null, null, false, null, false, "Nathaniel" },
-                    { 3, 0, true, "4551b64b-694c-40db-9292-beff3bb0f64d", "et.magnis@estmollisnon.net", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "O8R 4J2", null, null, null, null, false, null, false, "Maggy" },
-                    { 4, 0, false, "769a9650-6cf1-4ae1-989e-772ca64f4d9e", "Duis.cursus.diam@IncondimentumDonec.org", false, "Lorem ipsum dolor sit amet,", false, null, "J0T 9E2", null, null, null, null, false, null, false, "Reagan" },
-                    { 5, 0, true, "b8577332-a8dd-416e-bad7-985e5f4ad802", "id.erat@eros.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", false, null, "X4B 4E1", null, null, null, null, false, null, false, "Gil" },
-                    { 6, 0, true, "b69aeaca-5a15-4d5f-be8f-fe5fae80878b", "turpis@montesnasceturridiculus.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing", false, null, "V8B 7U0", null, null, null, null, false, null, false, "Armand" },
-                    { 7, 0, true, "f0583b34-a811-4fa0-b38d-9f5a7727e72f", "sem.eget@sollicitudinamalesuada.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "V3J 1V4", null, null, null, null, false, null, false, "Bruno" },
-                    { 8, 0, true, "2264ae79-401c-4aa5-ac4d-0a97ed67a248", "nec.quam.Curabitur@dictum.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur", false, null, "I7C 3T4", null, null, null, null, false, null, false, "Patrick" },
-                    { 9, 0, false, "a2a2f94c-876d-4dde-8dd8-e53073b739b5", "eget@sociosqu.co.uk", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "M7S 7Z3", null, null, null, null, false, null, false, "Sasha" },
-                    { 10, 0, true, "8c22d416-0e2c-4f81-bf0d-9cab76abffe8", "posuere.at@telluseuaugue.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut", false, null, "Y9K 8I0", null, null, null, null, false, null, false, "Nerea" },
-                    { 11, 0, false, "dacfc82c-8545-4065-b2e9-f22550c2211f", "arcu.ac.orci@Nuncac.ca", false, "Lorem ipsum dolor sit amet, consectetuer", false, null, "I1Q 2P3", null, null, null, null, false, null, false, "Destiny" },
-                    { 12, 0, false, "2d8b3a22-2484-473b-bc77-9cc8fd664d74", "Sed.diam@enimcommodo.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "N7S 9B7", null, null, null, null, false, null, false, "Megan" },
-                    { 13, 0, true, "5236b75d-5398-4130-ad02-5adc1ba66831", "nec.tempus.mauris@estac.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "Y1Z 8D5", null, null, null, null, false, null, false, "Dorian" },
-                    { 14, 0, false, "6781d923-d292-4434-90cf-76cfdd9f8658", "lobortis.ultrices.Vivamus@feugiat.net", false, "Lorem ipsum", false, null, "I6G 4F6", null, null, null, null, false, null, false, "Preston" }
+                    { 15, 0, true, "4e8d1fa9-ff3f-491b-90a7-a3dd7902cb9d", "peti@mail.hu", false, "Én vagyok a Peti", false, null, "kód", null, null, null, null, false, null, false, "Kovács Péter" },
+                    { 1, 0, true, "5aa68a14-66a0-4efa-8ef5-5e7b96e8d4b0", "justo.sit.amet@Pellentesquetincidunttempus.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et", false, null, "B7S 4R4", null, null, null, null, false, null, false, "Melodie" },
+                    { 2, 0, true, "236753bd-1b11-46ab-93ea-aeeb9695c039", "est.vitae.sodales@tortor.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec", false, null, "P3N 8J9", null, null, null, null, false, null, false, "Nathaniel" },
+                    { 3, 0, true, "c2b72e55-7ce2-40a9-969a-7797e3b19c77", "et.magnis@estmollisnon.net", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "O8R 4J2", null, null, null, null, false, null, false, "Maggy" },
+                    { 4, 0, false, "de9b971b-651b-4135-a667-2877c3c54a31", "Duis.cursus.diam@IncondimentumDonec.org", false, "Lorem ipsum dolor sit amet,", false, null, "J0T 9E2", null, null, null, null, false, null, false, "Reagan" },
+                    { 5, 0, true, "58702db5-7597-4ed0-b466-e9d8017f2e46", "id.erat@eros.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", false, null, "X4B 4E1", null, null, null, null, false, null, false, "Gil" },
+                    { 6, 0, true, "53ad721e-3da2-4065-a4e9-1770ff86b234", "turpis@montesnasceturridiculus.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing", false, null, "V8B 7U0", null, null, null, null, false, null, false, "Armand" },
+                    { 7, 0, true, "0fdec2d3-6595-4b4a-8167-89e510e883c4", "sem.eget@sollicitudinamalesuada.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "V3J 1V4", null, null, null, null, false, null, false, "Bruno" },
+                    { 8, 0, true, "fc463158-5a28-433e-a3c2-05cbe3eec997", "nec.quam.Curabitur@dictum.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur", false, null, "I7C 3T4", null, null, null, null, false, null, false, "Patrick" },
+                    { 9, 0, false, "add3bfc8-7d26-411e-8595-7a23b376fe97", "eget@sociosqu.co.uk", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "M7S 7Z3", null, null, null, null, false, null, false, "Sasha" },
+                    { 10, 0, true, "a328ea58-ea7b-4425-88bf-9d1762285c9f", "posuere.at@telluseuaugue.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut", false, null, "Y9K 8I0", null, null, null, null, false, null, false, "Nerea" },
+                    { 11, 0, false, "c43b71e5-a919-458a-9527-900cb10c2377", "arcu.ac.orci@Nuncac.ca", false, "Lorem ipsum dolor sit amet, consectetuer", false, null, "I1Q 2P3", null, null, null, null, false, null, false, "Destiny" },
+                    { 12, 0, false, "38ce623b-6558-4444-8a15-e4cf9df8cd03", "Sed.diam@enimcommodo.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "N7S 9B7", null, null, null, null, false, null, false, "Megan" },
+                    { 13, 0, true, "36005119-da45-4a1b-b9dc-694daa23251f", "nec.tempus.mauris@estac.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "Y1Z 8D5", null, null, null, null, false, null, false, "Dorian" },
+                    { 14, 0, false, "2a8c5225-0810-491e-bf69-d5dec5438df1", "lobortis.ultrices.Vivamus@feugiat.net", false, "Lorem ipsum", false, null, "I6G 4F6", null, null, null, null, false, null, false, "Preston" }
                 });
 
             migrationBuilder.InsertData(

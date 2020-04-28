@@ -12,6 +12,6 @@ namespace TémaLab.Data.EntityConfiguration
     {
         private readonly ISeedService _seedService;
         public PostEntityConfiguration(ISeedService seedService) => _seedService = seedService;
-        public void Configure(EntityTypeBuilder<Post> builder) => builder.HasData(_seedService.Posts.Values);
+        public void Configure(EntityTypeBuilder<Post> builder) => builder.HasData(_seedService.Posts);
     }
 }

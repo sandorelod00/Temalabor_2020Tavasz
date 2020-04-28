@@ -13,6 +13,6 @@ namespace TémaLab.Data.EntityConfiguration
     {
         private readonly ISeedService _seedService;
         public EventEntityConfiguration(ISeedService seedService) => _seedService = seedService;
-        public void Configure(EntityTypeBuilder<Event> builder) => builder.HasData(_seedService.Events.Values);
+        public void Configure(EntityTypeBuilder<Event> builder) => builder.HasData(_seedService.Events);
     }
 }
