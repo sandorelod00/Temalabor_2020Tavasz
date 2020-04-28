@@ -2,109 +2,44 @@
 @model TémaLab.UpcomingCompetitionsModel
 @{
     ViewData["Title"] = "UpcomingCompetitions";
+
+    void RenderCompetitionCard(Data.DTOs.CompetitionDto comp)
+    {
+        <div class="card Event">
+            <div class="card-body">
+                <h2 class="card-title">@comp.Title</h2>
+                <p class="card-text">@comp.Content</p>
+                @*@<a class="nicelink" asp-page="./Details" asp-route-id="@comp.Id">Take me to Competition</a>*@
+                <button>register me</button>
+                @*<a asp-page="./Edit" asp-route-id="@comp.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@comp.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@comp.Id">Delete</a>*@
+            </div>
+            <div class="card-footer">
+                <p class="card-text text-muted float-left CompetitionFotterText">Registerd Competitors:  </p>
+                <a class="nicelink"><p class="float-right CompetitionFotterText">@comp.User.UserName</p></a>
+                <p class="card-text text-muted float-right CompetitionFotterText">
+                    Created by:
+                </p>
+            </div>
+        </div>
+    };
+
 }
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <Title>Gyak</Title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" ; integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ; integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ; integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ; integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/css/Base.css">
-    <link rel="stylesheet" type="text/css" href="~/css/UpComing.css" />
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <h1  class="Title">UpcomingCompetitions</h1>
-        </div>
-        <!--Ez alá szépen jönnek be az események-->
-        <div class="row" id="EventContainer">
-            <!--Ezek itt a minta Competitionok amiket majd cserélni kell.-->
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Competition Title</h2>
-                    <p class="card-text">Description of the Competition. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Competition</a>
-                    <a href="#" class="btn btn-primary">Register Me to the Competition</a>
-                </div>
-                <div class="card-footer">
-                    <p class="card-text text-muted float-left CompetitionFotterText">Registerd Competitors: 6</p>
-                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><p class="float-right CompetitionFotterText">User Name</p></a>
-                    <p class="card-text text-muted float-right CompetitionFotterText">
-                        Created by:
-                    </p>
-                </div>
-            </div>
 
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Competition Title</h2>
-                    <p class="card-text">Description of the Competition. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Competition</a>
-                    <a href="#" class="btn btn-primary">Register Me to the Competition</a>
-                </div>
-                <div class="card-footer">
-                    <p class="card-text text-muted float-left CompetitionFotterText">Registerd Competitors: 6</p>
-                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><p class="float-right CompetitionFotterText">User Name</p></a>
-                    <p class="card-text text-muted float-right CompetitionFotterText">
-                        Created by:
-                    </p>
-                </div>
-            </div>
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Competition Title</h2>
-                    <p class="card-text">Description of the Competition. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Competition</a>
-                    <a href="#" class="btn btn-primary">Register Me to the Competition</a>
-                </div>
-                <div class="card-footer">
-                    <p class="card-text text-muted float-left CompetitionFotterText">Registerd Competitors: 6</p>
-                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><p class="float-right CompetitionFotterText">User Name</p></a>
-                    <p class="card-text text-muted float-right CompetitionFotterText">
-                        Created by:
-                    </p>
-                </div>
-            </div>
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Competition Title</h2>
-                    <p class="card-text">Description of the Competition. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Competition</a>
-                    <a href="#" class="btn btn-primary">Register Me to the Competition</a>
-                </div>
-                <div class="card-footer">
-                    <p class="card-text text-muted float-left CompetitionFotterText">Registerd Competitors: 6</p>
-                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><p class="float-right CompetitionFotterText">User Name</p></a>
-                    <p class="card-text text-muted float-right CompetitionFotterText">
-                        Created by:
-                    </p>
-                </div>
-            </div>
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Competition Title</h2>
-                    <p class="card-text">Description of the Competition. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Competition</a>
-                    <a href="#" class="btn btn-primary">Register Me to the Competition</a>
-                </div>
-                <div class="card-footer">
-                    <p class="card-text text-muted float-left CompetitionFotterText">Registerd Competitors: 6</p>
-                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><p class="float-right CompetitionFotterText">User Name</p></a>
-                    <p class="card-text text-muted float-right CompetitionFotterText">
-                        Created by:
-                    </p>
-                </div>
-            </div>
-
-
-
-        </div>
+<div class="container">
+    <div class="row">
+        <h1 class="Title">UpcomingCompetitions</h1>
     </div>
-</body>
-</html>
+    @foreach (var comp in Model.Competitons)
+    {
+        RenderCompetitionCard(comp);
+    }
+
+
+
+</div>
+
