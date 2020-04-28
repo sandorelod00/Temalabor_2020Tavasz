@@ -6,6 +6,7 @@
     border: none;
     width: 100%;
     height: auto;
+    color: white;
 }
 
 .Title{
@@ -14,6 +15,7 @@
     width: 100%;
     text-align: center;
     opacity: 0.90;
+    color: white;
 }
 
 .Event{
@@ -22,9 +24,11 @@
     width: 100%;
     height: auto;
     border-radius: 25px;
-    margin: 0.5%
+    margin: 0.5%;
+    color: white;
 }
 
 .CompetitionFotterText{
     padding-left: 0.5%;
+    color: white;
 }

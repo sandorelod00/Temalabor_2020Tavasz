@@ -2,6 +2,22 @@
 @model TémaLab.UpcomingEventsModel
 @{
     ViewData["Title"] = "UpcomingEvents";
+    void ListEvent(Data.DTOs.EventDto eve)
+    {
+    <div class="card Event">
+        <div class="card-body">
+            <h2 class="card-title">@eve.Title</h2>
+            <p class="card-text">@eve.Content</p>
+        </div>
+        <div class="card-footer">
+            <a href="#" class="btn btn-primary">Take Me to the Event</a>
+            <p class="float-right CompetitionFotterText">@eve.User.UserName</p>
+            <p class="card-text text-muted float-right CompetitionFotterText">
+                Created by:
+            </p>
+        </div>
+    </div>
+    }
 }
 
 
@@ -21,46 +37,13 @@
         <div class="row">
             <h1 class="Title">UpcomingEvents</h1>
         </div>
+
         <!--Ez alá szépen jönnek be az események-->
         <div class="row" id="EventContainer">
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Event Title</h2>
-                    <p class="card-text">Description of the event. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Event</a>
-                </div>
-            </div>
-
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Event Title</h2>
-                    <p class="card-text">Description of the event. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Event</a>
-                </div>
-            </div>
-
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Event Title</h2>
-                    <p class="card-text">Description of the event. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Event</a>
-                </div>
-            </div>
-
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Event Title</h2>
-                    <p class="card-text">Description of the event. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Event</a>
-                </div>
-            </div>
-            <div class="card Event">
-                <div class="card-body">
-                    <h2 class="card-title">Event Title</h2>
-                    <p class="card-text">Description of the event. aajinfgpiujrbnpqeiughtpqiouhgpriuhgqopirtuehbnpiuqwrthnbpiquterhnbipuqrthnopighuqnepriougbhnqpuiertghbnpoqiteurhngpiquerhngboiuqerbgpizuqertb</p>
-                    <a href="#" class="btn btn-primary">Take Me to the Event</a>
-                </div>
-            </div>
+            @foreach (var eve in Model.Events)
+            {
+                ListEvent(eve);
+            };
         </div>
     </div>
 </body>

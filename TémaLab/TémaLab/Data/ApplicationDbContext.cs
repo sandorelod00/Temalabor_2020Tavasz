@@ -17,7 +17,7 @@ namespace TémaLab.Data
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ISeedService seedService) : base(options) => _seedService = seedService;
 
-        public override DbSet<User> Users { get; set; }
+        //public override DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Competition> Competitions { get; set; }
         public DbSet<Friendship> Friendship { get; set; }
