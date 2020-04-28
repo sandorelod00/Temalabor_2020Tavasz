@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TémaLab.Data.Entities;
 using TémaLab.Data.EntityConfiguration;
+using TémaLab.Data.SeedInterfaces.SeedService;
 using TémaLab.Data.SeedService;
 
 namespace TémaLab.Data
