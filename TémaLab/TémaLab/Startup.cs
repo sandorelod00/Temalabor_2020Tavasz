@@ -15,6 +15,10 @@ using Microsoft.Extensions.Hosting;
 using TémaLab.Data.SeedService;
 using TémaLab.Data.Entities;
 using TémaLab.Data.Services;
+using TémaLab.Data.SeedInterfaces.SeedService;
+using TémaLab.Data.SeedInterfaces;
+using TémaLab.Data.Hosting;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace TémaLab
 {
@@ -42,9 +46,15 @@ namespace TémaLab
                 .AddScoped<LikeService>()
                 .AddScoped<ParticipationService>()
                 .AddScoped<PostService>();
-            services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddScoped<IRoleSeedService, RoleSeedService>(); 
+            services.AddScoped<IUserSeedService, UserSeedService>();
+            services.AddIdentity<User, IdentityRole<int>>().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();//.AddDefaultTokenProviders();
+            //services.AddTransient<IEmailSender, YourEmailSender>();
+            //services.AddTransient<IEmailSender, YourSmsSender>();
+
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //.AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddRazorPages();
             services.AddTransient<ISeedService, SeedService>();
         }

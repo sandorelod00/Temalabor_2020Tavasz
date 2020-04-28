@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TémaLab.Data.Entities;
+using TémaLab.Data.SeedInterfaces.SeedService;
 
 namespace TémaLab.Data.SeedService
 {
