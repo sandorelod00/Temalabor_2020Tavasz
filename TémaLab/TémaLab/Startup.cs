@@ -48,7 +48,7 @@ namespace TémaLab
                 .AddScoped<PostService>();
             services.AddScoped<IRoleSeedService, RoleSeedService>(); 
             services.AddScoped<IUserSeedService, UserSeedService>();
-            services.AddIdentity<User, IdentityRole<int>>().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();//.AddDefaultTokenProviders();
+            services.AddIdentity<User, IdentityRole<int>>().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             //services.AddTransient<IEmailSender, YourEmailSender>();
             //services.AddTransient<IEmailSender, YourSmsSender>();
 
