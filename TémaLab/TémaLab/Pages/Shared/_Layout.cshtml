@@ -86,24 +86,29 @@
                         </form>
                     </div>
 
-                    <div class="p-2 bd-highlight">
-                        <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav ml-auto">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/MyProfile">@User.Identity.Name</a>
+                        </li>
+                            <li class="nav-item">
+                                <a id="xlink" class="nav-link"  asp-controller="Account" asp-action="LogOut">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                        <li class="nav-item">
                             <a id="xlink" class="nav-link" href="/Identity/Account/Login">Login<span class="sr-only">(current)</span></a>
                             <a id="xlink" class="nav-link" href="/Identity/Account/Register">Register<span class="sr-only">(current)</span></a>
-                        </form>
-                    </div>
+                        </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
 
-        
-        
-
-
     </header>
-        
-        
-
 
         <div class="container">
             <main role="main" class="pb-3">
@@ -122,13 +127,8 @@
         <script src="~/js/site.js" asp-append-version="true"></script>
 
         <script>
- 
-
-
-
 
         </script>
-
         @RenderSection("Scripts", required: false)
 
     </body>
