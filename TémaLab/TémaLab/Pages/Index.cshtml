@@ -24,8 +24,10 @@
             <li class="list-group-item post">
                 <form method="post">
                     <div class="container" id="post">
-                        <button class="btn btn-danger" asp-page-handler="delete" >Delete</button>
-                        <input type="hidden" name="id" value="@post.Id" />
+                        @if (post.UserId == Model.User.Id || Model.User.Admin) { 
+                            <button class="btn btn-danger" asp-page-handler="delete" >Delete</button>
+                            <input type="hidden" name="id" value="@post.Id" />
+                        }
                         <div>
                             @*<img src="~/images/profipic.png" class="postprofilepicture">*@
                             <a class="nicelink" href="#">@post.User.UserName</a>
