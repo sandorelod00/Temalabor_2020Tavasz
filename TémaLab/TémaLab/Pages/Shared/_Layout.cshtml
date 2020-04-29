@@ -33,25 +33,26 @@
             <div class="container">
 
                 <!--Ez itt a bal oldali lenyíló mneüjlé-->
+                @if(User.Identity.IsAuthenticated){
                 <button class="openbtn" onclick="openNav()">&#9776; </button>
                 <div id="mySidepanel" class="sidepanel">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <img class="img Left-User-menu-Profile-Picture" src="~/Images/profipic.png"><br>
-                    <a class="nicelink" asp-area="" asp-page="/MyProfile" ><h3>Your Name</h3></a>
+                    <a class="nicelink" asp-area="" asp-page="/MyProfile"><h3>Your Name</h3></a>
 
                     <!--TODO: A megeflelő mezők megjelenítsée a megfelelő oldalon JS kóddal. -->
 
-                    <a asp-area="" asp-page="/UpcomingEvents" id="UpcomingEventsLink" >Upcoming Events</a>
-                    <a asp-area="" asp-page="/UpcomingCompetitions"  id=" UpcomingCompetitonsLink" >Upcoming Competetions</a>
-                    <a asp-area="" asp-page="/LeaderBoard" id="LeaderBoardLink" >Leader Board</a>
+                    <a asp-area="" asp-page="/UpcomingEvents" id="UpcomingEventsLink">Upcoming Events</a>
+                    <a asp-area="" asp-page="/UpcomingCompetitions" id=" UpcomingCompetitonsLink">Upcoming Competetions</a>
+                    <a asp-area="" asp-page="/LeaderBoard" id="LeaderBoardLink">Leader Board</a>
 
 
                     <a asp-area="" asp-page="/Introduction" id="IntroductionLink"> Introduction</a>
                     <a asp-area="" asp-page="/Friends" id="FriendsLink"> Friends</a>
-                    <a asp-area="" asp-page="/EditProfile" id="EditProfileLink" >Edit profile</a>
+                    <a asp-area="" asp-page="/EditProfile" id="EditProfileLink">Edit profile</a>
 
                 </div>
-
+                }
                 <!--Innen indul a felső navbár-->
                 <a class="navbar-brand col" asp-area="" asp-page="/Index" style="padding: 0px; margin: 0px;">
                     <img src="~/Images/MTGA_Logo.png" class="navbar-brand img-fluid" alt="MTGA logo" style="width: 50%; height: auto;" />
@@ -89,19 +90,19 @@
                     <ul class="navbar-nav ml-auto">
                         @if (User.Identity.IsAuthenticated)
                         {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/MyProfile">@User.Identity.Name</a>
-                        </li>
                             <li class="nav-item">
-                                <a id="xlink" class="nav-link"  asp-controller="Account" asp-action="LogOut">Logout</a>
+                                <a class="nav-link" asp-area="" asp-page="/MyProfile">@User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="xlink" class="nav-link" asp-controller="Account" asp-action="LogOut">Logout</a>
                             </li>
                         }
                         else
                         {
-                        <li class="nav-item">
-                            <a id="xlink" class="nav-link" href="/Identity/Account/Login">Login<span class="sr-only">(current)</span></a>
-                            <a id="xlink" class="nav-link" href="/Identity/Account/Register">Register<span class="sr-only">(current)</span></a>
-                        </li>
+                            <li class="nav-item">
+                                <a id="xlink" class="nav-link" href="/Identity/Account/Login">Login<span class="sr-only">(current)</span></a>
+                                <a id="xlink" class="nav-link" href="/Identity/Account/Register">Register<span class="sr-only">(current)</span></a>
+                            </li>
                         }
                     </ul>
                 </div>
