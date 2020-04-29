@@ -20,7 +20,6 @@ namespace TémaLab.Controllers
         [Route("Account/LogOut")]
         public async Task<IActionResult> LogOut() 
         {
-            System.Diagnostics.Debug.WriteLine("logout");
             await SignInManager.SignOutAsync();
             return RedirectToPage("/Index"); 
         }
