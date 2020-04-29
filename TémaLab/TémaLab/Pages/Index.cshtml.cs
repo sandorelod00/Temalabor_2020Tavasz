@@ -39,7 +39,7 @@ namespace TémaLab.Pages
         }
 
 
-        public async Task<IActionResult> OnPostAsync([FromServices]UserManager<User> userManager)
+        public async Task<IActionResult> OnPostAdd([FromServices]UserManager<User> userManager)
         {
             User = await userManager.GetUserAsync(HttpContext.User);
             Roles = await userManager.GetRolesAsync(User);
@@ -49,9 +49,11 @@ namespace TémaLab.Pages
                 System.Diagnostics.Debug.WriteLine(PostContent);
                 System.Diagnostics.Debug.WriteLine(User.UserName);
 
-                Post createPost = new Post();
-                createPost.UserId = User.Id;
-                createPost.Content = PostContent;
+                Post createPost = new Post()
+                {
+                    Content = PostContent,
+                    UserId = User.Id,
+                };
                 _postService.AddNewPost(createPost);
                 return RedirectToPage("./Index");
             }
@@ -60,7 +62,11 @@ namespace TémaLab.Pages
         }
 
 
-
+        public IActionResult OnPostDelete(int id)
+        {
+            _postService.DeletePost(id);
+            return RedirectToPage("./Index");
+        }
 
     }
 }

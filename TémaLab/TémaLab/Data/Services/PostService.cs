@@ -34,7 +34,14 @@ namespace TémaLab.Data.Services
         internal void AddNewPost(Post post)
         {
             //post.date = DateTime.Now();
-            DbContext.Add(post);
+            DbContext.Posts.Add(post);
+            DbContext.SaveChanges();
+        }
+
+        internal void DeletePost(int id)
+        {
+            Post PostDelete = DbContext.Posts.Single(p => p.Id == id);
+            DbContext.Posts.Remove(PostDelete);
             DbContext.SaveChanges();
         }
     }
