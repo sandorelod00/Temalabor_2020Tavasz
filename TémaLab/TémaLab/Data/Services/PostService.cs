@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TémaLab.Data.DTOs;
+using TémaLab.Data.Entities;
 
 namespace TémaLab.Data.Services
 {
@@ -28,6 +29,13 @@ namespace TémaLab.Data.Services
                     Comments = p.Comments,
                     Likes = p.Likes
 
-                });
+                }).OrderByDescending(p => p.Id);
+
+        internal void AddNewPost(Post post)
+        {
+            //post.date = DateTime.Now();
+            DbContext.Add(post);
+            DbContext.SaveChanges();
+        }
     }
 }

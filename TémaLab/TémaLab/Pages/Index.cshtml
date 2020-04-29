@@ -3,56 +3,57 @@
 @{
     ViewData["Title"] = "Home page";
 
-    void RenderPost(Data.DTOs.PostDto post)
-    {
-        <li class="list-group-item post">
-            <div class="container" id="post">
-                <div>
-                    @*<img src="~/Images/profipic.png" class="postProfilePicture">*@
-                    <a class="nicelink" href="#">@post.User.UserName</a>
-                </div>
-                <hr>
-                <p>
-                    @post.Content
-                </p>
-                <hr>
-                <div>
-                    <div>
-                        <a href="#" style="margin-right: 20px;">Like</a>
-                        <a href="#">Comment</a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h5>Commentents:</h5>
-                    @foreach(var comment in post.Comments)
-                    {
-                        RenderComment(comment);
-                    }
-            </div>
-        </li>
-    }
-
-    void RenderComment(Data.Entities.Comment comment)
-    {
-        <div class="post">
-            <h6>comment.User.UserName</h6>
-            <br />
-            <p>@comment.Content</p>
-        </div>
-    }
 }
 
 
 <div class="container">
     <div class="col" id="Posts">
-        <ul class="list-gorup col">
-            @foreach(var post in Model.Posts)
-            {
-                RenderPost(post);
-            }
+        @if (@User.Identity.IsAuthenticated)
+        {
+        <form method="post" class="post" id="postCreater" >
+            <div class="form-group">
+                <label name="NewPostContent"> @Model.User.UserName </label>
+                <textarea class="post" name="NewPostContent" rows="5" placeholder="What is in you mind ?" ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+        }
+    <ul class="list-gorup col">
+        @foreach (var post in Model.Posts)
+        {
+            <li class="list-group-item post">
+                <div class="container" id="post">
+                    <div>
+                        @*<img src="~/images/profipic.png" class="postprofilepicture">*@
+                        <a class="nicelink" href="#">@post.User.UserName</a>
+                    </div>
+                    <hr>
+                    <p>
+                        @post.Content;
+                    </p>
+                    <hr>
+                    <div>
+                        <div>
+                            <a href="#" style="margin-right: 20px;">like</a>
+                            <a href="#">comment</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h5>commentents:</h5>
+                    @foreach (var comment in post.Comments)
+                    {
+                        <div class="post">
+                            <h6>comment.User.UserName</h6>
+                            <br />
+                            <p>@comment.Content</p>
+                        </div>
+                    }
+                </div>
+            </li>
+        }
 
 
-        </ul>
+    </ul>
     </div>
 </div>
