@@ -16,6 +16,19 @@
 </head>
 <body>
     <div class="container">
+        <div class ="card">
+            <h6 class ="card-header">@User.Identity.Name</h6>
+            <ul class ="list-group">
+                <li class ="list-group-item">
+                    felhasználónév: @Model.user.NormalizedUserName
+                </li>
+                <li class ="list-group-item">
+                    e-mail cím: @Model.user.Email
+                </li>
+                <li class ="list-group-item">
+                    szerepkörök: @string.Join(", ", Model.Roles)
+                </li></ul>
+    </div>
         <!--  Conteainer for contetnt. Ez a grid rendszer amibe bele rakunk több elemet. Külső Container-->
         <div class="col" id="Posts">
             <ul class="list-gorup col">

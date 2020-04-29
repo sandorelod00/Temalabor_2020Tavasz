@@ -14,7 +14,7 @@ namespace TémaLab
     public class Program
     {
         public static async Task Main(string[] args)
-        {   
+        {
             (await CreateHostBuilder(args)
                 .Build()
                 .MigrateDatabase<ApplicationDbContext>())
