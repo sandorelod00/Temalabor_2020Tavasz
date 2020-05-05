@@ -20,8 +20,8 @@ namespace TémaLab.Pages
 
 
         public IEnumerable<PostDto> Posts;
-        public User User { get; private set; }
-        public IEnumerable<string> Roles { get; private set; }
+        public User? User { get; private set; }
+        public IEnumerable<string>? Roles { get; private set; }
         public string Message { get; private set; }
         
         public IndexModel(ILogger<IndexModel> logger, [FromServices] PostService postService) 
@@ -35,7 +35,9 @@ namespace TémaLab.Pages
         {
             Posts = _postService.GetPosts();
             User = await userManager.GetUserAsync(HttpContext.User);
-            Roles = await userManager.GetRolesAsync(User);
+            if (User != null) { 
+                Roles = await userManager.GetRolesAsync(User);
+            }
         }
 
 

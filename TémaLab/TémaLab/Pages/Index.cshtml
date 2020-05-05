@@ -6,7 +6,7 @@
 }
 
 
-<div class="container">
+<div class="container">@*  *@
     <div class="col" id="Posts">
         @if (@User.Identity.IsAuthenticated)
         {
@@ -19,14 +19,17 @@
         </form>
         }
     <ul class="list-gorup col">
+        
         @foreach (var post in Model.Posts)
         {
             <li class="list-group-item post">
                 <form method="post">
                     <div class="container" id="post">
+                        @if(Model.User != null) { 
                         @if (post.UserId == Model.User.Id || Model.User.Admin) { 
                             <button class="btn btn-danger" asp-page-handler="delete" >Delete</button>
                             <input type="hidden" name="id" value="@post.Id" />
+                        }
                         }
                         <div>
                             @*<img src="~/images/profipic.png" class="postprofilepicture">*@
@@ -62,4 +65,5 @@
 
     </ul>
     </div>
+             
 </div>
