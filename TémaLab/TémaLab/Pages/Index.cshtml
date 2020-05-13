@@ -1,4 +1,4 @@
-﻿@page "{Id?}"
+﻿@page "/Index/{id?}"
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -6,64 +6,28 @@
 }
 
 
-<div class="container">@*  *@
+<div class="container">
     <div class="col" id="Posts">
         @if (@User.Identity.IsAuthenticated)
         {
-        <form method="post" class="post" id="postCreater" asp-page-handler="add"  >
-            <div class="form-group">
-                <label name="NewPostContent"> @Model.User.UserName </label>
-                <textarea class="post" name="NewPostContent" rows="5" placeholder="What is in you mind ?" ></textarea>
+        <form method="post" class="card" id="postCreater" asp-page-handler="add"  >
+            <div class="card-body">
+                <div class="form-group">
+                    <label name="NewPostContent"> @Model.User.UserName </label>
+                    <textarea class="card-text col" name="NewPostContent" rows="5" placeholder="What is in you mind ?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Post</button>
             </div>
-            <button type="submit" class="btn btn-primary">Post</button>
         </form>
         }
-    <ul class="list-gorup col">
+
         
         @foreach (var post in Model.Posts)
         {
-            <li class="list-group-item post">
-                <form method="post">
-                    <div class="container" id="post">
-                        @if(Model.User != null) { 
-                        @if (post.UserId == Model.User.Id || Model.User.Admin) { 
-                            <button class="btn btn-danger" asp-page-handler="delete" >Delete</button>
-                            <input type="hidden" name="id" value="@post.Id" />
-                        }
-                        }
-                        <div>
-                            @*<img src="~/images/profipic.png" class="postprofilepicture">*@
-                            <a class="nicelink" href="#">@post.User.UserName</a>
-                        </div>
-                        <hr>
-                        <p>
-                            @post.Content;
-                        </p>
-                        <hr>
-                        <div>
-                            <div>
-                                <a href="#" style="margin-right: 20px;">like</a>
-                                <a href="#">comment</a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div>
-                    <h5>commentents:</h5>
-                    @foreach (var comment in post.Comments)
-                    {
-                        <div class="post">
-                            <h6>comment.User.UserName</h6>
-                            <br />
-                            <p>@comment.Content</p>
-                        </div>
-                    }
-                </div>
-            </li>
+           <vc:post post="post" user="Model.User"></vc:post>
         }
 
 
-    </ul>
     </div>
              
 </div>

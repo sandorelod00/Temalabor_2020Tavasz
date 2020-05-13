@@ -17,23 +17,29 @@ namespace TémaLab.Pages
         private readonly ILogger<IndexModel> _logger;
 
         private PostService _postService;
-
-
+        private CommentService _commentService;
+        private UserService _userService;
+        public IEnumerable<UserDto> Users;
+        public IEnumerable<CommentDto> Comments;
         public IEnumerable<PostDto> Posts;
         public User? User { get; private set; }
         public IEnumerable<string>? Roles { get; private set; }
         public string Message { get; private set; }
         
-        public IndexModel(ILogger<IndexModel> logger, [FromServices] PostService postService) 
+        public IndexModel(ILogger<IndexModel> logger, [FromServices] PostService postService, [FromServices] CommentService commentService, [FromServices] UserService userService) 
         {
             _logger = logger;
             _postService = postService;
-
+            _commentService = commentService;
+            _userService = userService;
+            
         }
 
         public async Task OnGet([FromServices]UserManager<User> userManager)
         {
             Posts = _postService.GetPosts();
+            Comments = _commentService.GetComments();
+            Users = _userService.GetUsers();
             User = await userManager.GetUserAsync(HttpContext.User);
             if (User != null) { 
                 Roles = await userManager.GetRolesAsync(User);
@@ -59,16 +65,33 @@ namespace TémaLab.Pages
                 _postService.AddNewPost(createPost);
                 return RedirectToPage("./Index");
             }
-            return Page();
-            
+            return RedirectToPage("./Index");
+
+        }
+        public IActionResult OnPostDeletePost(int DeletePostId)
+        {
+            _postService.DeletePost(DeletePostId);
+            return RedirectToPage("/Index");
         }
 
-
-        public IActionResult OnPostDelete(int id)
+        public async Task<IActionResult> OnPostCommentAsync([FromServices]UserManager<User> userManager, int PostNewCommentId)
         {
-            _postService.DeletePost(id);
+            //var post = _postService.GetPost(PostId);
+            User = await userManager.GetUserAsync(HttpContext.User);
+            var CommentContent = Request.Form["NewComment"];
+            if (CommentContent != "")
+            {
+                Comment comment = new Comment()
+                {
+                    PostId = PostNewCommentId,
+                    UserId = User.Id,
+                    Content = CommentContent,
+                };
+                _commentService.AddNewComment(comment);
+            }
             return RedirectToPage("./Index");
         }
+
 
     }
 }

@@ -10,9 +10,11 @@ namespace TémaLab.Data.Services
 {
     public class PostService
     {
-        public PostService(ApplicationDbContext dbContext)
+        private CommentService _commetService;
+        public PostService(ApplicationDbContext dbContext,CommentService commentService)
         {
             DbContext = dbContext;
+            _commetService = commentService;
         }
         public ApplicationDbContext DbContext { get; }
         public IEnumerable<PostDto> GetPosts() => DbContext.Posts
@@ -31,6 +33,7 @@ namespace TémaLab.Data.Services
 
                 }).OrderByDescending(p => p.Id);
 
+
         internal void AddNewPost(Post post)
         {
             //post.date = DateTime.Now();
@@ -41,8 +44,16 @@ namespace TémaLab.Data.Services
         internal void DeletePost(int id)
         {
             Post PostDelete = DbContext.Posts.Single(p => p.Id == id);
+            List<Comment> comments = DbContext.Comments.Where(c => c.PostId == PostDelete.Id).ToList();
+            comments.ForEach(c => _commetService.DeleteComment(c.Id));
             DbContext.Posts.Remove(PostDelete);
             DbContext.SaveChanges();
         }
+
+        internal Post GetPost(int id)
+        {
+            return DbContext.Posts.Find(id);
+        } 
+
     }
 }
