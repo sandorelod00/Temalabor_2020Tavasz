@@ -63,5 +63,7 @@ namespace TémaLab.Data
         }
 
         public DbSet<TémaLab.Data.DTOs.PostDto> PostDto { get; set; }
+
+        public DbSet<TémaLab.Data.DTOs.CompetitionDto> CompetitionDto { get; set; }
     }
 }

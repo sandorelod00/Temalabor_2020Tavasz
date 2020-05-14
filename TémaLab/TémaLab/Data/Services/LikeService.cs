@@ -39,7 +39,7 @@ namespace TémaLab.Data.Services
 
         internal void DeleteLikeByPostid(int postId, int userId)
         {
-            Like like = DbContext.Likes.Single(l => l.PostId == postId && l.UserId == userId );
+            Like like = DbContext.Likes.Single(l => l.PostId == postId);
             DeleteLike(like);
         }
 

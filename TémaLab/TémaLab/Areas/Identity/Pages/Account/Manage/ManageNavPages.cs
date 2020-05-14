@@ -16,9 +16,7 @@ namespace TémaLab.Areas.Identity.Pages.Account.Manage
 
         public static string ExternalLogins => "ExternalLogins";
 
-        public static string PersonalData => "PersonalData";
 
-        public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
@@ -28,9 +26,6 @@ namespace TémaLab.Areas.Identity.Pages.Account.Manage
 
         public static string ExternalLoginsNavClass(ViewContext viewContext) => PageNavClass(viewContext, ExternalLogins);
 
-        public static string PersonalDataNavClass(ViewContext viewContext) => PageNavClass(viewContext, PersonalData);
-
-        public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
 
         private static string PageNavClass(ViewContext viewContext, string page)
         {
