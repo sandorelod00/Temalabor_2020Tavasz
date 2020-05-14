@@ -4,16 +4,21 @@
 *@
 
 
-<div class="card">
+<div class="card" id=@String.Format("comment_{0}", Model.comment.Id)>
     <div class="card-body">
         <h6><a>@Model.comment.User.UserName</a></h6>
         <br />
         <p class="card-text">@Model.comment.Content</p>
         <footer>
-            <button class="btn btn-secondary">Like</button>
-            @if(Model.user.Id == Model.comment.UserId || Model.user.Admin) 
-            { 
-                <button class="btn btn-danger">Delete</button>
+            @if (Model.user != null)
+            {
+                @if (Model.user.Id == Model.comment.UserId || Model.user.Admin)
+                {
+
+                    <button class="btn btn-danger" asp-page-handler="deleteComment">Delete</button>
+                    <input type="hidden" name="DeleteCommentId" value="@Model.comment.Id" />
+
+                }
             }
         </footer>
     </div>

@@ -17,7 +17,7 @@ namespace TémaLab.ViewComponents
 
 
 
-        public IViewComponentResult Invoke(PostDto post, User User)
+        public IViewComponentResult Invoke(PostDto post, User? User)
         {
             postModel = new PostControlelrModel(post, User);
             return View(postModel);

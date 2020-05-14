@@ -32,8 +32,7 @@ namespace TémaLab.Data.Services
                     Likes = p.Likes
 
                 }).OrderByDescending(p => p.Id);
-
-
+            
         internal void AddNewPost(Post post)
         {
             //post.date = DateTime.Now();
@@ -43,8 +42,8 @@ namespace TémaLab.Data.Services
 
         internal void DeletePost(int id)
         {
-            Post PostDelete = DbContext.Posts.Single(p => p.Id == id);
-            List<Comment> comments = DbContext.Comments.Where(c => c.PostId == PostDelete.Id).ToList();
+            Post PostDelete = GetPost(id);
+            List<Comment> comments = DbContext.Comments.Where(c => c.PostId == id).ToList();
             comments.ForEach(c => _commetService.DeleteComment(c.Id));
             DbContext.Posts.Remove(PostDelete);
             DbContext.SaveChanges();
@@ -52,7 +51,7 @@ namespace TémaLab.Data.Services
 
         internal Post GetPost(int id)
         {
-            return DbContext.Posts.Find(id);
+            return DbContext.Posts.Single(p => p.Id == id);
         } 
 
     }
