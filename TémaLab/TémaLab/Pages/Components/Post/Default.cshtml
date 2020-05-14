@@ -1,0 +1,44 @@
+﻿@model TémaLab.Model.PostControlelrModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    <form method="post">
+        <input type="hidden" name="PostId" value="@Model.post.Id"/>
+        <div class="card" id=@String.Format("post_{0}",Model.post.Id)>
+            <div class="card-body">
+                @if (Model.LoggedUser != null)
+                {
+                    @if (Model.LoggedUser.Id == Model.post.UserId || Model.LoggedUser.Admin)
+                    {
+                        <button class="btn btn-danger" asp-page-handler="deletePost">Delete</button>
+                    }
+                }
+                <h5><a class="nicelink" href="#">@Model.post.User.UserName</a></h5>
+                <p class="card-text">@Model.post.Content</p>
+                @if (Model.post.Likes.Count(l => l.UserId == Model.LoggedUser.Id) > 0)
+                {
+                    <button class="btn btn-secondary" asp-page-handler="LikeDeletePost">Like  @Model.post.Likes.Count()</button>
+                }
+                else
+                {
+                    <button class="btn btn-secondary" asp-page-handler="AddLikePost">Like  @Model.post.Likes.Count()</button>
+                }
+
+                <textarea class="card-text col" name="NewComment" placeholder="Click to write..."></textarea>
+                <button class="btn btn-primary" asp-page-handler="Comment">Comment</button>
+
+
+                @if (Model.post.Comments.Count() > 0)
+                {
+                    <footer>
+                        <h5>commentents:</h5>
+                        @foreach (var comment in Model.post.Comments)
+                        {
+                            <vc:comment comment="comment" user="Model.LoggedUser"></vc:comment>
+                        }
+                    </footer>
+                }
+            </div>
+        </div>
+    </form>

@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<TémaLab.Data.Entities.User> SignInManager
+@inject UserManager<TémaLab.Data.Entities.User> UserManager
 
 <ul class="navbar-nav post">
 @if (SignInManager.IsSignedIn(User))

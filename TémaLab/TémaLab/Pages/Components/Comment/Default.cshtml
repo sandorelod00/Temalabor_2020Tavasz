@@ -1,0 +1,25 @@
+﻿@model TémaLab.Model.CommentControllerModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div class="card" id=@String.Format("comment_{0}", Model.comment.Id)>
+    <div class="card-body">
+        <h6><a>@Model.comment.User.UserName</a></h6>
+        <br />
+        <p class="card-text">@Model.comment.Content</p>
+        <footer>
+            @if (Model.user != null)
+            {
+                @if (Model.user.Id == Model.comment.UserId || Model.user.Admin)
+                {
+
+                    <button class="btn btn-danger" asp-page-handler="deleteComment">Delete</button>
+                    <input type="hidden" name="DeleteCommentId" value="@Model.comment.Id" />
+
+                }
+            }
+        </footer>
+    </div>
+</div>

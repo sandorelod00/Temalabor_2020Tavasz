@@ -149,6 +149,55 @@ namespace TémaLab.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("TémaLab.Data.DTOs.CompetitionDto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CompetitionDto");
+                });
+
+            modelBuilder.Entity("TémaLab.Data.DTOs.PostDto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PostDto");
+                });
+
             modelBuilder.Entity("TémaLab.Data.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -158,6 +207,9 @@ namespace TémaLab.Migrations
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PostDtoId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PostId")
                         .HasColumnType("int");
@@ -169,6 +221,8 @@ namespace TémaLab.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PostDtoId");
 
                     b.HasIndex("PostId");
 
@@ -330,7 +384,13 @@ namespace TémaLab.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("PostId")
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PostDtoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PostId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -340,6 +400,10 @@ namespace TémaLab.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("PostDtoId");
 
                     b.HasIndex("PostId");
 
@@ -355,6 +419,9 @@ namespace TémaLab.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CompetitionDtoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CompetitionId")
                         .HasColumnType("int");
 
@@ -365,6 +432,8 @@ namespace TémaLab.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompetitionDtoId");
 
                     b.HasIndex("CompetitionId");
 
@@ -493,7 +562,7 @@ namespace TémaLab.Migrations
                             Id = 15,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "8e0e4cdf-5a14-47f5-99c8-335fa24c3254",
+                            ConcurrencyStamp = "ffe29bbf-7669-48e7-9f97-6649e3447f5f",
                             Email = "peti@mail.hu",
                             EmailConfirmed = false,
                             Introduction = "Én vagyok a Peti",
@@ -508,7 +577,7 @@ namespace TémaLab.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "843da767-57f4-4006-8b5a-20f8085f7dc1",
+                            ConcurrencyStamp = "3932320b-8649-47c8-b395-4d8a4d46350d",
                             Email = "justo.sit.amet@Pellentesquetincidunttempus.ca",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et",
@@ -523,7 +592,7 @@ namespace TémaLab.Migrations
                             Id = 2,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "7928bafb-ebeb-4435-94d5-6da23131f881",
+                            ConcurrencyStamp = "277c7eff-8f0b-414e-bbbb-3a4455b6edcd",
                             Email = "est.vitae.sodales@tortor.com",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec",
@@ -538,7 +607,7 @@ namespace TémaLab.Migrations
                             Id = 3,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "67e435a3-181c-441d-ab8d-e1bddf97acdd",
+                            ConcurrencyStamp = "32ac3a17-519e-40d3-88d1-81b9776f4823",
                             Email = "et.magnis@estmollisnon.net",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
@@ -553,7 +622,7 @@ namespace TémaLab.Migrations
                             Id = 4,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "58cbb2af-4d56-4eec-8c2d-c8e474fa1c20",
+                            ConcurrencyStamp = "16860a55-da8e-49c9-8fa1-6628f7d72571",
                             Email = "Duis.cursus.diam@IncondimentumDonec.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet,",
@@ -568,7 +637,7 @@ namespace TémaLab.Migrations
                             Id = 5,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "b40d2af3-628d-4ec3-8bdb-7c07454da96a",
+                            ConcurrencyStamp = "2b83ec67-829d-4f52-9b90-25757cc8ccb8",
                             Email = "id.erat@eros.com",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
@@ -583,7 +652,7 @@ namespace TémaLab.Migrations
                             Id = 6,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "86c782f8-65de-4999-a90c-6c9392307f0e",
+                            ConcurrencyStamp = "15eca17d-c705-489c-8b44-a0a7213ce9d8",
                             Email = "turpis@montesnasceturridiculus.edu",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing",
@@ -598,7 +667,7 @@ namespace TémaLab.Migrations
                             Id = 7,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "9bfe0c5e-f46c-4460-82d7-26f8e5860fa3",
+                            ConcurrencyStamp = "acca2df4-cd94-47c8-96b4-cbe962d1caf5",
                             Email = "sem.eget@sollicitudinamalesuada.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
@@ -613,7 +682,7 @@ namespace TémaLab.Migrations
                             Id = 8,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "90e3f942-b03d-4498-a74e-4415cb70154a",
+                            ConcurrencyStamp = "1cd59a9c-823e-4038-a711-e7f893f6a03c",
                             Email = "nec.quam.Curabitur@dictum.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur",
@@ -628,7 +697,7 @@ namespace TémaLab.Migrations
                             Id = 9,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "9c30ec50-cc3e-469b-954c-7ec0bf2aa454",
+                            ConcurrencyStamp = "3e8d976f-790f-4e7b-896e-a3a1f8bd1cbc",
                             Email = "eget@sociosqu.co.uk",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
@@ -643,7 +712,7 @@ namespace TémaLab.Migrations
                             Id = 10,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "253fa105-0273-4485-8fb8-aff4670a1ad4",
+                            ConcurrencyStamp = "007cd379-207d-458d-88db-91d6b616b53d",
                             Email = "posuere.at@telluseuaugue.edu",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut",
@@ -658,7 +727,7 @@ namespace TémaLab.Migrations
                             Id = 11,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "992a4285-3c71-4c83-b609-40543a81b0e3",
+                            ConcurrencyStamp = "8ebe0802-14ec-45df-90bc-d5597b975705",
                             Email = "arcu.ac.orci@Nuncac.ca",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer",
@@ -673,7 +742,7 @@ namespace TémaLab.Migrations
                             Id = 12,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "2d0c3000-4f6c-4d77-a963-19bccd6f3cc4",
+                            ConcurrencyStamp = "6083b259-8d7f-4129-b912-291571c91110",
                             Email = "Sed.diam@enimcommodo.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
@@ -688,7 +757,7 @@ namespace TémaLab.Migrations
                             Id = 13,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "afcee36b-66ba-44f3-962e-075d8f1dc6a3",
+                            ConcurrencyStamp = "7ec78850-b5d0-493c-9fa9-1d36e7f2ade3",
                             Email = "nec.tempus.mauris@estac.ca",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
@@ -703,7 +772,7 @@ namespace TémaLab.Migrations
                             Id = 14,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "97978453-c38c-4609-a93a-a7ede0bd5aa1",
+                            ConcurrencyStamp = "cc4c5172-6058-42fa-9a33-3e048d0ebeaa",
                             Email = "lobortis.ultrices.Vivamus@feugiat.net",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum",
@@ -766,8 +835,31 @@ namespace TémaLab.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TémaLab.Data.DTOs.CompetitionDto", b =>
+                {
+                    b.HasOne("TémaLab.Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TémaLab.Data.DTOs.PostDto", b =>
+                {
+                    b.HasOne("TémaLab.Data.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TémaLab.Data.Entities.Comment", b =>
                 {
+                    b.HasOne("TémaLab.Data.DTOs.PostDto", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("PostDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TémaLab.Data.Entities.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
@@ -831,11 +923,20 @@ namespace TémaLab.Migrations
 
             modelBuilder.Entity("TémaLab.Data.Entities.Like", b =>
                 {
+                    b.HasOne("TémaLab.Data.Entities.Comment", "Comment")
+                        .WithMany()
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("TémaLab.Data.DTOs.PostDto", null)
+                        .WithMany("Likes")
+                        .HasForeignKey("PostDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TémaLab.Data.Entities.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("TémaLab.Data.Entities.User", "User")
                         .WithMany()
@@ -846,6 +947,11 @@ namespace TémaLab.Migrations
 
             modelBuilder.Entity("TémaLab.Data.Entities.Participation", b =>
                 {
+                    b.HasOne("TémaLab.Data.DTOs.CompetitionDto", null)
+                        .WithMany("Participations")
+                        .HasForeignKey("CompetitionDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TémaLab.Data.Entities.Competition", "Competition")
                         .WithMany("Participations")
                         .HasForeignKey("CompetitionId")

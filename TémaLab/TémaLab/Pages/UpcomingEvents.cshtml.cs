@@ -5,24 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TémaLab.Data;
+using TémaLab.Data.DTOs;
 using TémaLab.Data.Entities;
+using TémaLab.Data.Services;
 
 namespace TémaLab
 {
     public class UpcomingEventsModel : PageModel
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly EventService _eventService;
 
-        public UpcomingEventsModel(ApplicationDbContext dbContext)
+        public UpcomingEventsModel([FromServices]EventService eventService)
         {
-            _dbContext = dbContext;
+            _eventService = eventService;
         }
 
-        public List<Event> Events { get; set; }
+        public IEnumerable<EventDto> Events { get; set; }
 
         public void OnGet()
         {
-            Events = _dbContext.Events.ToList();
+            Events = _eventService.GetEvents();
         }
     }
 }

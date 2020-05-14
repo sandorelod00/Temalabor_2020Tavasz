@@ -18,13 +18,13 @@ for details on configuring this project to bundle and minify static web assets. 
 
 @media(min-width: 768px) {
     body {
-        background-image: url("../Images/background.jpg");
+        /*background-image: url("../Images/background.jpg");*/
         background-repeat: no-repeat;
         background-position: top center;
         background-size: cover;
-        background-color: black;
+        /*background-color: black;*/
         background-attachment: fixed;
-        color: white;
+        /*color: white;*/
     }
 }
 

@@ -8,11 +8,11 @@ namespace TémaLab.Data.SeedInterfaces.SeedService
 {
     public interface ISeedService
     {
-        IDictionary<string, User> Users { get; }
-        IDictionary<string, Competition> Competitions { get; }
-        IDictionary<string, Comment> Comments { get; }
-        IDictionary<string, Event> Events { get; }
-        IDictionary<string, Post> Posts { get; }
-        IDictionary<string, Like> Likes{ get; }
+        IList<User> Users { get; }
+        IList<Competition> Competitions { get; }
+        IList<Comment> Comments { get; }
+        IList<Event> Events { get; }
+        IList<Post> Posts { get; }
+        IList<Like> Likes{ get; }
     }
 }

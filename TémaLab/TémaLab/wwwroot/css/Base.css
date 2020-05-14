@@ -1,11 +1,11 @@
 ﻿
-/*Post Css szabályok*/
+/*/*Post Css szabályok*/
 .post {
     padding-bottom: 0.5%;
     margin-bottom: 5%;
-    background-color: black;
+    /*background-color: black;*/
     opacity: 0.90;
-    color: white;
+    /*color: white;*/
     border: hidden;
     border-radius: 10px;
     width: 100%;
@@ -48,12 +48,12 @@
 
 /*Link szabályok*/
 
-.nicelink {
+/*.nicelink {
     color: white;
 }
 
 .nicelink:hover {
     color: darkslategray;
-    text-decoration:none;
-}
+    text-decoration:none*/;
+}*/
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TémaLab.Data.DTOs;
+using TémaLab.Data.Entities;
 
 namespace TémaLab.Data.Services
 {
@@ -27,5 +28,19 @@ namespace TémaLab.Data.Services
                     Content = c.Content,
                     Participations = c.Participations
                 });
+
+        internal Competition GetCompetition(int? id) => DbContext.Competitions.Single(c => c.Id == id);
+
+        internal void Delete(Competition competitionDto)
+        {
+            DbContext.Competitions.Remove(competitionDto);
+            DbContext.SaveChanges();
+        }
+
+        internal void AddCompetition(Competition competitionDto)
+        {
+            DbContext.Competitions.Add(competitionDto);
+            DbContext.SaveChanges();
+        }
     }
 }

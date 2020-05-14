@@ -9,6 +9,7 @@ using TémaLab.Data.Entities;
 using TémaLab.Data.EntityConfiguration;
 using TémaLab.Data.SeedInterfaces.SeedService;
 using TémaLab.Data.SeedService;
+using TémaLab.Data.DTOs;
 
 namespace TémaLab.Data
 {
@@ -60,5 +61,9 @@ namespace TémaLab.Data
             modelBuilder.ApplyConfiguration(new CommentEntitiyConfiguration(_seedService));
             modelBuilder.ApplyConfiguration(new EventEntityConfiguration(_seedService));
         }
+
+        public DbSet<TémaLab.Data.DTOs.PostDto> PostDto { get; set; }
+
+        public DbSet<TémaLab.Data.DTOs.CompetitionDto> CompetitionDto { get; set; }
     }
 }
