@@ -5,58 +5,60 @@
     Layout = "_Layout";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Competitons[0].Title)*@
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Competitons[0].User)*@
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Competitons[0].date)*@
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Competitons[0].Content)*@
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Competitons) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
-</html>
+    <h1 class="Title">Competitions</h1>
+    @if (Model.User != null)
+    {
+        @if (Model.User.Admin)
+        {
+            <p>
+                <a asp-page="Create">Create New</a>
+            </p>
+        }
+    }
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Competitons[0].Title)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Competitons[0].User)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Competitons[0].date)*@
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Competitons[0].Content)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Competitons)
+            {
+            <div class="card">
+                <vc:competition competiton="item"></vc:competition>
+            </div>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -2,10 +2,17 @@
 @model TémaLab.DetailsModel
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+
+<vc:competition competiton="Model.CompetitionDto"></vc:competition>
+<h1>Allready in the comepetition</h1>
+<table>
+
+</table>
+
+@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -49,4 +56,4 @@
     <a asp-page="./Index">Back to List</a>
 </div>
 </body>
-</html>
+</html>*@

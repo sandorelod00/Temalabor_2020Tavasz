@@ -21,7 +21,7 @@ namespace TémaLab
             _competitionService = comptetionService;
         }
 
-        public Competition CompetitionDto { get; set; }
+        public CompetitionDto CompetitionDto { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,7 +30,7 @@ namespace TémaLab
                 return NotFound();
             }
 
-            CompetitionDto = _competitionService.GetCompetition(id);
+            CompetitionDto = _competitionService.GetCompetitions().Single(c => c.Id == id);
 
             if (CompetitionDto == null)
             {
