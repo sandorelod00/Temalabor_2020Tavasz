@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="/css/Base.css">
 </head>
 <body>
-    <div class="container">
+    <!--<div class="container">
         <div class ="card">
             <h6 class ="card-header">@User.Identity.Name</h6>
             <ul class ="list-group">
@@ -28,6 +28,12 @@
                 <li class ="list-group-item">
                     szerepkörök: @string.Join(", ", Model.Roles)
                 </li></ul>
+    </div>-->
+    <div style="align-content: center; align-items: center">
+        <p style="text-align:center">
+            <img src="~/Images/profipic.png" class="postProfilePicture" />
+        </p>
+        <h6 style="align-self: center; text-align: center" class="card-header">@User.Identity.Name</h6>
     </div>
         <!--  Conteainer for contetnt. Ez a grid rendszer amibe bele rakunk több elemet. Külső Container-->
         <div class="col" id="Posts">
