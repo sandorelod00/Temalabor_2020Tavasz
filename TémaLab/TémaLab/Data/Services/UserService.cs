@@ -38,7 +38,9 @@ namespace TémaLab.Data.Services
                 Competitions = u.Competitions,
                 Participations = u.Participations,
                 EventParticipations = u.EventParticipations,
-                Events = u.Events
+                Events = u.Events,
+                score = u.score,
+                rank = u.rank
             });
     }
 }
