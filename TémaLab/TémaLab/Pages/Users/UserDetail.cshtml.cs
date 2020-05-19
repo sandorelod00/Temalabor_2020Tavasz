@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace TémaLab
         UserService userService { get; }
         UserManager<User> userManager { get; }
         public User user { get; set; }
+        public int thisId { get; set; }
         public UserDetailModel(UserService _userService, UserManager<User> _userManager)
         {
             userService = _userService;
@@ -23,6 +25,8 @@ namespace TémaLab
 
         public async Task<IActionResult> OnGet(int? Id)
         {
+            thisId = int.Parse(userManager.GetUserId(User));
+
             if (Id == null)
             {
                 return NotFound();
