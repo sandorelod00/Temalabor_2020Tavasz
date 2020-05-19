@@ -4,30 +4,37 @@
     ViewData["Title"] = "Home page";
 
 }
+@section scripts{
+    <script src="~/lib/jquery-validation-unobtrusive/">
+    completed = () => {
+        alert('Most Postoltálll tassúúúúú!!!!');
+    };
+    </script>
+}
 
 
 <div class="container">
     <div class="col" id="Posts">
         @if (@User.Identity.IsAuthenticated)
         {
-        <form method="post" class="card" id="postCreater" asp-page-handler="add"  >
-            <div class="card-body">
-                <div class="form-group">
-                    <label name="NewPostContent"> @Model.User.UserName </label>
-                    <textarea class="card-text col" name="NewPostContent" rows="5" placeholder="What is in you mind ?"></textarea>
+            <form method="post" class="card" id="postCreater"  asp-page-handler="add">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label name="NewPostContent"> @Model.User.UserName </label>
+                        <textarea class="card-text col" name="NewPostContent" rows="5" placeholder="What is in you mind ?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Post</button>
-            </div>
-        </form>
+            </form>
         }
 
-        
+
         @foreach (var post in Model.Posts)
         {
-           <vc:post post="post" user="Model.User"></vc:post>
+            <vc:post post="post" user="Model.User"></vc:post>
         }
 
 
     </div>
-             
+
 </div>
