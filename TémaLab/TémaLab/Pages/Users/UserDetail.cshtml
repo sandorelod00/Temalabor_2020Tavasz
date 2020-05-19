@@ -1,11 +1,13 @@
 ﻿@page
 @model TémaLab.UserDetailModel
+
 @{
     ViewData["Title"] = "UserDetail";
-}
 
-    <div>
-        <img class="img-fluid" src="~/Images/profipic.png" width="40" height="50"><br>
+}
+<div>
+    <form method="post" id="AddFriendForm">
+        <img class="img-fluid" src="~/Images/profipic.png" width="40" height="50">
         <h3>@Model.user.UserName</h3>
         <ul class="list-gourp">
             <li class="list-group-item">
@@ -15,7 +17,9 @@
                 }
                 else
                 {
-                    <button type="button" class="btn btn-primary">Add Friend</button>
+
+                    <button class="btn btn-default" asp-page-handler="Addfriend" asp-route-id="@Model.user.Id">Add Friend</button>
+
                 }
 
             </li>
@@ -30,4 +34,5 @@
             About me: <br>
             @Model.user.Introduction
         </span>
-    </div>
+    </form>
+</div>
