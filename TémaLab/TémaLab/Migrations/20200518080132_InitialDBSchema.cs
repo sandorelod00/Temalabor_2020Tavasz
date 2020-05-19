@@ -44,7 +44,8 @@ namespace TémaLab.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Introduction = table.Column<string>(nullable: true),
                     MTGACode = table.Column<string>(nullable: true),
-                    Admin = table.Column<bool>(nullable: false)
+                    Admin = table.Column<bool>(nullable: false),
+                    score = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -158,6 +159,28 @@ namespace TémaLab.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CompetitionDto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
+                    UserId = table.Column<int>(nullable: false),
+                    date = table.Column<DateTime>(nullable: false),
+                    Content = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompetitionDto", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CompetitionDto_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Competitions",
                 columns: table => new
                 {
@@ -226,6 +249,27 @@ namespace TémaLab.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PostDto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: false),
+                    date = table.Column<DateTime>(nullable: false),
+                    Content = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PostDto", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PostDto_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
@@ -254,11 +298,18 @@ namespace TémaLab.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(nullable: false),
                     CompetitionId = table.Column<int>(nullable: false),
-                    date = table.Column<DateTime>(nullable: false)
+                    date = table.Column<DateTime>(nullable: false),
+                    CompetitionDtoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Participations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Participations_CompetitionDto_CompetitionDtoId",
+                        column: x => x.CompetitionDtoId,
+                        principalTable: "CompetitionDto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Participations_Competitions_CompetitionId",
                         column: x => x.CompetitionId,
@@ -309,11 +360,18 @@ namespace TémaLab.Migrations
                     UserId = table.Column<int>(nullable: false),
                     PostId = table.Column<int>(nullable: false),
                     date = table.Column<DateTime>(nullable: false),
-                    Content = table.Column<string>(nullable: true)
+                    Content = table.Column<string>(nullable: true),
+                    PostDtoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_PostDto_PostDtoId",
+                        column: x => x.PostDtoId,
+                        principalTable: "PostDto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comments_Posts_PostId",
                         column: x => x.PostId,
@@ -335,12 +393,26 @@ namespace TémaLab.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(nullable: false),
-                    PostId = table.Column<int>(nullable: false),
-                    date = table.Column<DateTime>(nullable: false)
+                    PostId = table.Column<int>(nullable: true),
+                    CommentId = table.Column<int>(nullable: true),
+                    date = table.Column<DateTime>(nullable: false),
+                    PostDtoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Likes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Likes_Comments_CommentId",
+                        column: x => x.CommentId,
+                        principalTable: "Comments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_PostDto_PostDtoId",
+                        column: x => x.PostDtoId,
+                        principalTable: "PostDto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Likes_Posts_PostId",
                         column: x => x.PostId,
@@ -357,24 +429,24 @@ namespace TémaLab.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "AccessFailedCount", "Admin", "ConcurrencyStamp", "Email", "EmailConfirmed", "Introduction", "LockoutEnabled", "LockoutEnd", "MTGACode", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "Admin", "ConcurrencyStamp", "Email", "EmailConfirmed", "Introduction", "LockoutEnabled", "LockoutEnd", "MTGACode", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "score" },
                 values: new object[,]
                 {
-                    { 15, 0, true, "8e0e4cdf-5a14-47f5-99c8-335fa24c3254", "peti@mail.hu", false, "Én vagyok a Peti", false, null, "kód", null, null, null, null, false, null, false, "Kovács Péter" },
-                    { 1, 0, true, "843da767-57f4-4006-8b5a-20f8085f7dc1", "justo.sit.amet@Pellentesquetincidunttempus.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et", false, null, "B7S 4R4", null, null, null, null, false, null, false, "Melodie" },
-                    { 2, 0, true, "7928bafb-ebeb-4435-94d5-6da23131f881", "est.vitae.sodales@tortor.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec", false, null, "P3N 8J9", null, null, null, null, false, null, false, "Nathaniel" },
-                    { 3, 0, true, "67e435a3-181c-441d-ab8d-e1bddf97acdd", "et.magnis@estmollisnon.net", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "O8R 4J2", null, null, null, null, false, null, false, "Maggy" },
-                    { 4, 0, false, "58cbb2af-4d56-4eec-8c2d-c8e474fa1c20", "Duis.cursus.diam@IncondimentumDonec.org", false, "Lorem ipsum dolor sit amet,", false, null, "J0T 9E2", null, null, null, null, false, null, false, "Reagan" },
-                    { 5, 0, true, "b40d2af3-628d-4ec3-8bdb-7c07454da96a", "id.erat@eros.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", false, null, "X4B 4E1", null, null, null, null, false, null, false, "Gil" },
-                    { 6, 0, true, "86c782f8-65de-4999-a90c-6c9392307f0e", "turpis@montesnasceturridiculus.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing", false, null, "V8B 7U0", null, null, null, null, false, null, false, "Armand" },
-                    { 7, 0, true, "9bfe0c5e-f46c-4460-82d7-26f8e5860fa3", "sem.eget@sollicitudinamalesuada.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "V3J 1V4", null, null, null, null, false, null, false, "Bruno" },
-                    { 8, 0, true, "90e3f942-b03d-4498-a74e-4415cb70154a", "nec.quam.Curabitur@dictum.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur", false, null, "I7C 3T4", null, null, null, null, false, null, false, "Patrick" },
-                    { 9, 0, false, "9c30ec50-cc3e-469b-954c-7ec0bf2aa454", "eget@sociosqu.co.uk", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "M7S 7Z3", null, null, null, null, false, null, false, "Sasha" },
-                    { 10, 0, true, "253fa105-0273-4485-8fb8-aff4670a1ad4", "posuere.at@telluseuaugue.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut", false, null, "Y9K 8I0", null, null, null, null, false, null, false, "Nerea" },
-                    { 11, 0, false, "992a4285-3c71-4c83-b609-40543a81b0e3", "arcu.ac.orci@Nuncac.ca", false, "Lorem ipsum dolor sit amet, consectetuer", false, null, "I1Q 2P3", null, null, null, null, false, null, false, "Destiny" },
-                    { 12, 0, false, "2d0c3000-4f6c-4d77-a963-19bccd6f3cc4", "Sed.diam@enimcommodo.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "N7S 9B7", null, null, null, null, false, null, false, "Megan" },
-                    { 13, 0, true, "afcee36b-66ba-44f3-962e-075d8f1dc6a3", "nec.tempus.mauris@estac.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "Y1Z 8D5", null, null, null, null, false, null, false, "Dorian" },
-                    { 14, 0, false, "97978453-c38c-4609-a93a-a7ede0bd5aa1", "lobortis.ultrices.Vivamus@feugiat.net", false, "Lorem ipsum", false, null, "I6G 4F6", null, null, null, null, false, null, false, "Preston" }
+                    { 15, 0, true, "cdf6ac2a-5ede-4346-abd3-d67e2970049d", "peti@mail.hu", false, "Én vagyok a Peti", false, null, "kód", null, null, null, null, false, null, false, "Kovács Péter", 0 },
+                    { 1, 0, true, "110defbb-f869-426a-8705-458a97dc6fc4", "justo.sit.amet@Pellentesquetincidunttempus.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et", false, null, "B7S 4R4", null, null, null, null, false, null, false, "Melodie", 14567 },
+                    { 2, 0, true, "85297906-9e5b-4b43-b5ca-22abe364782c", "est.vitae.sodales@tortor.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec", false, null, "P3N 8J9", null, null, null, null, false, null, false, "Nathaniel", 2347 },
+                    { 3, 0, true, "e1e0f5b6-6cf5-4ed2-bda5-3edbdc672fb2", "et.magnis@estmollisnon.net", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "O8R 4J2", null, null, null, null, false, null, false, "Maggy", 678 },
+                    { 4, 0, false, "8821fb2e-809e-4051-9244-905a59f87aa9", "Duis.cursus.diam@IncondimentumDonec.org", false, "Lorem ipsum dolor sit amet,", false, null, "J0T 9E2", null, null, null, null, false, null, false, "Reagan", 8732 },
+                    { 5, 0, true, "3c7a092c-962d-4972-8f18-5c7c0f311adf", "id.erat@eros.com", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", false, null, "X4B 4E1", null, null, null, null, false, null, false, "Gil", 239874 },
+                    { 6, 0, true, "ee3dcdf0-6f73-49f3-b99e-c61a545cc7c4", "turpis@montesnasceturridiculus.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing", false, null, "V8B 7U0", null, null, null, null, false, null, false, "Armand", 293 },
+                    { 7, 0, true, "4ac7a3e1-20ff-4eaa-8058-ff0edb5aaff2", "sem.eget@sollicitudinamalesuada.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "V3J 1V4", null, null, null, null, false, null, false, "Bruno", 23987 },
+                    { 8, 0, true, "2fbd852e-a8b7-41a6-88b8-116025f8c2cd", "nec.quam.Curabitur@dictum.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur", false, null, "I7C 3T4", null, null, null, null, false, null, false, "Patrick", 235 },
+                    { 9, 0, false, "579b5a8a-1c77-49d7-bf7d-d1c2c7536902", "eget@sociosqu.co.uk", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "M7S 7Z3", null, null, null, null, false, null, false, "Sasha", 89723 },
+                    { 10, 0, true, "dc0473b9-1016-4f40-8d4c-49580d9b169f", "posuere.at@telluseuaugue.edu", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut", false, null, "Y9K 8I0", null, null, null, null, false, null, false, "Nerea", 2485 },
+                    { 11, 0, false, "761e0a42-80e9-4e77-81ae-a236472c5773", "arcu.ac.orci@Nuncac.ca", false, "Lorem ipsum dolor sit amet, consectetuer", false, null, "I1Q 2P3", null, null, null, null, false, null, false, "Destiny", 23498 },
+                    { 12, 0, false, "c0046278-6fdb-45fb-a1eb-a05a1768ba09", "Sed.diam@enimcommodo.org", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing", false, null, "N7S 9B7", null, null, null, null, false, null, false, "Megan", 8735 },
+                    { 13, 0, true, "7261e533-5d77-4dd9-b51b-9ecb42746874", "nec.tempus.mauris@estac.ca", false, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam", false, null, "Y1Z 8D5", null, null, null, null, false, null, false, "Dorian", 32197 },
+                    { 14, 0, false, "5614b9ff-a173-42c9-8b45-01bc918a0bd1", "lobortis.ultrices.Vivamus@feugiat.net", false, "Lorem ipsum", false, null, "I6G 4F6", null, null, null, null, false, null, false, "Preston", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -402,18 +474,18 @@ namespace TémaLab.Migrations
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "Content", "PostId", "UserId", "date" },
-                values: new object[] { 1, "Szia igen minden kérdésedben nagyon szívesen segítek", 1, 13, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "Id", "Content", "PostDtoId", "PostId", "UserId", "date" },
+                values: new object[] { 1, "Szia igen minden kérdésedben nagyon szívesen segítek", null, 1, 13, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "Content", "PostId", "UserId", "date" },
-                values: new object[] { 2, "uhhh.... Az lenne az első kérédésem hogyan kell jétszani ? ", 1, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "Id", "Content", "PostDtoId", "PostId", "UserId", "date" },
+                values: new object[] { 2, "uhhh.... Az lenne az első kérédésem hogyan kell jétszani ? ", null, 1, 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Comments",
-                columns: new[] { "Id", "Content", "PostId", "UserId", "date" },
-                values: new object[] { 3, "ohhh haver én a mono blura esküszök sokkal élvezetesebb azzal a játék....", 2, 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "Id", "Content", "PostDtoId", "PostId", "UserId", "date" },
+                values: new object[] { 3, "ohhh haver én a mono blura esküszök sokkal élvezetesebb azzal a játék....", null, 2, 11, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -443,6 +515,11 @@ namespace TémaLab.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_PostDtoId",
+                table: "Comments",
+                column: "PostDtoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comments_PostId",
                 table: "Comments",
                 column: "PostId");
@@ -450,6 +527,11 @@ namespace TémaLab.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
                 table: "Comments",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CompetitionDto_UserId",
+                table: "CompetitionDto",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -478,6 +560,16 @@ namespace TémaLab.Migrations
                 column: "User2Id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Likes_CommentId",
+                table: "Likes",
+                column: "CommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_PostDtoId",
+                table: "Likes",
+                column: "PostDtoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Likes_PostId",
                 table: "Likes",
                 column: "PostId");
@@ -488,6 +580,11 @@ namespace TémaLab.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Participations_CompetitionDtoId",
+                table: "Participations",
+                column: "CompetitionDtoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Participations_CompetitionId",
                 table: "Participations",
                 column: "CompetitionId");
@@ -495,6 +592,11 @@ namespace TémaLab.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Participations_UserId",
                 table: "Participations",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PostDto_UserId",
+                table: "PostDto",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -533,9 +635,6 @@ namespace TémaLab.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Comments");
-
-            migrationBuilder.DropTable(
                 name: "EventParticipations");
 
             migrationBuilder.DropTable(
@@ -554,10 +653,19 @@ namespace TémaLab.Migrations
                 name: "Events");
 
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "CompetitionDto");
 
             migrationBuilder.DropTable(
                 name: "Competitions");
+
+            migrationBuilder.DropTable(
+                name: "PostDto");
+
+            migrationBuilder.DropTable(
+                name: "Posts");
 
             migrationBuilder.DropTable(
                 name: "Users");

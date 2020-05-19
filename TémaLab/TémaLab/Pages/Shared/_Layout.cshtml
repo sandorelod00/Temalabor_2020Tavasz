@@ -49,21 +49,23 @@
 
                     <a asp-area="" asp-page="/Introduction" id="IntroductionLink"> Introduction</a>
                     <a asp-area="" asp-page="/Friends" id="FriendsLink"> Friends</a>
-                    <a asp-area="" asp-page="/EditProfile" id="EditProfileLink">Edit profile</a>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" id="EditProfileLink">Edit profile</a>
 
                 </div>
                 }
                 <!--Innen indul a felső navbár-->
-                <a class="navbar-brand col" asp-area="" asp-page="/Index" style="padding: 0px; margin: 0px;">
-                    <img src="~/Images/MTGA_Logo.png" class="navbar-brand img-fluid" alt="MTGA logo" style="width: 50%; height: auto;" />
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="p-2 bd-highlight">
                         <ul class="navbar-nav ">
+                            <li>
+                                <!--class="navbar-brand img-fluid"-->
+                                <a class="navbar-brand col" asp-area="" asp-page="/Index" style="padding: 0px; margin: 0px;">
+                                    <img src="~/Images/MTGA_Logo.png" alt="MTGA logo" style="width: 30%; height: auto;" />
+                                </a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </li>
                             <li class="nav-item active">
                                 <a class="nav-link" asp-area="" asp-page="/MyProfile">My Profile<span class="sr-only">(current)</span></a>
                             </li>
@@ -77,40 +79,21 @@
                                     <a class="dropdown-item" href="#">Posts</a>
                                 </div>
                             </li>
+                            <li>
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-light" id="search_btn">Search</button>
+                            </li>
+                            <li>
+                                <partial name="_LoginPartial" />
+                            </li>
                         </ul>
                     </div>
-
-                    <div class="p-2 flex-grow-1 bd-highlight">
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                            <button type="button" class="btn btn-light" id="search_btn">Search</button>
-                        </form>
-                    </div>
-                    <partial name="_LoginPartial" />
-                    @*<ul class="navbar-nav ml-auto">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/MyProfile">@User.Identity.Name</a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="xlink" class="nav-link" asp-controller="Account" asp-action="LogOut">Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a id="xlink" class="nav-link" href="/Identity/Account/Login">Login<span class="sr-only">(current)</span></a>
-                                <a id="xlink" class="nav-link" href="/Identity/Account/Register">Register<span class="sr-only">(current)</span></a>
-                            </li>
-                        }
-                    </ul>*@
                 </div>
             </div>
         </nav>
-
     </header>
-
         <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()

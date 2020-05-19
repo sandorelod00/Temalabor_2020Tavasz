@@ -1,284 +1,232 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TémaLab.Migrations
 {
-    public partial class SomethingChanged : Migration
+    public partial class UserRanks : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "CompetitionDtoId",
-                table: "Participations",
+            migrationBuilder.AddColumn<string>(
+                name: "rank",
+                table: "Users",
                 nullable: true);
-
-            migrationBuilder.CreateTable(
-                name: "CompetitionDto",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
-                    date = table.Column<DateTime>(nullable: false),
-                    Content = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CompetitionDto", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CompetitionDto_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "ConcurrencyStamp",
-                value: "3932320b-8649-47c8-b395-4d8a4d46350d");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "8d53a851-ebaa-4b6f-8e28-0484a9fce208", "silver" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "ConcurrencyStamp",
-                value: "277c7eff-8f0b-414e-bbbb-3a4455b6edcd");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "f2cc0dbc-302c-44c8-aa68-040c70016f04", "gold" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "ConcurrencyStamp",
-                value: "32ac3a17-519e-40d3-88d1-81b9776f4823");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "38e95280-57dd-462c-a5ef-26ecf693f1bd", "plat" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "ConcurrencyStamp",
-                value: "16860a55-da8e-49c9-8fa1-6628f7d72571");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "88fa9fe4-3c37-4c4a-94b8-819c5a2a18c2", "diamond" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 5,
-                column: "ConcurrencyStamp",
-                value: "2b83ec67-829d-4f52-9b90-25757cc8ccb8");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "4085abc0-f8d8-4fc4-a9f9-c621489ee99a", "silver" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 6,
-                column: "ConcurrencyStamp",
-                value: "15eca17d-c705-489c-8b44-a0a7213ce9d8");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "908d602e-9ebf-48d5-bc7e-09d77c287def", "silver" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 7,
-                column: "ConcurrencyStamp",
-                value: "acca2df4-cd94-47c8-96b4-cbe962d1caf5");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "21566553-ca80-4621-bd9f-969a862f4db5", "gold" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 8,
-                column: "ConcurrencyStamp",
-                value: "1cd59a9c-823e-4038-a711-e7f893f6a03c");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "14ad6be4-f301-44b6-98af-ffe63f738325", "diamond" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 9,
-                column: "ConcurrencyStamp",
-                value: "3e8d976f-790f-4e7b-896e-a3a1f8bd1cbc");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "a949f210-e42d-4ccc-9051-e5094502835f", "plat" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 10,
-                column: "ConcurrencyStamp",
-                value: "007cd379-207d-458d-88db-91d6b616b53d");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "452ee125-9ebf-4e81-bef5-f1ff5eb7306a", "plat" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 11,
-                column: "ConcurrencyStamp",
-                value: "8ebe0802-14ec-45df-90bc-d5597b975705");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "360fdf5a-dbe5-48f4-ab5a-9d4b36df2053", "silver" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 12,
-                column: "ConcurrencyStamp",
-                value: "6083b259-8d7f-4129-b912-291571c91110");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "22aad0da-7e4e-4e0b-afc4-227bafeac398", "gold" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 13,
-                column: "ConcurrencyStamp",
-                value: "7ec78850-b5d0-493c-9fa9-1d36e7f2ade3");
+                columns: new[] { "ConcurrencyStamp", "rank" },
+                values: new object[] { "c4521b81-b8ba-4879-99af-44f02c73d6f8", "silver" });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 14,
                 column: "ConcurrencyStamp",
-                value: "cc4c5172-6058-42fa-9a33-3e048d0ebeaa");
+                value: "6c56f71e-07e3-4c2e-9d10-55435f9cbcee");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 15,
                 column: "ConcurrencyStamp",
-                value: "ffe29bbf-7669-48e7-9f97-6649e3447f5f");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Participations_CompetitionDtoId",
-                table: "Participations",
-                column: "CompetitionDtoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CompetitionDto_UserId",
-                table: "CompetitionDto",
-                column: "UserId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Participations_CompetitionDto_CompetitionDtoId",
-                table: "Participations",
-                column: "CompetitionDtoId",
-                principalTable: "CompetitionDto",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                value: "f1a54df7-e8df-4a05-8841-7c8ceed97480");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Participations_CompetitionDto_CompetitionDtoId",
-                table: "Participations");
-
-            migrationBuilder.DropTable(
-                name: "CompetitionDto");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Participations_CompetitionDtoId",
-                table: "Participations");
-
             migrationBuilder.DropColumn(
-                name: "CompetitionDtoId",
-                table: "Participations");
+                name: "rank",
+                table: "Users");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "ConcurrencyStamp",
-                value: "c89ad75c-5a96-4e40-bbfa-916d27311d6a");
+                value: "110defbb-f869-426a-8705-458a97dc6fc4");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "ConcurrencyStamp",
-                value: "309e7fcf-9c38-4712-9e4d-db552decb866");
+                value: "85297906-9e5b-4b43-b5ca-22abe364782c");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "ConcurrencyStamp",
-                value: "527c5535-779e-4ac3-a65c-386543b7d7cb");
+                value: "e1e0f5b6-6cf5-4ed2-bda5-3edbdc672fb2");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "ConcurrencyStamp",
-                value: "9c312974-6c68-486f-a0a8-79146b68c6f5");
+                value: "8821fb2e-809e-4051-9244-905a59f87aa9");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "ConcurrencyStamp",
-                value: "f3dc8382-1993-4102-bd0b-4fd9dd1a64ed");
+                value: "3c7a092c-962d-4972-8f18-5c7c0f311adf");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "ConcurrencyStamp",
-                value: "2fc8a426-1baf-4793-ad33-f4b08712aeb5");
+                value: "ee3dcdf0-6f73-49f3-b99e-c61a545cc7c4");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "ConcurrencyStamp",
-                value: "a7773ec2-0bf6-46c9-8a67-62ec167cb097");
+                value: "4ac7a3e1-20ff-4eaa-8058-ff0edb5aaff2");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "ConcurrencyStamp",
-                value: "974b0a1d-1a0e-4f56-9cf4-dced81d1a2b2");
+                value: "2fbd852e-a8b7-41a6-88b8-116025f8c2cd");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "ConcurrencyStamp",
-                value: "b426b443-d31e-4ddf-8302-9dee98731fe1");
+                value: "579b5a8a-1c77-49d7-bf7d-d1c2c7536902");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "ConcurrencyStamp",
-                value: "2c3b505b-fd23-484e-9697-89d4e213a641");
+                value: "dc0473b9-1016-4f40-8d4c-49580d9b169f");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "ConcurrencyStamp",
-                value: "173385cc-6ad2-46e9-8a36-62f8b1940d09");
+                value: "761e0a42-80e9-4e77-81ae-a236472c5773");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 12,
                 column: "ConcurrencyStamp",
-                value: "3fe9e694-f278-4f0e-a6d6-b957829a3bf4");
+                value: "c0046278-6fdb-45fb-a1eb-a05a1768ba09");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 13,
                 column: "ConcurrencyStamp",
-                value: "72ed6a31-28fb-48d3-a289-b8d21ad783e5");
+                value: "7261e533-5d77-4dd9-b51b-9ecb42746874");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 14,
                 column: "ConcurrencyStamp",
-                value: "b6308890-a636-45ee-a4d6-b22adcc906f7");
+                value: "5614b9ff-a173-42c9-8b45-01bc918a0bd1");
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 15,
                 column: "ConcurrencyStamp",
-                value: "8ab04f72-bdd2-4f30-8ace-8543a077ecf3");
+                value: "cdf6ac2a-5ede-4346-abd3-d67e2970049d");
         }
     }
 }
