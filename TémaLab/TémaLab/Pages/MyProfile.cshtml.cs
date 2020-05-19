@@ -31,7 +31,8 @@ namespace TémaLab
             _userService = userService;
             _commentService = commentService;
             Posts = _postService.GetPosts().Where(p => p.User == user);
-            
+            // || p.Comments.Any(c => c.User == user)
+
         }
     }
 }

@@ -14,7 +14,7 @@
                         <button class="btn btn-danger" asp-page-handler="deletePost">Delete</button>
                     }
                 }
-                <h5><a class="nicelink" href="#">@Model.post.User.UserName</a></h5>
+                <h5><a class="nicelink" asp-page="./Users/UserDetail" asp-route-id="@Model.post.User.Id">@Model.post.User.UserName</a></h5>
                 <p class="card-text">@Model.post.Content</p>
                 @if (Model.LoggedUser != null)
                 {

@@ -1,0 +1,33 @@
+﻿@page
+@model TémaLab.Model.UserModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <ul class="list-gourp">
+        <li class="list-group-item">
+            <img class="img-fluid" src="~/Images/profipic.png"><br>
+        </li>
+        <li class="list-group-item">
+            <h3>@Model.viewedUser.UserName</h3>
+        </li>
+        <li class="list-group-item">
+            Rank: @Model.viewedUser.rank
+        </li>
+        <li class="list-group-item">
+            Score: @Model.viewedUser.score
+        </li>
+        <li class="list-group-item">
+            <button type="button" class="btn btn-primary">Add Friend</button>
+        </li>
+    </ul>
+    <!--<div>
+        @*foreach (var post in Model.viewedUser.Posts)
+        {
+            <vc:post post="post" user="Model.viewedUser"></vc:post>
+        }*@
+
+    </div>-->
+</div>
+
