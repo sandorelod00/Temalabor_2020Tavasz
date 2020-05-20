@@ -198,6 +198,39 @@ namespace TémaLab.Migrations
                     b.ToTable("PostDto");
                 });
 
+            modelBuilder.Entity("TémaLab.Data.DTOs.UserDto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Admin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Introduction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MTGACode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("rank")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("score")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserDto");
+                });
+
             modelBuilder.Entity("TémaLab.Data.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -270,6 +303,9 @@ namespace TémaLab.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserDtoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -277,6 +313,8 @@ namespace TémaLab.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserDtoId");
 
                     b.HasIndex("UserId");
 
@@ -314,6 +352,9 @@ namespace TémaLab.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserDtoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -321,6 +362,8 @@ namespace TémaLab.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserDtoId");
 
                     b.HasIndex("UserId");
 
@@ -347,6 +390,9 @@ namespace TémaLab.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserDtoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -356,6 +402,8 @@ namespace TémaLab.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
+
+                    b.HasIndex("UserDtoId");
 
                     b.HasIndex("UserId");
 
@@ -370,9 +418,19 @@ namespace TémaLab.Migrations
                     b.Property<int>("User2Id")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserDtoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserDtoId1")
+                        .HasColumnType("int");
+
                     b.HasKey("User1Id", "User2Id");
 
                     b.HasIndex("User2Id");
+
+                    b.HasIndex("UserDtoId");
+
+                    b.HasIndex("UserDtoId1");
 
                     b.ToTable("Friendship");
                 });
@@ -425,6 +483,9 @@ namespace TémaLab.Migrations
                     b.Property<int>("CompetitionId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserDtoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -436,6 +497,8 @@ namespace TémaLab.Migrations
                     b.HasIndex("CompetitionDtoId");
 
                     b.HasIndex("CompetitionId");
+
+                    b.HasIndex("UserDtoId");
 
                     b.HasIndex("UserId");
 
@@ -452,6 +515,9 @@ namespace TémaLab.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserDtoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -459,6 +525,8 @@ namespace TémaLab.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserDtoId");
 
                     b.HasIndex("UserId");
 
@@ -544,6 +612,12 @@ namespace TémaLab.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
+                    b.Property<string>("rank")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("score")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -562,7 +636,7 @@ namespace TémaLab.Migrations
                             Id = 15,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "ffe29bbf-7669-48e7-9f97-6649e3447f5f",
+                            ConcurrencyStamp = "1a841fe4-baa6-495a-953d-0a03e6ecf8d1",
                             Email = "peti@mail.hu",
                             EmailConfirmed = false,
                             Introduction = "Én vagyok a Peti",
@@ -570,14 +644,15 @@ namespace TémaLab.Migrations
                             MTGACode = "kód",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Kovács Péter"
+                            UserName = "Kovács Péter",
+                            score = 0
                         },
                         new
                         {
                             Id = 1,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "3932320b-8649-47c8-b395-4d8a4d46350d",
+                            ConcurrencyStamp = "00f36740-4ddd-4611-9dde-939656407c67",
                             Email = "justo.sit.amet@Pellentesquetincidunttempus.ca",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et",
@@ -585,14 +660,16 @@ namespace TémaLab.Migrations
                             MTGACode = "B7S 4R4",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Melodie"
+                            UserName = "Melodie",
+                            rank = "silver",
+                            score = 14567
                         },
                         new
                         {
                             Id = 2,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "277c7eff-8f0b-414e-bbbb-3a4455b6edcd",
+                            ConcurrencyStamp = "d29b1672-2a36-4069-a64f-bc1c233eaeed",
                             Email = "est.vitae.sodales@tortor.com",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec",
@@ -600,14 +677,16 @@ namespace TémaLab.Migrations
                             MTGACode = "P3N 8J9",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Nathaniel"
+                            UserName = "Nathaniel",
+                            rank = "gold",
+                            score = 2347
                         },
                         new
                         {
                             Id = 3,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "32ac3a17-519e-40d3-88d1-81b9776f4823",
+                            ConcurrencyStamp = "50fc14f8-2fbf-4430-88e7-9b51372dc83e",
                             Email = "et.magnis@estmollisnon.net",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
@@ -615,14 +694,16 @@ namespace TémaLab.Migrations
                             MTGACode = "O8R 4J2",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Maggy"
+                            UserName = "Maggy",
+                            rank = "plat",
+                            score = 678
                         },
                         new
                         {
                             Id = 4,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "16860a55-da8e-49c9-8fa1-6628f7d72571",
+                            ConcurrencyStamp = "cc36bdbb-3856-47ad-8cfe-3b21d5507625",
                             Email = "Duis.cursus.diam@IncondimentumDonec.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet,",
@@ -630,14 +711,16 @@ namespace TémaLab.Migrations
                             MTGACode = "J0T 9E2",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Reagan"
+                            UserName = "Reagan",
+                            rank = "diamond",
+                            score = 8732
                         },
                         new
                         {
                             Id = 5,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "2b83ec67-829d-4f52-9b90-25757cc8ccb8",
+                            ConcurrencyStamp = "ed09de8c-555a-4e2e-a61d-0103cf61fcac",
                             Email = "id.erat@eros.com",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
@@ -645,14 +728,16 @@ namespace TémaLab.Migrations
                             MTGACode = "X4B 4E1",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Gil"
+                            UserName = "Gil",
+                            rank = "silver",
+                            score = 239874
                         },
                         new
                         {
                             Id = 6,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "15eca17d-c705-489c-8b44-a0a7213ce9d8",
+                            ConcurrencyStamp = "d45a6fe3-97f2-44e1-a447-34b792a487ac",
                             Email = "turpis@montesnasceturridiculus.edu",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing",
@@ -660,14 +745,16 @@ namespace TémaLab.Migrations
                             MTGACode = "V8B 7U0",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Armand"
+                            UserName = "Armand",
+                            rank = "silver",
+                            score = 293
                         },
                         new
                         {
                             Id = 7,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "acca2df4-cd94-47c8-96b4-cbe962d1caf5",
+                            ConcurrencyStamp = "715f127b-dc9b-4482-9467-f90c78273682",
                             Email = "sem.eget@sollicitudinamalesuada.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
@@ -675,14 +762,16 @@ namespace TémaLab.Migrations
                             MTGACode = "V3J 1V4",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Bruno"
+                            UserName = "Bruno",
+                            rank = "gold",
+                            score = 23987
                         },
                         new
                         {
                             Id = 8,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "1cd59a9c-823e-4038-a711-e7f893f6a03c",
+                            ConcurrencyStamp = "63fd3955-b640-4837-ac77-54d0510a1a60",
                             Email = "nec.quam.Curabitur@dictum.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur",
@@ -690,14 +779,16 @@ namespace TémaLab.Migrations
                             MTGACode = "I7C 3T4",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Patrick"
+                            UserName = "Patrick",
+                            rank = "diamond",
+                            score = 235
                         },
                         new
                         {
                             Id = 9,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "3e8d976f-790f-4e7b-896e-a3a1f8bd1cbc",
+                            ConcurrencyStamp = "3dd38f42-f2d3-4284-9236-1f245be282cf",
                             Email = "eget@sociosqu.co.uk",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
@@ -705,14 +796,16 @@ namespace TémaLab.Migrations
                             MTGACode = "M7S 7Z3",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Sasha"
+                            UserName = "Sasha",
+                            rank = "plat",
+                            score = 89723
                         },
                         new
                         {
                             Id = 10,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "007cd379-207d-458d-88db-91d6b616b53d",
+                            ConcurrencyStamp = "270fd53b-b296-48ba-a5aa-fefbe5b401d6",
                             Email = "posuere.at@telluseuaugue.edu",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut",
@@ -720,14 +813,16 @@ namespace TémaLab.Migrations
                             MTGACode = "Y9K 8I0",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Nerea"
+                            UserName = "Nerea",
+                            rank = "plat",
+                            score = 2485
                         },
                         new
                         {
                             Id = 11,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "8ebe0802-14ec-45df-90bc-d5597b975705",
+                            ConcurrencyStamp = "af7d0854-91e2-4764-8025-038658847c38",
                             Email = "arcu.ac.orci@Nuncac.ca",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer",
@@ -735,14 +830,16 @@ namespace TémaLab.Migrations
                             MTGACode = "I1Q 2P3",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Destiny"
+                            UserName = "Destiny",
+                            rank = "silver",
+                            score = 23498
                         },
                         new
                         {
                             Id = 12,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "6083b259-8d7f-4129-b912-291571c91110",
+                            ConcurrencyStamp = "eb8e4251-4b41-488d-b919-3827a56b5c77",
                             Email = "Sed.diam@enimcommodo.org",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing",
@@ -750,14 +847,16 @@ namespace TémaLab.Migrations
                             MTGACode = "N7S 9B7",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Megan"
+                            UserName = "Megan",
+                            rank = "gold",
+                            score = 8735
                         },
                         new
                         {
                             Id = 13,
                             AccessFailedCount = 0,
                             Admin = true,
-                            ConcurrencyStamp = "7ec78850-b5d0-493c-9fa9-1d36e7f2ade3",
+                            ConcurrencyStamp = "67873897-6d8a-48fc-9457-b402ceab172c",
                             Email = "nec.tempus.mauris@estac.ca",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam",
@@ -765,14 +864,16 @@ namespace TémaLab.Migrations
                             MTGACode = "Y1Z 8D5",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Dorian"
+                            UserName = "Dorian",
+                            rank = "silver",
+                            score = 32197
                         },
                         new
                         {
                             Id = 14,
                             AccessFailedCount = 0,
                             Admin = false,
-                            ConcurrencyStamp = "cc4c5172-6058-42fa-9a33-3e048d0ebeaa",
+                            ConcurrencyStamp = "bd10dbac-8622-4783-b986-87f0b41842f5",
                             Email = "lobortis.ultrices.Vivamus@feugiat.net",
                             EmailConfirmed = false,
                             Introduction = "Lorem ipsum",
@@ -780,7 +881,8 @@ namespace TémaLab.Migrations
                             MTGACode = "I6G 4F6",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "Preston"
+                            UserName = "Preston",
+                            score = 0
                         });
                 });
 
@@ -875,6 +977,11 @@ namespace TémaLab.Migrations
 
             modelBuilder.Entity("TémaLab.Data.Entities.Competition", b =>
                 {
+                    b.HasOne("TémaLab.Data.DTOs.UserDto", null)
+                        .WithMany("Competitions")
+                        .HasForeignKey("UserDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TémaLab.Data.Entities.User", "User")
                         .WithMany("Competitions")
                         .HasForeignKey("UserId")
@@ -884,6 +991,11 @@ namespace TémaLab.Migrations
 
             modelBuilder.Entity("TémaLab.Data.Entities.Event", b =>
                 {
+                    b.HasOne("TémaLab.Data.DTOs.UserDto", null)
+                        .WithMany("Events")
+                        .HasForeignKey("UserDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TémaLab.Data.Entities.User", "User")
                         .WithMany("Events")
                         .HasForeignKey("UserId")
@@ -898,6 +1010,11 @@ namespace TémaLab.Migrations
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("TémaLab.Data.DTOs.UserDto", null)
+                        .WithMany("EventParticipations")
+                        .HasForeignKey("UserDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("TémaLab.Data.Entities.User", "User")
                         .WithMany("EventParticipations")
@@ -919,6 +1036,16 @@ namespace TémaLab.Migrations
                         .HasForeignKey("User2Id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("TémaLab.Data.DTOs.UserDto", null)
+                        .WithMany("Friendships1")
+                        .HasForeignKey("UserDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("TémaLab.Data.DTOs.UserDto", null)
+                        .WithMany("Friendships2")
+                        .HasForeignKey("UserDtoId1")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("TémaLab.Data.Entities.Like", b =>
@@ -958,6 +1085,11 @@ namespace TémaLab.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("TémaLab.Data.DTOs.UserDto", null)
+                        .WithMany("Participations")
+                        .HasForeignKey("UserDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TémaLab.Data.Entities.User", "User")
                         .WithMany("Participations")
                         .HasForeignKey("UserId")
@@ -967,6 +1099,11 @@ namespace TémaLab.Migrations
 
             modelBuilder.Entity("TémaLab.Data.Entities.Post", b =>
                 {
+                    b.HasOne("TémaLab.Data.DTOs.UserDto", null)
+                        .WithMany("Posts")
+                        .HasForeignKey("UserDtoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("TémaLab.Data.Entities.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")

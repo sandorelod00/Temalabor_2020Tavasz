@@ -14,6 +14,8 @@ namespace TémaLab.Data.DTOs
         public string Email { get; set; }
         public string MTGACode { get; set; }
         public bool Admin { get; set; }
+        public int score { get; set; }
+        public string rank { get; set; }
         public ICollection<Post> Posts { get; set; }
         public ICollection<Friendship> Friendships1 { get; set; }
         public ICollection<Friendship> Friendships2 { get; set; }

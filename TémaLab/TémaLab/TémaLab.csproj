@@ -47,6 +47,14 @@
     <Compile Remove="Data\Migrations\20200424092810_InitialDBSchema.Designer.cs" />
     <Compile Remove="Migrations\20200424094044_InitialDBSchema.cs" />
     <Compile Remove="Migrations\20200424094044_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Migrations\20200428142832_InitialDBSchema.cs" />
+    <Compile Remove="Migrations\20200428142832_InitialDBSchema.Designer.cs" />
+    <Compile Remove="Migrations\20200505152245_DtoMigration.cs" />
+    <Compile Remove="Migrations\20200505152245_DtoMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200514173928_LikeChanged.cs" />
+    <Compile Remove="Migrations\20200514173928_LikeChanged.Designer.cs" />
+    <Compile Remove="Migrations\20200514202112_SomethingChanged.cs" />
+    <Compile Remove="Migrations\20200514202112_SomethingChanged.Designer.cs" />
   </ItemGroup>
 
 

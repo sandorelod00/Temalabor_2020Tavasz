@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -22,25 +23,14 @@ namespace TémaLab
         }
 
     public Competition CompetitionDto { get; set; }
-
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public User User { get; set; }
+    public async Task<IActionResult> OnGetAsync(int? id, [FromServices]UserManager<User> userManager)
         {
-            if (id == null)
+            User = await userManager.GetUserAsync(HttpContext.User);
+            if (User == null || !User.Admin)
             {
-                return NotFound();
+                return BadRequest();
             }
-
-            CompetitionDto = _competitionService.GetCompetition(id);
-
-            if (CompetitionDto == null)
-            {
-                return NotFound();
-            }
-            return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
             if (id == null)
             {
                 return NotFound();
@@ -54,6 +44,9 @@ namespace TémaLab
             }
 
             return RedirectToPage("./Index");
+
         }
+
+
     }
 }

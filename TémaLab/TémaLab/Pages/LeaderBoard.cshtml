@@ -40,31 +40,45 @@
                 <tbody>
                     <tr>
                         <td>1.</td>
-                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
-                        <td>19872 points</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">@Model.Users.ElementAt(0).UserName</a></td>
+                        <td>@Model.Users.ElementAt(0).score points</td>
                         <td>WorldChampionship</td>
-                        <td>Plat</td>
+                        <td>@Model.Users.ElementAt(0).rank</td>
                     </tr>
                     <tr>
                         <td>2.</td>
-                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
-                        <td>12872 points</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">@Model.Users.ElementAt(1).UserName</a></td>
+                        <td>@Model.Users.ElementAt(1).score points</td>
                         <td>WorldChampionship</td>
-                        <td>Diamond</td>
+                        <td>@Model.Users.ElementAt(1).rank</td>
                     </tr>
                     <tr>
                         <td>3.</td>
-                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
-                        <td>9872 points</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">@Model.Users.ElementAt(2).UserName</a></td>
+                        <td>@Model.Users.ElementAt(2).score points</td>
                         <td>WorldChampionship</td>
-                        <td>Diamond</td>
+                        <td>@Model.Users.ElementAt(2).rank</td>
                     </tr>
                     <tr>
                         <td>4.</td>
-                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">OtherUserName</a></td>
-                        <td>7478 points</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">@Model.Users.ElementAt(3).UserName</a></td>
+                        <td>@Model.Users.ElementAt(3).score points</td>
                         <td>WorldChampionship</td>
-                        <td>Gold</td>
+                        <td>@Model.Users.ElementAt(3).rank</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">@Model.Users.ElementAt(4).UserName</a></td>
+                        <td>@Model.Users.ElementAt(4).score points</td>
+                        <td>WorldChampionship</td>
+                        <td>@Model.Users.ElementAt(4).rank</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td> <a class="TableLink" asp-area="" asp-page="/OtherProfile">@Model.Users.ElementAt(5).UserName</a></td>
+                        <td>@Model.Users.ElementAt(5).score points</td>
+                        <td>WorldChampionship</td>
+                        <td>@Model.Users.ElementAt(5).rank</td>
                     </tr>
                 </tbody>
             </table>

@@ -14,17 +14,23 @@
                         <button class="btn btn-danger" asp-page-handler="deletePost">Delete</button>
                     }
                 }
-                <h5><a class="nicelink" href="#">@Model.post.User.UserName</a></h5>
+                <h5><a class="nicelink" asp-page="./Users/UserDetail" asp-route-id="@Model.post.User.Id">@Model.post.User.UserName</a></h5>
                 <p class="card-text">@Model.post.Content</p>
-                @if (Model.post.Likes.Count(l => l.UserId == Model.LoggedUser.Id) > 0)
+                @if (Model.LoggedUser != null)
                 {
-                    <button class="btn btn-secondary" asp-page-handler="LikeDeletePost">Like  @Model.post.Likes.Count()</button>
+                    @if (Model.post.Likes.Count(l => l.UserId == Model.LoggedUser.Id) > 0)
+                    {
+                        <button class="btn btn-secondary" asp-page-handler="LikeDeletePost">Like  @Model.post.Likes.Count()</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-secondary" asp-page-handler="AddLikePost">Like  @Model.post.Likes.Count()</button>
+                    }
                 }
                 else
                 {
-                    <button class="btn btn-secondary" asp-page-handler="AddLikePost">Like  @Model.post.Likes.Count()</button>
+                    <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Login">Like @Model.post.Likes.Count()</a>
                 }
-
                 <textarea class="card-text col" name="NewComment" placeholder="Click to write..."></textarea>
                 <button class="btn btn-primary" asp-page-handler="Comment">Comment</button>
 

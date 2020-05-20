@@ -15,164 +15,29 @@
     <link rel="stylesheet" type="text/css" href="/css/Base.css">
 </head>
 <body>
-    <div class="container">
-        <div class ="card">
-            <h6 class ="card-header">@User.Identity.Name</h6>
-            <ul class ="list-group">
-                <li class ="list-group-item">
-                    felhasználónév: @Model.user.NormalizedUserName
-                </li>
-                <li class ="list-group-item">
-                    e-mail cím: @Model.user.Email
-                </li>
-                <li class ="list-group-item">
-                    szerepkörök: @string.Join(", ", Model.Roles)
-                </li></ul>
+        <div style="align-content: center; align-items: center">
+        <p style="text-align:center">
+            <img src="~/Images/profipic.png" class="postProfilePicture" />
+        </p>
+        <h6 style="align-self: center; text-align: center" class="card-header">@User.Identity.Name</h6>
     </div>
-        <!--  Conteainer for contetnt. Ez a grid rendszer amibe bele rakunk több elemet. Külső Container-->
-        <div class="col" id="Posts">
-            <ul class="list-gorup col">
-                <li class="list-group-item post">
-                    <div class="container" id="post">
-                        <div>
-                            <img src="~/Images/profipic.png" class="postProfilePicture">
-
-                            <a class="nicelink" asp-area="" asp-page="/OtherProfile">Poster's Name</a>
-                        </div>
-                        <hr>
-                        <p>
-                            This is what a post will look like. <br>
-                            Simple text for sharing your thoughts with your friends.
-                        </p>
-                        <hr>
-                        <div>
-                            <div>
-                                <a href="#" style="margin-right: 20px;">Like</a>
-                                <a href="#">Comment</a>
-                            </div>
-                        </div>
+    <div>
+        @if (@User.Identity.IsAuthenticated)
+        {
+            <form method="post" class="card" id="postCreater" asp-page-handler="add">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label name="NewPostContent"> @Model.user.UserName </label>
+                        <textarea class="card-text col" name="NewPostContent" rows="5" placeholder="What is in you mind ?"></textarea>
                     </div>
-                </li>
-                <li class="list-group-item post">
-                    <div class="card post">
-                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
-                        <div class="card-body">
-                            <h3 class="card-title"><b>Contest name</b></h3>
-                            <span style="float:right">
-                                <a class="nicelink" asp-area="" asp-page="/OtherProfile">Creator name</a>
-                            </span>
-                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                            <div>
-                                <a href="#" class="btn btn-primary">Join Contest</a>
-                                <span style="float:right">
-                                    Number of palyers: 6/10
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item post">
-                    <div class="card post">
-                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
-                        <div class="card-body">
-                            <h3 class="card-title"><b>Contest name</b></h3>
-                            <span style="float:right">
-                                <a class="nicelink" asp-area="" asp-page="/OtherProfile">Creator name</a>
-                            </span>
-                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                            <div>
-                                <a href="#" class="btn btn-primary">Join Contest</a>
-                                <span style="float:right">
-                                    Number of palyers: 6/10
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item post">
-                    <div class="container post">
-                        <div>
-                            <img src="~/Images/profipic.png" height="50" width="50">
-                            <a class="nicelink" asp-area="" asp-page="/OtherProfile">Poster's Name</a>
-
-                            Poster's Name
-
-                        </div>
-                        <hr>
-                        <p>
-                            This is what a post will look like.
-                            Simple text for sharing your thoughts with your friends.
-                        </p>
-                        <hr>
-                        <div>
-                            <div>
-                                <a href="#" style="margin-right: 20px;">Like</a>
-                                <a href="#">Comment</a>
-                            </div>
-                        </div>
-                    </div>
-
-                <li class="list-group-item post">
-                    <div class="card post">
-                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
-                        <div class="card-body">
-                            <h3 class="card-title"><b>Contest name</b></h3>
-                            <span style="float:right">
-                                Creator name
-                            </span>
-                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                            <div>
-                                <a href="#" class="btn btn-primary">Join Contest</a>
-                                <span style="float:right">
-                                    Number of palyers: 6/10
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item post">
-
-                    <div class="card post">
-                        <img src="~/Images/contest_image.png" height="150" class="card-img-top">
-                        <div class="card-body">
-                            <h3 class="card-title"><b>Contest name</b></h3>
-                            <span style="float:right">
-                                <a class="nicelink" asp-area="" asp-page="/OtherProfile">Creator name</a>
-                            </span>
-                            <p class="card-text">Totally interesting contest describtion, that'll get you to want to play. </p>
-                            <div>
-                                <a href="#" class="btn btn-primary">Join Contest</a>
-                                <span style="float:right">
-                                    Number of palyers: 6/10
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item post">
-                    <div class="container post">
-                        <div>
-                            <img src="~/Images/profipic.png" height="50" width="50">
-                            <a class="nicelink" asp-area="" asp-page="/OtherProfile">Poster's Name</a>
-
-                        </div>
-                        <hr>
-                        <p>
-                            This is another example for a post, so that the page looks more convincing.
-                        </p>
-                        <hr>
-                        <div>
-                            <div>
-                                <a href="#" style="margin-right: 20px;">Like</a>
-                                <a href="#">Comment</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </li>
-
-            </ul>
-        </div>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </form>
+        }
+        @foreach (var post in Model.Posts)
+        {
+            <vc:post post="post" user="Model.user"></vc:post>
+        }
     </div>
 </body>
 </html>

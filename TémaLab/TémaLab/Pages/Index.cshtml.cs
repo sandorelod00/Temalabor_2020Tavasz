@@ -57,9 +57,6 @@ namespace TémaLab.Pages
             var PostContent = Request.Form["NewPostContent"];
             if (PostContent != "")
             {
-                System.Diagnostics.Debug.WriteLine(PostContent);
-                System.Diagnostics.Debug.WriteLine(User.UserName);
-
                 Post createPost = new Post()
                 {
                     Content = PostContent,

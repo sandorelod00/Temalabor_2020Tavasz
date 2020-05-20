@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TémaLab.Data.DTOs;
+using TémaLab.Data.Entities;
 
 namespace TémaLab.Data.Services
 {
@@ -38,7 +39,31 @@ namespace TémaLab.Data.Services
                 Competitions = u.Competitions,
                 Participations = u.Participations,
                 EventParticipations = u.EventParticipations,
-                Events = u.Events
+                Events = u.Events,
+                score = u.score,
+                rank = u.rank
             });
+
+        public void addFriend(int thisUserId, int friendUserId)
+        {
+            var thisUser = DbContext.Users.Where(u => u.Id == thisUserId).Single();
+            var friendUser = DbContext.Users.Where(u => u.Id == friendUserId).Single();
+
+            var Friendship = new Friendship {User1 = thisUser, User1Id = thisUserId, User2 = friendUser, User2Id = friendUserId  };
+
+            thisUser.Friendships1.Add(Friendship);
+            friendUser.Friendships1.Add(Friendship);
+        }
+
+        public ICollection<Friendship> getFriendships(int userId)
+        {
+            var user = DbContext.Users.Where(u => u.Id == userId).Single();
+            return user.Friendships1;
+        }
+
+        public User getUserById(int Id)
+        {
+            return DbContext.Users.Where(u => u.Id == Id).First();
+        }
     }
 }

@@ -42,5 +42,18 @@ namespace TémaLab.Data.Services
             DbContext.Competitions.Add(competitionDto);
             DbContext.SaveChanges();
         }
+
+        internal void updateCompetition(CompetitionDto competitionDto)
+        {
+            Competition changes = DbContext.Competitions.Single(c => c.Id == competitionDto.Id);
+            changes.Title = competitionDto.Title;
+            changes.Content = competitionDto.Content;
+            DbContext.Competitions.Update(changes);
+            DbContext.SaveChanges();
+        }
     }
+
+
+
+
 }
