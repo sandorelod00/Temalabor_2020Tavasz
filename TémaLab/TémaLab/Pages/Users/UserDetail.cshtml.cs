@@ -29,23 +29,21 @@ namespace TémaLab
             int myId = int.Parse(userManager.GetUserId(User));
             User currentUser = userService.getUserById(Id.Value);
             User me = userService.getUserById(myId);
-            Friendship fs = new Friendship
+            Friendship fs = new Friendship()
             {
                 User1Id = myId,
-                User1 = me,
+                //User1 = me,
                 User2Id = Id.Value,
-                User2 = currentUser
+                //User2 = currentUser
             };
             userService.DbContext.Friendship.Add(fs);
-            Redirect("./Users/UserDetails?Id=" + Id.ToString());
-
+            userService.DbContext.SaveChanges();
             //"Users/UserDetail?id=3"
             //me.Friendships1.Add(fs);
             //currentUser.Friendships1.Add(fs);
-
             //userService.getUserById(currentId).Friendships1.Add(new Friendship { User1Id = currentId, User1 = userService.getUserById(currentId), User2Id = user.Id , User2 = userService.getUserById(user.Id) });
             //user.Friendships1.Add(new Friendship { User2Id = currentId, User2 = userService.getUserById(currentId), User1Id = user.Id, User1 = userService.getUserById(user.Id) });
-            return Page();
+            return Redirect("./UserDetail?Id=" + Id.ToString());
         }
 
         public async Task<IActionResult> OnGet(int? Id)
