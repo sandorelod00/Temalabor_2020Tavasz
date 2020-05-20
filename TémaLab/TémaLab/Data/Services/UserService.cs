@@ -44,6 +44,12 @@ namespace TémaLab.Data.Services
                 rank = u.rank
             });
 
+        internal void updatedUser(User user)
+        {
+            DbContext.Users.Update(user);
+            DbContext.SaveChanges();
+        }
+
         public void addFriend(int thisUserId, int friendUserId)
         {
             var thisUser = DbContext.Users.Where(u => u.Id == thisUserId).Single();

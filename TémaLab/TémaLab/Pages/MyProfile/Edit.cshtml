@@ -1,0 +1,21 @@
+﻿@page
+@model TémaLab.EditMyProfileModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+
+
+<form method="post">
+    <div class="form-group card-body col">
+        <label asp-for="user.Introduction" class="control-label"></label>
+        <textarea asp-for="user.Introduction" class="form-control card-text col" rows="10" name="Introduction"></textarea>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+

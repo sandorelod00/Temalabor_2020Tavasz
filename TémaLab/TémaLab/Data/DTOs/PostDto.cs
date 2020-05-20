@@ -21,6 +21,5 @@ namespace TémaLab.Data.DTOs
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Like> Likes { get; set; }
 
-
     }
 }
