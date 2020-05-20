@@ -66,7 +66,6 @@ namespace TémaLab
                         break;
                     }
                 }
-                
             }
         }
 
