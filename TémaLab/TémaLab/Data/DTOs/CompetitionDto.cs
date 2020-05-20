@@ -22,5 +22,6 @@ namespace TémaLab.Data.DTOs
 
         public ICollection<Participation> Participations { get; set; }
 
+        
     }
 }

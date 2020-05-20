@@ -5,55 +5,90 @@
     Layout = "_Layout";
 }
 
+@if (User.Identity.IsAuthenticated && (Model.User.Admin || User.IsInRole("admin") ))
+{
+    <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@Model.CompetitionDto.Id">Edit Competition</a>
+    <a class="btn btn-danger"asp-page="./Delete" asp-route-id="@Model.CompetitionDto.Id">Delete Competition</a>
+}
 
 <vc:competition competiton="Model.CompetitionDto"></vc:competition>
-<h1>Allready in the comepetition</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    @if (Model.CompetitionDto.Participations.Count(p => p.UserId == Model.User.Id) > 0)
+    {
+        <form method="post" id="registerMe" asp-page-handler="Unregister" asp-route-id="@Model.CompetitionDto.Id">
+            <button class="btn btn-primary">Un-Register Me</button>
+        </form>
+    }
+    else
+    {
+        <form method="post" id="registerMe" asp-page-handler="register" asp-route-id="@Model.CompetitionDto.Id">
+            <button class="btn btn-primary">Register Me</button>
+        </form>
+    }
+}
+<h5>Allready in the comepetition</h5>
 <table>
+    <thead>
+        <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Rank</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var participation in Model.Participations)
+        {
 
+            <tr>
+                <td> <a class="TableLink" asp-area="" asp-page="/Users/UserDetail" asp-route-id="@participation.UserId">@participation.User.UserName</a></td>
+                <td>@participation.User.rank</td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 @*<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Details</title>
+    </head>
+    <body>
 
-<div>
-    <h4>CompetitionDto</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompetitionDto.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompetitionDto.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompetitionDto.User)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompetitionDto.User.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompetitionDto.date)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompetitionDto.date)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CompetitionDto.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CompetitionDto.Content)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.CompetitionDto.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
-</body>
-</html>*@
+    <div>
+        <h4>CompetitionDto</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompetitionDto.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompetitionDto.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompetitionDto.User)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompetitionDto.User.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompetitionDto.date)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompetitionDto.date)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompetitionDto.Content)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompetitionDto.Content)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.CompetitionDto.Id">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
+    </body>
+    </html>*@
