@@ -43,11 +43,7 @@
                     <!--TODO: A megeflelő mezők megjelenítsée a megfelelő oldalon JS kóddal. -->
 
                     <a asp-area="" asp-page="/Competitions/Index" id="UpcomingEventsLink">Competitions</a>
-                    <a asp-area="" asp-page="/Competitions/Index" id=" UpcomingCompetitonsLink">Upcoming Competetions</a>
                     <a asp-area="" asp-page="/LeaderBoard" id="LeaderBoardLink">Leader Board</a>
-
-
-                    <a asp-area="" asp-page="/Introduction" id="IntroductionLink"> Introduction</a>
                     <a asp-area="" asp-page="/Friends" id="FriendsLink"> Friends</a>
                     <a asp-area="Identity" asp-page="/Account/Manage/Index" id="EditProfileLink">Edit profile</a>
 
@@ -68,22 +64,6 @@
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" asp-area="" asp-page="/MyProfile/Index">My Profile<span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Forum
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">All</a>
-                                    <a class="dropdown-item" href="#">Competitions</a>
-                                    <a class="dropdown-item" href="#">Posts</a>
-                                </div>
-                            </li>
-                            <li>
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                            </li>
-                            <li>
-                                <button type="button" class="btn btn-light" id="search_btn">Search</button>
                             </li>
                             <li>
                                 <partial name="_LoginPartial" />
