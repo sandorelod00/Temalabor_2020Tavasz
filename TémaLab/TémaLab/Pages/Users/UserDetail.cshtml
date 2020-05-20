@@ -5,34 +5,34 @@
     ViewData["Title"] = "UserDetail";
 
 }
-<div>
     <form method="post" id="AddFriendForm">
-        <img class="img-fluid" src="~/Images/profipic.png" width="40" height="50">
-        <h3>@Model.user.UserName</h3>
-        <ul class="list-gourp">
-            <li class="list-group-item">
+        <div class="card col">
+            <img class="card-img-top" style="width: 60px; height:75px" src="~/Images/profipic.png">
+            <div class="card-body">
+                <h5 class="card-title">@Model.user.UserName</h5>
+                Rank: @Model.user.rank <br>
+                Score: @Model.user.score <br>
+                <p class="card-text">@Model.user.Introduction</p>
                 @if (Model.user.Id == Model.thisId)
                 {
                     <a type="button" class="btn btn-primary" asp-area="Identity" asp-page="/Account/Manage/Index" id="EditProfileLink">Edit profile</a>
                 }
                 else
                 {
-
-                    <button class="btn btn-default" asp-page-handler="Addfriend" asp-route-id="@Model.user.Id">Add Friend</button>
-
+                    if (Model.userSignedin)
+                    {
+                        if (Model.alreadyAdded)
+                        {
+                            <p>Already added</p>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" asp-page-handler="Addfriend" asp-route-id="@Model.user.Id">Add Friend</button>
+                        }
+                    }
                 }
 
-            </li>
-            <li class="list-group-item">
-                Rank: @Model.user.rank
-            </li>
-            <li class="list-group-item">
-                Score: @Model.user.score
-            </li>
-        </ul>
-        <span>
-            About me: <br>
-            @Model.user.Introduction
-        </span>
+            </div>
+        </div>
     </form>
-</div>
+        

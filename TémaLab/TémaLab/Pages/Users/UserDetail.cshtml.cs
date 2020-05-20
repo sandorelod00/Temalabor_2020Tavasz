@@ -16,6 +16,8 @@ namespace TémaLab
         public UserService userService { get; }
         public UserManager<User> userManager { get; }
         public User user { get; set; }
+        public bool userSignedin { get; set; }
+        public bool alreadyAdded { get; set; }
         public string Message { get; set; }
         public int thisId { get; set; }
         public UserDetailModel(UserService _userService, UserManager<User> _userManager)
@@ -26,29 +28,56 @@ namespace TémaLab
 
         public async Task<IActionResult> OnPostAddfriend(int? Id)
         {
-            int myId = int.Parse(userManager.GetUserId(User));
-            User currentUser = userService.getUserById(Id.Value);
-            User me = userService.getUserById(myId);
-            Friendship fs = new Friendship()
+            userSignedin = User.Identity.IsAuthenticated;
+            if (userSignedin)
             {
-                User1Id = myId,
-                //User1 = me,
-                User2Id = Id.Value,
-                //User2 = currentUser
-            };
-            userService.DbContext.Friendship.Add(fs);
-            userService.DbContext.SaveChanges();
-            //"Users/UserDetail?id=3"
-            //me.Friendships1.Add(fs);
-            //currentUser.Friendships1.Add(fs);
-            //userService.getUserById(currentId).Friendships1.Add(new Friendship { User1Id = currentId, User1 = userService.getUserById(currentId), User2Id = user.Id , User2 = userService.getUserById(user.Id) });
-            //user.Friendships1.Add(new Friendship { User2Id = currentId, User2 = userService.getUserById(currentId), User1Id = user.Id, User1 = userService.getUserById(user.Id) });
+                int myId = int.Parse(userManager.GetUserId(User));
+                User currentUser = userService.getUserById(Id.Value);
+                User me = userService.getUserById(myId);
+                Friendship fs = new Friendship()
+                {
+                    User1Id = myId,
+                    User2Id = Id.Value
+                };
+                if (!alreadyAdded)
+                {
+                    userService.DbContext.Friendship.Add(fs);
+                    userService.DbContext.SaveChanges();
+                }
+                
+                alreadyAdded = true;
+                return Redirect("./UserDetail?Id=" + Id.ToString());
+            }
             return Redirect("./UserDetail?Id=" + Id.ToString());
+        }
+
+        public void checkFriends( int? Id)
+        {
+            alreadyAdded = false;
+            user = userService.getUserById(Id.Value);
+            foreach (Friendship fs in userService.DbContext.Friendship)
+            {
+                if (fs!= null && user != null && userManager.GetUserId(User) != null)
+                {
+                    if (fs.User1Id == int.Parse(userManager.GetUserId(User)) && fs.User2Id == user.Id ||
+                    fs.User2Id == int.Parse(userManager.GetUserId(User)) && fs.User1Id == user.Id)
+                    {
+                        alreadyAdded = true;
+                        break;
+                    }
+                }
+            }
         }
 
         public async Task<IActionResult> OnGet(int? Id)
         {
-            thisId = int.Parse(userManager.GetUserId(User));
+            userSignedin = User.Identity.IsAuthenticated;
+
+            if (userSignedin)
+            {
+                checkFriends(Id);
+                thisId = int.Parse(userManager.GetUserId(User));
+            }
 
             if (Id == null)
             {

@@ -4,58 +4,83 @@
     ViewData["Title"] = "Friends";
 }
 
+<div class="container">
 
-    <div class="container">
-        <!--  Conteainer for contetnt. Ez a grid rendszer amibe bele rakunk több elemet. Külső Container-->
-        <div class="container" id="contect">
-            <!-- Container első sora. Ebben a sorban van a Left-user-Menu és a Header szöveg.-->
-            <div class="row" id="FirstRow">
-                <div class="col-lg-9">
-                    <h1 class="post">Friends</h1>
-                    <!--Friends placed here-->
-                    <div class="row row-cols-2 row-cols-md-3" id="FirendsContainer">
-                        <div class="col mb-4">
-                            <div class="card post">
-                                <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
-                                <div class="card-body">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
-                                    <p class="card-text">Some basic game-related info</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-3">
-                            <div class="card post">
-                                <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
-                                <div class="card-body">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
-                                    <p class="card-text">Some basic game-related info</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-3">
-                            <div class="card post">
-                                <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
-                                <div class="card-body">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
-                                    <p class="card-text">Some basic game-related info</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col mb-3">
-                            <div class="card post">
-                                <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
-                                <div class="card-body">
-                                    <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
-                                    <p class="card-text">Some basic game-related info</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container" id="contect">
+        <div class="row" id="FirstRow">
+            <div class="col-lg-9">
+                <h1 class="post">Friends</h1>
 
+                <div class="row row-cols-2 row-cols-md-3" id="FirendsContainer">
+                    @foreach (TémaLab.Data.Entities.User user in Model.Friends)
+                    {
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="~/Images/profipic.png">
+                            <div class="card-body">
+                                <h5 class="card-title">@user.UserName</h5>
+                                Rank:  @user.rank<br>
+                                Score: @user.score<br>
+                                <p class="card-text">@user.Introduction</p>
+                            </div>
+                        </div>
+                    }
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 
+<!--
+    <div class="container">
 
+<div class="container" id="contect">
+        <div class="row" id="FirstRow">
+        <div class="col-lg-9">
+            <h1 class="post">Friends</h1>
 
+            <div class="row row-cols-2 row-cols-md-3" id="FirendsContainer">
+                <div class="col mb-4">
+                    <div class="card post">
+                        <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
+                        <div class="card-body">
+                            <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
+                            <p class="card-text">Some basic game-related info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="card post">
+                        <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
+                        <div class="card-body">
+                            <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
+                            <p class="card-text">Some basic game-related info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="card post">
+                        <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
+                        <div class="card-body">
+                            <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
+                            <p class="card-text">Some basic game-related info</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <div class="card post">
+                        <img src="~/Images/profipic.png" class="card-img-top" alt="profil picture" />
+                        <div class="card-body">
+                            <a class="nicelink" asp-area="" asp-page="/OtherProfile"><h5 class="card-title">User Name</h5></a>
+                            <p class="card-text">Some basic game-related info</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    </div>
+
+-->
