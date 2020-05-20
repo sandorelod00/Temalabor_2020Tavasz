@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TémaLab.Data.DTOs;
+using TémaLab.Data.Entities;
 
 namespace TémaLab.Data.Services
 {
@@ -26,5 +27,24 @@ namespace TémaLab.Data.Services
                     Competition = p.Competition,
                     date = p.date
                 });
+
+        public IEnumerable<ParticipationDto> GetParticipationById(int? compId)
+        {
+
+            return GetParticipations().Where(p => p.CompetitionId == compId);
+        }
+
+        public void addParticipation(Participation par)
+        {
+            DbContext.Add(par);
+            DbContext.SaveChanges();
+        }
+
+        internal void removeParticipation(int? comID, int? uId)
+        {
+              var par =  DbContext.Participations.Single(p => p.CompetitionId == comID && p.UserId == uId);
+            DbContext.Participations.Remove(par);
+            DbContext.SaveChanges();
+        }
     }
 }
