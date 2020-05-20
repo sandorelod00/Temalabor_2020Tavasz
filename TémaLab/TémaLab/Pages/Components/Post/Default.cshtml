@@ -32,8 +32,14 @@
                     <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Login">Like @Model.post.Likes.Count()</a>
                 }
                 <textarea class="card-text col" name="NewComment" placeholder="Click to write..."></textarea>
-                <button class="btn btn-primary" asp-page-handler="Comment">Comment</button>
-
+                @if (Model.LoggedUser != null)
+                {
+                    <button class="btn btn-primary" asp-page-handler="Comment">Comment</button>
+                }
+                else
+                {
+                    <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Login">Comment</a>
+                }
 
                 @if (Model.post.Comments.Count() > 0)
                 {
